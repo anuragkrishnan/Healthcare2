@@ -4,29 +4,27 @@ on:
   push:
     branches:
       - main
-
+ 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        
+      - name: Debug
+        run: |
+          echo "FILES IN REPOSITORY"
+          find . -type f
+          
       - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
-          debug: true
-          script: |
-            cd  /home1/aadilhostinfo/public_html/Healthcare
-
-            git pull origin main
-
-            composer install --no-dev --optimize-autoloader
-
-            php artisan migrate --force
-
-            php artisan optimize:clear
-
-            php artisan config:cache
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          port: ${{ secrets.SERVER_PORT }}
+          source: "."
+          target: "/home1/aadilcare/public_html/Healthcare2"
