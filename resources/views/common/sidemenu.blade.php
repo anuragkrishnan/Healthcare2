@@ -31,12 +31,18 @@
 
         <li>
             <a href="#" class="load-page" data-url="/Healthcare/public/doctors">
-                <i class="bi bi-person-badge"></i>
+                <i class="bi bi-person-vcard-fill"></i>
                 Doctors
             </a>
         </li>
+        <li>
+            <a href="#" class="load-page" data-url="/Healthcare/public/receptionists">
+                <i class="bi bi-person-badge"></i>
+                Receptionists
+            </a>
+        </li>
 
-   
+
 
     </ul>
 
