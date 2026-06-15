@@ -31,7 +31,6 @@ $(document).on('click', '.load-page', function (e) {
         url: url,
         type: 'GET',
         success: function (response) {
-            
             $('#content-area').html(response);
         },
         error: function (xhr) {
