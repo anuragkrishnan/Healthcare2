@@ -18,40 +18,43 @@
                     <i class="bi bi-bell"></i>
                 </button>
 
-                <div class='language-selector'>
+                <div class="dropdown-info dropdown" id="language-menu-toggle">
 
-                    <button type="button" class="lang-btn" id="lang-btn">
+                    <button type="button" class="lang-btn dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false" id="lang-btn">
                         EN
-                        <i class="bi bi-chevron-down"></i>
+
                     </button>
 
-                    <ul class="lang-dropdown" id="lang-dropdown">
-                        <li><a href="#">English</a></li>
-                        <li><a href="#">العربية</a></li>
+                    <ul class="dropdown-menu lang-dropdown" id="lang-dropdown" aria-labelledby="language-menu-toggle">
+                        <li><a class="dropdown-item" href="#">English</a></li>
+                        <li><a class="dropdown-item" href="#">العربية</a></li>
                     </ul>
                 </div>
 
-                <div class="user-info" id="user-menu-toggle">
+                <div class="dropdown-info dropdown" id="user-menu-toggle">
 
-                    <img src="https://i.pravatar.cc/50" class="user-img">
-
-                    <div class="user-details">
-                        <div class="user-name">Dr. Anurag</div>
-                        <div class="user-role">Administrator</div>
-                    </div>
-                    <i class="bi bi-chevron-down" id="user-chevron" aria-hidden="true"></i>
+                    <button type="button" class="user-info-toggle dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        style="background:none;border:none;display:flex;align-items:center;gap:8px;" id="user-chevron">
+                        <img src="https://i.pravatar.cc/50" class="user-img">
+                        <div class="user-details">
+                            <div class="user-name">Dr. Anurag</div>
+                            <div class="user-role">Administrator</div>
+                        </div>
+                    </button>
 
                     <!-- User dropdown -->
-                    <!--ul class="user-dropdown1 hidden" id="user-dropdown1">
-                        <li><a href="#"><i class="bi bi-person"></i> My Profile</a></li>
-                        <li><a href="#"><i class="bi bi-gear"></i> Settings</a></li>
+                    <ul class="dropdown-menu user-dropdown" aria-labelledby="user-menu-toggle">
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> My Profile</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Settings</a></li>
                         <li class="divider"></li>
                         <li>
-                            <a href="http://localhost/Healthcare2/public/logout" class="logout-item">
+                            <a href="{{ route('logout') }}" class="logout-item">
                                 <i class="bi bi-box-arrow-right"></i> Logout
                             </a>
                         </li>
-                    </ul-->
+                    </ul>
 
                 </div>
 

@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+/* Load page content via AJAX */
+
 $(document).on('click', '.load-page', function (e) {
     e.preventDefault();
 
@@ -40,52 +42,41 @@ $(document).on('click', '.load-page', function (e) {
     });
 });
 
-const langBtn = document.getElementById('lang-btn');
-const langDropdown = document.getElementById('lang-dropdown');
 
-if (langBtn && langDropdown) {
 
-langBtn.addEventListener('click', function () {
-    langDropdown.classList.toggle('show');
+// Avatar click → file input in doctor add page
+document.addEventListener('DOMContentLoaded', () => {
+  const avatarPreview = document.querySelector('.avatar-preview');
+const fileBtn = document.getElementById('btn-upload');
+
+[avatarPreview, fileBtn].forEach(el => {
+  if (!el) return;
+  el.addEventListener('click', openFilePicker);
 });
 
-document.addEventListener('click', function (e) {
-    if (!e.target.closest('.language-selector')) {
-        langDropdown.classList.remove('show');
+function openFilePicker() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.style.display = 'none';
+  document.body.appendChild(input); // attach to DOM
+
+  input.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = evt => {
+        avatarPreview.innerHTML = `<img src="${evt.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+      };
+      reader.readAsDataURL(file);
     }
-});
+    input.remove(); // clean up after use
+  });
+
+  input.click();
 }
 
-const userBtn = document.getElementById('user-btn');
-const userDropdown = document.getElementById('user-dropdown');
 
-if (userBtn && userDropdown) {
-
-    userBtn.addEventListener('click', function () {
-        userDropdown.classList.toggle('show');
-    });
-
-    document.addEventListener('click', function (e) {
-        if (!e.target.closest('.user-info')) {
-            userDropdown.classList.remove('show');
-        }
-    });
-}
-
-// User profile dropdown
-const userToggle = document.getElementById('user-menu-toggle');
-const userDropdown1 = document.getElementById('user-dropdown1');
-const userChevron = document.getElementById('user-chevron');
-
-userToggle.addEventListener('click', function (e) {
-    e.stopPropagation();
-    userDropdown1.classList.remove('hidden');
-    userDropdown1.classList.toggle('open');
-    userChevron.classList.toggle('rotated');
 });
 
-// Close when clicking anywhere outside
-document.addEventListener('click', function (e) {
-    userDropdown1.classList.remove('open');
-    userChevron.classList.remove('rotated');
-});
+

@@ -6,10 +6,11 @@
             <div class="page-subtitle">Manage and monitor all registered patients</div>
         </div>
         <div style="display:flex;gap:10px;">
-            <button class="btn btn-patient-add">
-                <i class="fa-solid fa-plus"></i> New Patient
+            <button type="button" class="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#patientAddModal">
+                <i class="bi bi-solid bi-plus"></i> New Patient
             </button>
         </div>
+        @include('patients.modals.add')
     </div>
 
 
