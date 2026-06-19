@@ -3,7 +3,7 @@
     <div class="logo-section">
 
         <div class="logo-icon">
-            <i class="bi bi-hospital"></i>
+            <img src="{{ asset('images/logo.png') }}" class="logo-img">
         </div>
 
         <div class="logo-text">

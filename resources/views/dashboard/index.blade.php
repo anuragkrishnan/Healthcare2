@@ -40,16 +40,27 @@
 
         <div class="col-md-8">
 
-            <div class="dashboard-card chart-box">
-                Revenue Chart Area
+            <div class="card dashboard-card">
+                <h6 class="mb-0">Revenue Overview</h6>
+                <div class="card-body">
+                    <div class="chart-canvas-wrap">
+                        <canvas id="revenueChart" role="img"
+                            aria-label="Line chart of monthly list of new registrations from January to June"></canvas>
+                    </div>
+                </div>
             </div>
 
         </div>
 
         <div class="col-md-4">
 
-            <div class="dashboard-card chart-box">
-                Patient Growth
+            <div class="card dashboard-card">
+                <h6>Patient Growth</h6>
+                <div class="doughnut-canvas-wrap">
+                    <canvas id="patientChart" role="img"
+                        aria-label="Doughnut chart of patient growth breakdown: new registrations, returning patients, referrals, and others"></canvas>
+                </div>
+                <div class="doughnut-legend" id="patientLegend"></div>
             </div>
 
         </div>

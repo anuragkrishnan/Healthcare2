@@ -26,7 +26,8 @@
 
                     </button>
 
-                    <ul class="dropdown-menu lang-dropdown" id="lang-dropdown" aria-labelledby="language-menu-toggle">
+                    <ul class="dropdown-menu dropdown-menu-dark" id="lang-dropdown"
+                        aria-labelledby="language-menu-toggle">
                         <li><a class="dropdown-item" href="#">English</a></li>
                         <li><a class="dropdown-item" href="#">العربية</a></li>
                     </ul>
@@ -37,7 +38,7 @@
                     <button type="button" class="user-info-toggle dropdown-toggle" data-bs-toggle="dropdown"
                         aria-expanded="false"
                         style="background:none;border:none;display:flex;align-items:center;gap:8px;" id="user-chevron">
-                        <img src="https://i.pravatar.cc/50" class="user-img">
+                        <img src="{{ asset('images/user-avatar.jpg') }}" class="user-img">
                         <div class="user-details">
                             <div class="user-name">Dr. Anurag</div>
                             <div class="user-role">Administrator</div>
@@ -45,7 +46,7 @@
                     </button>
 
                     <!-- User dropdown -->
-                    <ul class="dropdown-menu user-dropdown" aria-labelledby="user-menu-toggle">
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-menu-toggle">
                         <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> My Profile</a></li>
                         <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Settings</a></li>
                         <li class="divider"></li>
