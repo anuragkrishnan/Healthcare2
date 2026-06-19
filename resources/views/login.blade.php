@@ -95,7 +95,7 @@
             <!-- Left Branding Panel -->
             <div class="col-lg-6 d-none d-lg-flex flex-column justify-content-center brand-section">
                 <div class="brand-content">
-                    <h1>Hospital Management System</h1>
+                    <h1>Hospital Management System test</h1>
                     <p>Secure access for healthcare professionals</p>
                 </div>
             </div>
