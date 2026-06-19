@@ -9,6 +9,12 @@ Route::get('/', function () {
 
 Route::get('/login', [AuthController::class, 'login']);
 
+Route::post('/login', [AuthController::class, 'authenticate'])
+    ->name('auth.login');
+
+Route::get('/logout', [AuthController::class, 'logout'])
+    ->name('logout');
+
 Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
@@ -23,4 +29,8 @@ Route::get('/patients', function () {
 
 Route::get('/doctors', function () {
     return view('doctors.index');
+});
+
+Route::get('/receptionists', function () {
+    return view('receptionists.index');
 });

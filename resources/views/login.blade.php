@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Care System | Login</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap 5.3.7 -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-icons.min.css') }}" rel="stylesheet">
+
 
     <style>
         :root {
@@ -21,7 +22,7 @@
 
         body {
             min-height: 100vh;
-            background: var(--hospital-bg);
+            background: #f8fafc;
             font-family: "Segoe UI", sans-serif;
             margin: 0;
         }
@@ -32,7 +33,7 @@
 
         .brand-section {
             position: relative;
-            background-image: url('{{ asset("images/doctor_bg.webp") }}');
+            background-image: url('{{ asset('images/doctor_bg.webp') }}');
             background-size: cover;
             background-position: center;
         }
@@ -62,13 +63,8 @@
             box-shadow: 0 10px 35px rgba(0, 0, 0, .08);
         }
 
-        .form-control {
-            height: 52px;
-            border-radius: 12px;
-        }
-
         .btn-login {
-            height: 52px;
+            height: 45px;
             border-radius: 12px;
             font-weight: 600;
         }
@@ -76,6 +72,11 @@
         .security-note {
             font-size: .85rem;
             color: #6c757d;
+        }
+
+        .form-control {
+            height: 45px !important;
+            border-radius: 12px;
         }
 
         @media (max-width: 991px) {
@@ -106,7 +107,7 @@
                     <div class="card-body p-5">
 
                         <div class="text-center mb-4">
-                            <div class="mb-3">
+                            <div class="mb-1">
                                 <i class="bi bi-heart-pulse-fill text-success fs-1"></i>
                             </div>
 
@@ -127,46 +128,34 @@
                             </div>
                         @endif
 
-                        <form method="POST">
+                        <form method="POST" action="{{ route('auth.login') }}">
                             @csrf
 
                             <div class="mb-3">
-                                <label class="form-label fw-semibold">Email</label>
+                                <label class="form-label fw-semibold">Username</label>
 
-                                <input type="email"
-                                       name="email"
-                                       value="{{ old('email') }}"
-                                       class="form-control"
-                                       placeholder="Enter your email"
-                                       required
-                                       autofocus>
+                                <input type="text" name="username" value="{{ old('username') }}"
+                                    class="form-control form-control-sm" placeholder="Enter your username" required
+                                    autofocus>
+
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">Password</label>
 
                                 <div class="input-group">
-                                    <input type="password"
-                                           id="password"
-                                           name="password"
-                                           class="form-control"
-                                           placeholder="Enter your password"
-                                           required>
+                                    <input type="password" id="password" name="password"
+                                        class="form-control form-control-sm" placeholder="Enter your password" required>
 
-                                    <button type="button"
-                                            class="btn btn-outline-secondary"
-                                            onclick="togglePassword()">
+                                    <button type="button" class="btn btn-outline-secondary" onclick="togglePassword()">
                                         <i class="bi bi-eye"></i>
                                     </button>
                                 </div>
                             </div>
 
-                            <div class="d-flex justify-content-between mb-4">
+                            <!--div class="d-flex justify-content-between mb-4">
                                 <div class="form-check">
-                                    <input type="checkbox"
-                                           name="remember"
-                                           class="form-check-input"
-                                           id="remember">
+                                    <input type="checkbox" name="remember" class="form-check-input" id="remember">
 
                                     <label class="form-check-label" for="remember">
                                         Remember Me
@@ -176,7 +165,7 @@
                                 <a href="#" class="text-decoration-none">
                                     Forgot Password?
                                 </a>
-                            </div>
+                            </div-->
 
                             <button type="submit" class="btn btn-success btn-login w-100">
                                 <i class="bi bi-box-arrow-in-right me-2"></i>
@@ -196,9 +185,9 @@
         function togglePassword() {
             const password = document.getElementById('password');
 
-            password.type = password.type === 'password'
-                ? 'text'
-                : 'password';
+            password.type = password.type === 'password' ?
+                'text' :
+                'password';
         }
     </script>
 
