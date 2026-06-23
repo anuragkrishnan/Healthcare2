@@ -14,18 +14,19 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-
     @stack('styles')
+    <!-- Bootstrap JS -->
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+
+    @stack('scripts')
+
 </head>
 
 <body>
 
     @yield('content')
 
-    <!-- Bootstrap JS -->
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
-    @stack('scripts')
 
 </body>
 

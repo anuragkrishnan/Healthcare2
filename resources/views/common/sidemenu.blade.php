@@ -1,4 +1,4 @@
-<div class="sidebar">
+<aside class="sidebar">
 
     <div class="logo-section">
 
@@ -18,32 +18,37 @@
         <li>
             <a href="#" class="active load-page" data-url="{{ url('/dashboard/home') }}">
                 <i class="bi bi-grid"></i>
-                Dashboard
+                <span class="menu-text">Dashboard</span>
             </a>
         </li>
 
         <li>
             <a href="#" class="load-page" data-url="{{ url('/patients') }}">
                 <i class="bi bi-people"></i>
-                Patients
+                <span class="menu-text">Patients</span>
             </a>
         </li>
 
         <li>
             <a href="#" class="load-page" data-url="{{ url('/doctors') }}">
                 <i class="bi bi-person-vcard-fill"></i>
-                Doctors
+                <span class="menu-text">Doctors</span>
             </a>
         </li>
         <li>
             <a href="#" class="load-page" data-url="{{ url('/receptionists') }}">
                 <i class="bi bi-person-badge"></i>
-                Receptionists
+                <span class="menu-text">Receptionists</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="load-page" data-url="{{ route('common.alerts') }}">
+                <i class="bi bi-bell"></i>
+                <span class="menu-text">Notifications</span>
             </a>
         </li>
 
 
-
     </ul>
 
-</div>
+</aside>

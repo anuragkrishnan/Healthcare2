@@ -22,7 +22,7 @@
 
                     <button type="button" class="lang-btn dropdown-toggle" data-bs-toggle="dropdown"
                         aria-expanded="false" id="lang-btn">
-                        EN
+                        <!--i class="bi bi-globe2"></i--> EN
 
                     </button>
 

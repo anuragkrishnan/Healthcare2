@@ -34,3 +34,9 @@ Route::get('/doctors', function () {
 Route::get('/receptionists', function () {
     return view('receptionists.index');
 });
+
+//notification alerts example
+
+Route::get('/common/alerts', function () {
+    return view('common.alerts');
+})->name('common.alerts');

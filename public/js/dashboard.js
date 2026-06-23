@@ -21,6 +21,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 
+//toasts alert js
+
+
+    const messages = {
+  success: 'Your changes have been saved.',
+  danger: 'Something went wrong. Please try again.',
+  warning: 'Your session will expire in 5 minutes.',
+  info: 'A new update is available.'
+};
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.toast-trigger-row button');
+  if (!btn) return;
+
+  const type = btn.dataset.type;
+  const container = document.getElementById('toastContainer');
+  const toastEl = document.createElement('div');
+  toastEl.className = 'toast text-bg-' + type + ' border-0';
+  toastEl.setAttribute('role', 'alert');
+  toastEl.setAttribute('aria-live', 'assertive');
+  toastEl.setAttribute('aria-atomic', 'true');
+  toastEl.innerHTML = '<div class="d-flex"><div class="toast-body">' + messages[type] + '</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button></div>';
+  container.appendChild(toastEl);
+  const toast = new bootstrap.Toast(toastEl, { delay: 4000 });
+  toast.show();
+  toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove());
+});
+
+
 });
 
 /* Load page content via AJAX */
@@ -39,6 +67,7 @@ $(document).on('click', '.load-page', function (e) {
             $('#content-area').html(response);
             initRevenueChart();
             initPatientChart();
+            initPatientsTable();
         },
         error: function (xhr) {
             console.log(xhr.responseText);
@@ -46,6 +75,35 @@ $(document).on('click', '.load-page', function (e) {
         }
     });
 });
+
+//datatable example
+$(document).ready(function () {
+
+    $('#patientsTable').DataTable({
+  pageLength: 10,
+  lengthMenu: [5, 10, 25, 50],
+  order: [[4, 'desc']],
+  scrollY: '200px',     // fixed height for the scrolling body — adjust to taste
+  scrollX: false,        // horizontal scroll if columns overflow
+  scrollCollapse: true, // shrink the scroll area if there's less content than 320px
+  paging: false,
+  language: { search: '',
+            searchPlaceholder: 'Search patients...'}
+});
+});
+
+//Due to ajax calling-need to initialize
+function initPatientsTable() {
+
+    if ($.fn.DataTable.isDataTable('#patientsTable')) {
+        $('#patientsTable').DataTable().destroy();
+    }
+
+    $('#patientsTable').DataTable({
+        pageLength: 10,
+        responsive: true
+    });
+}
 
 //chart js
 function initRevenueChart() {
@@ -60,10 +118,10 @@ new Chart(canvas, {
     datasets: [{
       label: 'Revenue',
       data: [68000,74000,81000,95000,110000,125000],
-      borderColor: '#27d54a',
+      borderColor: '#0d6efd',
       backgroundColor: 'rgba(79,142,247,0.12)',
       borderWidth: 2.5,
-      pointBackgroundColor: '#27d54a',
+      pointBackgroundColor: '#0d6efd',
       pointBorderColor: '#13161e',
       pointBorderWidth: 2,
       pointRadius: 4,
@@ -104,7 +162,7 @@ function initPatientChart() {
 
 const patientData = [450, 620, 180, 95];
 const patientLabels = ['New registrations', 'Returning patients', 'Referrals', 'Others'];
-const patientColors = ['#34d399', '#27d54a', '#369c77', '#fbbf24'];
+const patientColors = ['#349ed3', '#0d6efd', '#36699c', '#fbbf24'];
 const total = patientData.reduce((a, b) => a + b, 0);
 
 patientCanvas.innerHTML = patientLabels.map((label, i) => {
@@ -170,5 +228,7 @@ new Chart(document.getElementById('patientChart'), {
 });
 
 }
+
+
 
 
