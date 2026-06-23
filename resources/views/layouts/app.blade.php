@@ -11,11 +11,24 @@
 
     <!-- Bootstrap Icons -->
     <link href="{{ asset('css/bootstrap-icons.min.css') }}" rel="stylesheet">
+    <!-- DataTables CSS (Bootstrap 5 styling) -->
+    <link href="{{ asset('css/dataTables.bootstrap5.min.css') }}" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
 
     @stack('styles')
+    <!-- JS Files --->
+    <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <!-- DataTables JS core + Bootstrap 5 integration -->
+    <script src="{{ asset('js/dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/dataTables.bootstrap5.min.js') }}"></script>
+    <!--Dashboard charts -->
+    <script src="{{ asset('js/chart.umd.js') }}"></script>
+    <script src="{{ asset('js/chart.umd.min.js') }}"></script>
+    <script src="{{ asset('js/dashboard.js') }}"></script>
+    @stack('scripts')
 </head>
 
 <body>
@@ -38,12 +51,8 @@
 
     </div>
 
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
-    <script src="{{ asset('js/chart.umd.js') }}"></script>
-    <script src="{{ asset('js/chart.umd.min.js') }}"></script>
-    <script src="{{ asset('js/dashboard.js') }}"></script>
-    @stack('scripts')
+
+
 
 </body>
 
