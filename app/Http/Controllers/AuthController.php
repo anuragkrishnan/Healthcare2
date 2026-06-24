@@ -13,6 +13,12 @@ class AuthController extends Controller
         return view('login');
     }
 
+    //dummy redirect
+    public function showDashboard()
+    {
+        return redirect('/dashboard');
+    }
+
     public function authenticate(Request $request)
     {
         $user = User::where(
