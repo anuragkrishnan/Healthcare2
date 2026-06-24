@@ -2,7 +2,7 @@
     {{-- Page header --}}
     <div class="page-header">
 
-        <div class="page-header-items">
+        <!--div class="page-header-items">
             <div class="page-title-icon">
                 <i class="bi bi-people-fill"></i>
             </div>
@@ -10,7 +10,7 @@
                 <div class="page-title">Patients List</div>
                 <div class="page-subtitle">Manage and monitor all registered patients</div>
             </div>
-        </div>
+        </div!-->
         <div style="display:flex;gap:10px;">
             <button type="button" class="btn btn-primary-custom" data-bs-toggle="modal"
                 data-bs-target="#patientAddModal">

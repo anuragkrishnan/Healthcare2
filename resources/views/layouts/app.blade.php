@@ -24,9 +24,12 @@
     <!-- DataTables JS core + Bootstrap 5 integration -->
     <script src="{{ asset('js/dataTables.min.js') }}"></script>
     <script src="{{ asset('js/dataTables.bootstrap5.min.js') }}"></script>
+    <!--Sweet Alert -->
+    <script src="{{ asset('js/sweetalert2@11.js') }}"></script>
     <!--Dashboard charts -->
     <script src="{{ asset('js/chart.umd.js') }}"></script>
     <script src="{{ asset('js/chart.umd.min.js') }}"></script>
+    <!--Custom JS -->
     <script src="{{ asset('js/dashboard.js') }}"></script>
     @stack('scripts')
 </head>
@@ -43,7 +46,10 @@
 
             <div id="content-area">
                 @yield('content')
+
+
             </div>
+            @include('common.chatbot')
 
             @include('common.footer')
 

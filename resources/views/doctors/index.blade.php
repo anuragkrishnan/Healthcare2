@@ -1,6 +1,6 @@
 <div class="row g-4">
     {{-- Page header --}}
-    <div class="page-header">
+    <!--div class="page-header">
         <div class="page-header-items">
             <div class="page-title-icon">
                 <i class="bi bi-people-fill"></i>
@@ -10,7 +10,7 @@
                 <div class="page-subtitle">Fill in the details below to register a new doctor</div>
             </div>
         </div>
-    </div>
+    </div-->
 
     {{-- Doctors add form --}}
 
