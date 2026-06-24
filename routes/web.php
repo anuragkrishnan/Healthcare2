@@ -9,6 +9,8 @@ Route::get('/', function () {
 
 Route::get('/login', [AuthController::class, 'login']);
 
+Route::post('/dashboard', [AuthController::class, 'showDashboard'])
+    ->name('auth.dashboard');
 Route::post('/login', [AuthController::class, 'authenticate'])
     ->name('auth.login');
 
