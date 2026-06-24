@@ -3,11 +3,12 @@
     <div class="row align-items-center">
 
         <div class="col-md-6">
-            <div class="search-box">
-                <i class="bi bi-search"></i>
-
-                <input type="text" class="form-control" placeholder="Search patients, doctors, appointments...">
-            </div>
+            <!--div class="page-title-badge" id="pageTitleBadge">
+                <span class="page-title-badge-icon">
+                    <i class="bi bi-heart-pulse"></i>
+                </span>
+                <span class="page-title-badge-text" id="pageTitleBadgeText">We're here for your health</span>
+            </div-->
         </div>
 
         <div class="col-md-6">

@@ -15,7 +15,7 @@
 
     <style>
         :root {
-            --hospital-primary: #9BE5AA;
+            --hospital-primary: #9bb9e5;
             --hospital-secondary: #0b7285;
             --hospital-bg: #f8fafc;
         }
@@ -42,7 +42,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(155, 229, 170, 0.65);
+            background: rgba(155, 188, 229, 0.65);
         }
 
         .brand-content {
@@ -108,7 +108,7 @@
 
                         <div class="text-center mb-4">
                             <div class="mb-1">
-                                <i class="bi bi-heart-pulse-fill text-success fs-1"></i>
+                                <i class="bi bi-heart-pulse-fill text-primary fs-1"></i>
                             </div>
 
                             <h3 class="fw-bold">Welcome Back!</h3>
@@ -167,7 +167,7 @@
                                 </a>
                             </div-->
 
-                            <button type="submit" class="btn btn-success btn-login w-100">
+                            <button type="submit" class="btn btn-primary btn-login w-100">
                                 <i class="bi bi-box-arrow-in-right me-2"></i>
                                 Login
                             </button>

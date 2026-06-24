@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         initRevenueChart();
         initPatientChart();
+        initChatWidget();
+
 
     const menuItems = document.querySelectorAll('.sidebar-menu a');
 
@@ -20,33 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
     });
-
-//toasts alert js
-
-
-    const messages = {
-  success: 'Your changes have been saved.',
-  danger: 'Something went wrong. Please try again.',
-  warning: 'Your session will expire in 5 minutes.',
-  info: 'A new update is available.'
-};
-document.addEventListener('click', (e) => {
-  const btn = e.target.closest('.toast-trigger-row button');
-  if (!btn) return;
-
-  const type = btn.dataset.type;
-  const container = document.getElementById('toastContainer');
-  const toastEl = document.createElement('div');
-  toastEl.className = 'toast text-bg-' + type + ' border-0';
-  toastEl.setAttribute('role', 'alert');
-  toastEl.setAttribute('aria-live', 'assertive');
-  toastEl.setAttribute('aria-atomic', 'true');
-  toastEl.innerHTML = '<div class="d-flex"><div class="toast-body">' + messages[type] + '</div><button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button></div>';
-  container.appendChild(toastEl);
-  const toast = new bootstrap.Toast(toastEl, { delay: 4000 });
-  toast.show();
-  toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove());
-});
 
 
 });
@@ -104,6 +79,37 @@ function initPatientsTable() {
         responsive: true
     });
 }
+
+//sweet alerts
+function showSuccess(message, title = 'Success!') {
+      Swal.fire({
+        title: title,
+        text: message,
+        icon: 'success',
+        confirmButtonText: 'OK',
+        buttonsStyling: false,
+        customClass: {
+          confirmButton: 'btn btn-success px-4',
+          popup: 'rounded-3'
+        }
+      });
+    }
+
+    function showError(message, title = 'Oops...') {
+      Swal.fire({
+        title: title,
+        text: message,
+        icon: 'error',
+        confirmButtonText: 'OK',
+        buttonsStyling: false,
+        customClass: {
+          confirmButton: 'btn btn-danger px-4',
+          popup: 'rounded-3'
+        }
+      });
+    }
+
+
 
 //chart js
 function initRevenueChart() {
@@ -227,6 +233,133 @@ new Chart(document.getElementById('patientChart'), {
   plugins: [centerTextPlugin]
 });
 
+}
+
+// CHATBOT WIDGET
+
+function initChatWidget() {
+  const widget = document.getElementById('chatWidget');
+  if (!widget) return;
+    console.log('clicked chatbot');
+  const launcher = document.getElementById('chatLauncher');
+  const closeBtn = document.getElementById('closeBtn');
+  const body = document.getElementById('chatBody');
+  const input = document.getElementById('chatInput');
+  const sendBtn = document.getElementById('sendBtn');
+  const quickReplies = document.getElementById('quickReplies');
+  const panel = widget.querySelector('.chat-panel');
+
+  function toggleWidget(open){
+    const isOpen = open !== undefined ? open : !widget.classList.contains('open');
+    widget.classList.toggle('open', isOpen);
+    launcher.setAttribute('aria-expanded', String(isOpen));
+    panel.setAttribute('aria-hidden', String(!isOpen));
+    if(isOpen){
+      setTimeout(() => input.focus(), 220);
+    }
+  }
+
+  launcher.addEventListener('click', () => toggleWidget());
+  closeBtn.addEventListener('click', () => toggleWidget(false));
+
+  // auto-grow textarea
+  input.addEventListener('input', () => {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 90) + 'px';
+    sendBtn.disabled = input.value.trim().length === 0;
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter' && !e.shiftKey){
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  sendBtn.addEventListener('click', sendMessage);
+
+  quickReplies.addEventListener('click', (e) => {
+    const btn = e.target.closest('.quick-reply');
+    if(!btn) return;
+    addMessage(btn.dataset.msg, 'user');
+    quickReplies.remove();
+    botRespond(btn.dataset.msg);
+  });
+
+  function timeNow(){
+    return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function addMessage(text, who){
+    const row = document.createElement('div');
+    row.className = 'msg-row ' + who;
+
+    if(who === 'bot'){
+      row.innerHTML = `
+        <div class="msg-avatar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <div>
+          <div class="msg-bubble"></div>
+          <div class="msg-time">${timeNow()}</div>
+        </div>`;
+    } else {
+      row.innerHTML = `
+        <div>
+          <div class="msg-bubble"></div>
+          <div class="msg-time">${timeNow()}</div>
+        </div>`;
+    }
+    row.querySelector('.msg-bubble').textContent = text;
+    body.appendChild(row);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function showTyping(){
+    const row = document.createElement('div');
+    row.className = 'typing-row';
+    row.id = 'typingIndicator';
+    row.innerHTML = `
+      <div class="msg-avatar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </div>
+      <div class="typing-bubble"><span></span><span></span><span></span></div>`;
+    body.appendChild(row);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function removeTyping(){
+    const el = document.getElementById('typingIndicator');
+    if(el) el.remove();
+  }
+
+  function sendMessage(){
+    const text = input.value.trim();
+    if(!text) return;
+    addMessage(text, 'user');
+    input.value = '';
+    input.style.height = 'auto';
+    sendBtn.disabled = true;
+    if(quickReplies.parentNode) quickReplies.remove();
+    botRespond(text);
+  }
+
+  function botRespond(userText){
+    showTyping();
+    // Replace this block with a real API call to your backend / LLM endpoint.
+    setTimeout(() => {
+      removeTyping();
+      addMessage(canned(userText), 'bot');
+    }, 900 + Math.random() * 500);
+  }
+
+  function canned(text){
+    const t = text.toLowerCase();
+    if(t.includes('order')) return "I can help with that. Could you share your order number? It usually starts with #.";
+    if(t.includes('pricing') || t.includes('price')) return "Our plans start at $12/month. Want me to walk you through the tiers?";
+    if(t.includes('human')) return "Sure thing — connecting you with a teammate now. Average wait time is under 2 minutes.";
+    return "Thanks for your message! A specific answer would go here — wire this widget up to your backend or LLM API to make replies dynamic.";
+  }
 }
 
 

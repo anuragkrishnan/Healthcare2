@@ -14,6 +14,12 @@
     </div>
 
     <ul class="sidebar-menu">
+        <li>
+            <div class="search-box">
+                <i class="bi bi-search"></i>
+                <span><input type="text" id="sidebarSearchInput" class="form-control" placeholder="Search..."></span>
+            </div>
+        </li>
 
         <li>
             <a href="#" class="active load-page" data-url="{{ url('/dashboard/home') }}">
@@ -44,7 +50,7 @@
         <li>
             <a href="#" class="load-page" data-url="{{ route('common.alerts') }}">
                 <i class="bi bi-bell"></i>
-                <span class="menu-text">Notifications</span>
+                <span class="menu-text">Sweet Alerts</span>
             </a>
         </li>
 
