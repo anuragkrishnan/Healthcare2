@@ -1,6 +1,6 @@
 <div class="row g-4">
     {{-- Page header --}}
-    <div class="page-header">
+    <div class="col-lg-12 mb-2">
 
         <!--div class="page-header-items">
             <div class="page-title-icon">

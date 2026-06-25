@@ -242,7 +242,7 @@
                     aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="form-container align-items-center ">
+                <div class="form-container align-items-center">
                     <div class="row g-3">
                         <div class="col-sm-3">
                             <div class="input-group-underline">

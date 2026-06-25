@@ -128,7 +128,7 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('auth.dashboard') }}">
+                        <form method="POST" action="{{ route('auth.redirectToDashboard') }}">
                             @csrf
 
                             <div class="mb-3">
