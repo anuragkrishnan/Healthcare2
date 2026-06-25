@@ -2,16 +2,17 @@
 
     <div class="row align-items-center">
 
-        <div class="col-md-6">
-            <!--div class="page-title-badge" id="pageTitleBadge">
+        <div class="col-md-8 d-flex">
+            <div class="page-title-badge" id="pageTitleBadge">
                 <span class="page-title-badge-icon">
                     <i class="bi bi-heart-pulse"></i>
                 </span>
-                <span class="page-title-badge-text" id="pageTitleBadgeText">We're here for your health</span>
-            </div-->
+                <span class="page-title-badge-text" id="pageTitleBadgeText"> Dashboard </span>
+            </div>
+
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
 
             <div class="header-right">
 

@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
         initRevenueChart();
         initPatientChart();
         initChatWidget();
-
+        initSidebarSearch();
 
     const menuItems = document.querySelectorAll('.sidebar-menu a');
 
@@ -40,9 +40,10 @@ $(document).on('click', '.load-page', function (e) {
         type: 'GET',
         success: function (response) {
             $('#content-area').html(response);
-            initRevenueChart();
-            initPatientChart();
-            initPatientsTable();
+            initRevenueChart();  //dashboard chart
+            initPatientChart();   //for dashboard chart
+            initPatientsTable();  //patient datatable
+            initThemeColor();   //Theme color change
         },
         error: function (xhr) {
             console.log(xhr.responseText);
@@ -80,34 +81,7 @@ function initPatientsTable() {
     });
 }
 
-//sweet alerts
-function showSuccess(message, title = 'Success!') {
-      Swal.fire({
-        title: title,
-        text: message,
-        icon: 'success',
-        confirmButtonText: 'OK',
-        buttonsStyling: false,
-        customClass: {
-          confirmButton: 'btn btn-success px-4',
-          popup: 'rounded-3'
-        }
-      });
-    }
 
-    function showError(message, title = 'Oops...') {
-      Swal.fire({
-        title: title,
-        text: message,
-        icon: 'error',
-        confirmButtonText: 'OK',
-        buttonsStyling: false,
-        customClass: {
-          confirmButton: 'btn btn-danger px-4',
-          popup: 'rounded-3'
-        }
-      });
-    }
 
 
 
@@ -240,7 +214,6 @@ new Chart(document.getElementById('patientChart'), {
 function initChatWidget() {
   const widget = document.getElementById('chatWidget');
   if (!widget) return;
-    console.log('clicked chatbot');
   const launcher = document.getElementById('chatLauncher');
   const closeBtn = document.getElementById('closeBtn');
   const body = document.getElementById('chatBody');
@@ -362,6 +335,204 @@ function initChatWidget() {
   }
 }
 
+/*---Dynamic page title  ----*/
+
+    function setPageTitleBadge(iconClass, text) {
+        const badge = document.getElementById('pageTitleBadge');
+        if (!badge) return;
+        badge.querySelector('.page-title-badge-icon i').className = 'bi ' + iconClass;
+        document.getElementById('pageTitleBadgeText').textContent = text;
+
+    }
+
+    if (!window.__pageTitleBadgeBound) {
+        window.__pageTitleBadgeBound = true;
+
+        document.addEventListener('click', function (e) {
+            const link = e.target.closest('.load-page');
+            if (!link) return;
+
+           const title = link.dataset.title;
+            const icon = link.dataset.icon;
+
+            setPageTitleBadge(icon, title);
+        });
+    }
+
+//sweet alerts
+function showSuccess(message, title = 'Success!') {
+      Swal.fire({
+        title: title,
+        text: message,
+        icon: 'success',
+        confirmButtonText: 'OK',
+        buttonsStyling: false,
+        customClass: {
+          confirmButton: 'btn btn-success px-4',
+          popup: 'rounded-3'
+        }
+      });
+    }
+
+    function showError(message, title = 'Oops...') {
+      Swal.fire({
+        title: title,
+        text: message,
+        icon: 'error',
+        confirmButtonText: 'OK',
+        buttonsStyling: false,
+        customClass: {
+          confirmButton: 'btn btn-danger px-4',
+          popup: 'rounded-3'
+        }
+      });
+    }
+
+//theme color change options
+function initThemeColor(){
+    const headerColor = document.getElementById('headerColor');
+    const sidebarColor = document.getElementById('sidebarColor');
+    const footerColor = document.getElementById('footerColor');
+    const resetBtn = document.getElementById('resetThemeColors');
+
+  const fontSizeInput = document.getElementById('fontSizeRange');
+  const fontSizeOutput = document.getElementById('fontSizeValue');
+  const fontColorInput = document.getElementById('fontColor');
+
+    if (!headerColor || !sidebarColor || !footerColor || !resetBtn) {
+        console.warn('initThemeColor: picker elements not found in DOM, skipping init.');
+        return;
+    }
+
+        const selectors = {
+    header: '.top-header',
+    sidebar: '.sidebar',
+    footer: '.footer'
+  };
+
+  const defaults = {
+    header: '#000000',
+    sidebar: '#000000',
+    footer: '#000000',
+    fontSize: '16',
+    fontColor: '#eeeeee'
+  };
+
+   function applyColor(targetKey, color) {
+    const els = document.querySelectorAll(selectors[targetKey]);
+    els.forEach(el => {
+      el.style.backgroundColor = color;
+      el.style.setProperty('background-color', color, 'important');
+    });
+  }
+
+ // Applies font-size / font-color to the entire page (demo scope)
+  function applyFontStyle(size, color) {
+    document.body.style.setProperty('font-size', size + 'px', 'important');
+    document.body.style.setProperty('color', color, 'important');
+  }
+
+  // Wire up each picker
+  headerColor.addEventListener('input', e => applyColor('header', e.target.value));
+  sidebarColor.addEventListener('input', e => applyColor('sidebar', e.target.value));
+  footerColor.addEventListener('input', e => applyColor('footer', e.target.value));
+
+  // Font size + font color (optional — only wire up if present on this page)
+  if (fontSizeInput) {
+    fontSizeInput.addEventListener('input', e => {
+      if (fontSizeOutput) fontSizeOutput.textContent = e.target.value;
+      applyFontStyle(e.target.value, fontColorInput ? fontColorInput.value : defaults.fontColor);
+    });
+  }
+
+  if (fontColorInput) {
+    fontColorInput.addEventListener('input', e => {
+      applyFontStyle(fontSizeInput ? fontSizeInput.value : defaults.fontSize, e.target.value);
+    });
+  }
+
+  // Reset button
+  resetBtn.addEventListener('click', () => {
+    headerColor.value = defaults.header;
+    sidebarColor.value = defaults.sidebar;
+    footerColor.value = defaults.footer;
+    applyColor('header', defaults.header);
+    applyColor('sidebar', defaults.sidebar);
+    applyColor('footer', defaults.footer);
+
+    if (fontSizeInput) {
+      fontSizeInput.value = defaults.fontSize;
+      if (fontSizeOutput) fontSizeOutput.textContent = defaults.fontSize;
+    }
+    if (fontColorInput) fontColorInput.value = defaults.fontColor;
+    applyFontStyle(defaults.fontSize, defaults.fontColor);
+  });
+
+  }
 
 
+/*--- Sidebar menu search ---*/
+
+function initSidebarSearch() {
+    const searchInput = document.getElementById('sidebarSearchInput');
+    if (!searchInput) {
+        console.warn('initSidebarSearch: #sidebarSearchInput not found, skipping init.');
+        return;
+    }
+
+    // Each top-level menu link. If/when you add submenus, give the submenu
+    // <li> wrapper a `.has-submenu` class and the nested links the same
+    // `.menu-text` span — this function already walks up to a item's
+    // closest <li> and will reveal parent items automatically.
+    const menuLinks = document.querySelectorAll('.sidebar-menu > li > a, .sidebar-menu .submenu a');
+
+    searchInput.addEventListener('input', function (e) {
+        const query = e.target.value.trim().toLowerCase();
+
+        menuLinks.forEach(link => {
+            const textEl = link.querySelector('.menu-text');
+            const text = textEl ? textEl.textContent.toLowerCase() : link.textContent.toLowerCase();
+            const li = link.closest('li');
+            if (!li) return;
+
+            const isMatch = query === '' || text.includes(query);
+            li.style.display = isMatch ? '' : 'none';
+
+            // If this link lives inside a submenu, make sure the parent
+            // <li> (and the submenu container itself) is shown whenever
+            // a child matches — keeps this future-proof for nested menus.
+            if (isMatch && query !== '') {
+                const parentSubmenu = link.closest('.submenu');
+                if (parentSubmenu) {
+                    parentSubmenu.style.display = '';
+                    const parentLi = parentSubmenu.closest('li');
+                    if (parentLi) parentLi.style.display = '';
+                }
+            }
+
+            highlightMatch(textEl || link, query);
+        });
+    });
+
+    function highlightMatch(el, query) {
+        const original = el.dataset.originalText || el.textContent;
+        el.dataset.originalText = original; // remember plain text across keystrokes
+
+        if (!query) {
+            el.textContent = original;
+            return;
+        }
+
+        const idx = original.toLowerCase().indexOf(query);
+        if (idx === -1) {
+            el.textContent = original;
+            return;
+        }
+
+        const before = original.slice(0, idx);
+        const match = original.slice(idx, idx + query.length);
+        const after = original.slice(idx + query.length);
+        el.innerHTML = `${before}<mark>${match}</mark>${after}`;
+    }
+}
 

@@ -9,8 +9,8 @@ Route::get('/', function () {
 
 Route::get('/login', [AuthController::class, 'login']);
 
-Route::post('/dashboard', [AuthController::class, 'showDashboard'])
-    ->name('auth.dashboard');
+Route::post('/redirectToDashboard', [AuthController::class, 'showDashboard'])
+    ->name('auth.redirectToDashboard');
 Route::post('/login', [AuthController::class, 'authenticate'])
     ->name('auth.login');
 
@@ -42,3 +42,9 @@ Route::get('/receptionists', function () {
 Route::get('/common/alerts', function () {
     return view('common.alerts');
 })->name('common.alerts');
+
+
+//theme color selection options
+Route::get('/common/theme', function () {
+    return view('common.theme');
+})->name('common.theme');
