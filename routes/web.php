@@ -9,7 +9,7 @@ Route::get('/', function () {
 
 Route::get('/login', [AuthController::class, 'login']);
 
-Route::post('/redirectToDashboard', [AuthController::class, 'showDashboard'])
+Route::get('/redirectToDashboard', [AuthController::class, 'showDashboard'])
     ->name('auth.redirectToDashboard');
 Route::post('/login', [AuthController::class, 'authenticate'])
     ->name('auth.login');
