@@ -337,12 +337,12 @@ function initChatWidget() {
 
 /*---Dynamic page title  ----*/
 
-    function setPageTitleBadge(iconClass, text) {
-        const badge = document.getElementById('pageTitleBadge');
+    function setPageTitleBadge(iconClass, text, breadcrumb) {
+        const badge = document.getElementById('pageTitleSection');
         if (!badge) return;
-        badge.querySelector('.page-title-badge-icon i').className = 'bi ' + iconClass;
-        document.getElementById('pageTitleBadgeText').textContent = text;
-
+        badge.querySelector('.title-section-icon i').className = 'bi ' + iconClass;
+        document.getElementById('titleSectionText').textContent = text;
+        document.getElementById('page-breadcrumb').textContent = breadcrumb;
     }
 
     if (!window.__pageTitleBadgeBound) {
@@ -354,10 +354,21 @@ function initChatWidget() {
 
            const title = link.dataset.title;
             const icon = link.dataset.icon;
+            let breadcrumb = `
+            <li class="breadcrumb-item">
+                Dashboard
+            </li>
+        `;
 
-            setPageTitleBadge(icon, title);
-        });
-    }
+        if (title !== 'Dashboard') {
+            breadcrumb += `
+                <li class="breadcrumb-item active" aria-current="page">
+                    ${title}
+                </li>
+            `;
+        }
+    });
+}
 
 //sweet alerts
 function showSuccess(message, title = 'Success!') {

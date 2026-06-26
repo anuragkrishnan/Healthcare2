@@ -15,7 +15,7 @@
 
     <ul class="sidebar-menu">
         <li>
-            <div class="search-box">
+            <div class="search-box mb-4">
                 <i class="bi bi-search"></i>
                 <span><input type="text" id="sidebarSearchInput" class="form-control" placeholder="Search..."></span>
             </div>
@@ -37,12 +37,39 @@
             </a>
         </li>
 
-        <li>
-            <a href="#" class="load-page" data-url="{{ url('/doctors') }}" data-title="Doctors"
-                data-icon="bi-person-vcard-fill">
-                <i class="bi bi-person-vcard-fill"></i>
-                <span class="menu-text">Doctors</span>
+        <li class="menu-item">
+
+            <a href="#doctorMenu" class="d-flex align-items-center justify-content-between" data-bs-toggle="collapse"
+                role="button" aria-expanded="false">
+
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-person-vcard-fill"></i>
+                    <span class="menu-text ms-2">Doctors</span>
+                </div>
+
+                <i class="bi bi-chevron-down submenu-arrow"></i>
             </a>
+
+            <ul class="collapse submenu" id="doctorMenu">
+                <li>
+                    <a href="#" class="load-page" data-url="{{ url('/doctors') }}" data-title="Add Doctor"
+                        data-icon="bi-person-plus">
+                        <i class="bi bi-person-plus"></i>
+                        Add Doctor
+
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="load-page" data-url="" data-title="Doctor List"
+                        data-icon="bi-person-vcard-fill">
+                        <i class="bi bi-person-vcard-fill"></i>
+                        Doctor List
+
+                    </a>
+                </li>
+
+
+            </ul>
         </li>
         <li>
             <a href="#" class="load-page" data-url="{{ url('/receptionists') }}" data-title="Receptionists"
