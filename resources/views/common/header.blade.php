@@ -3,36 +3,47 @@
     <div class="row align-items-center">
 
         <div class="col-md-8 d-flex">
-            <div class="page-title-badge" id="pageTitleBadge">
+            <!--div class="page-title-badge" id="pageTitleBadge">
                 <span class="page-title-badge-icon">
                     <i class="bi bi-heart-pulse"></i>
                 </span>
                 <span class="page-title-badge-text" id="pageTitleBadgeText"> Dashboard </span>
-            </div>
+            </div-->
+            <div class="title-section" id="pageTitleSection">
+                <div class="title-section-icon">
+                    <i class="bi bi-person-vcard-fill"></i>
+                </div>
+                <div>
+                    <p class="title-section-title" id="titleSectionText">Dashboard</p>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0" id="page-breadcrumb">
+                            <li class="breadcrumb-item">Dashboard</li>
 
+                        </ol>
+                    </nav>
+                </div>
+            </div>
         </div>
 
         <div class="col-md-4">
 
             <div class="header-right">
 
-                <button class="icon-btn">
-                    <i class="bi bi-bell"></i>
-                </button>
+
 
                 <div class="dropdown-info dropdown" id="language-menu-toggle">
 
-                    <button type="button" class="lang-btn dropdown-toggle" data-bs-toggle="dropdown"
+                    <!--button type="button" class="lang-btn dropdown-toggle" data-bs-toggle="dropdown"
                         aria-expanded="false" id="lang-btn">
-                        <!--i class="bi bi-globe2"></i--> EN
+                         EN
 
-                    </button>
+                    </button-->
 
-                    <ul class="dropdown-menu dropdown-menu-dark" id="lang-dropdown"
+                    <!--ul class="dropdown-menu dropdown-menu-dark" id="lang-dropdown"
                         aria-labelledby="language-menu-toggle">
                         <li><a class="dropdown-item" href="#">English</a></li>
                         <li><a class="dropdown-item" href="#">العربية</a></li>
-                    </ul>
+                    </ul-->
                 </div>
 
                 <div class="dropdown-info dropdown" id="user-menu-toggle">
@@ -48,7 +59,7 @@
                     </button>
 
                     <!-- User dropdown -->
-                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-menu-toggle">
+                    <!--ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-menu-toggle">
                         <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> My Profile</a></li>
                         <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Settings</a></li>
                         <li class="divider"></li>
@@ -57,7 +68,7 @@
                                 <i class="bi bi-box-arrow-right"></i> Logout
                             </a>
                         </li>
-                    </ul>
+                    </ul-->
 
                 </div>
 
