@@ -10,24 +10,31 @@
                 <div class="page-title">Patients List</div>
                 <div class="page-subtitle">Manage and monitor all registered patients</div>
             </div>
-        </div!-->
+        </div>
         <div style="display:flex;gap:10px;">
             <button type="button" class="btn btn-primary-custom" data-bs-toggle="modal"
                 data-bs-target="#patientAddModal">
                 <i class="bi bi-solid bi-plus"></i> New Patient
             </button>
-        </div>
-        @include('patients.modals.add')
+        </div -->
+
     </div>
 
 
 </div>
 
 <div class="row">
-    <div class="card data-card shadow-sm border-1">
+    <div class="card data-card shadow-sm border-1 datatable-card">
 
         <div class="card-body p-2">
+            <div class="dt-toolbar-button">
+                <button type="button" class="btn btn-add-patient" data-bs-toggle="modal"
+                    data-bs-target="#patientAddModal">
+                    <i class="bi bi-plus-lg"></i> New Patient
+                </button>
 
+            </div>
+            @include('patients.modals.add')
             <table id="patientsTable" class="table table-dark align-middle mb-0">
 
                 <thead>

@@ -23,6 +23,66 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 
+//theme color change JS
+ const headerColor = document.getElementById('headerColor');
+    const sidebarColor = document.getElementById('sidebarColor');
+    const footerColor = document.getElementById('footerColor');
+
+  const fontSizeInput = document.getElementById('fontSizeRange');
+  const fontSizeOutput = document.getElementById('fontSizeValue');
+  const fontColorInput = document.getElementById('fontColor');
+
+    if (!headerColor || !sidebarColor || !footerColor ) {
+        console.warn('initThemeColor: picker elements not found in DOM, skipping init.');
+        return;
+    }
+
+        const selectors = {
+    header: '.top-header',
+    sidebar: '.sidebar',
+    footer: '.footer'
+  };
+
+  const defaults = {
+    header: '#000000',
+    sidebar: '#000000',
+    footer: '#000000',
+    fontSize: '16',
+    fontColor: '#eeeeee'
+  };
+
+   function applyColor(targetKey, color) {
+    const els = document.querySelectorAll(selectors[targetKey]);
+    els.forEach(el => {
+      el.style.backgroundColor = color;
+      el.style.setProperty('background-color', color, 'important');
+    });
+  }
+
+ // Applies font-size / font-color to the entire page (demo scope)
+  function applyFontStyle(size, color) {
+    document.body.style.setProperty('font-size', size + 'px', 'important');
+    document.body.style.setProperty('color', color, 'important');
+  }
+
+  // Wire up each picker
+  headerColor.addEventListener('input', e => applyColor('header', e.target.value));
+  sidebarColor.addEventListener('input', e => applyColor('sidebar', e.target.value));
+  footerColor.addEventListener('input', e => applyColor('footer', e.target.value));
+
+  // Font size + font color (optional — only wire up if present on this page)
+  if (fontSizeInput) {
+    fontSizeInput.addEventListener('input', e => {
+      if (fontSizeOutput) fontSizeOutput.textContent = e.target.value;
+      applyFontStyle(e.target.value, fontColorInput ? fontColorInput.value : defaults.fontColor);
+    });
+  }
+
+  if (fontColorInput) {
+    fontColorInput.addEventListener('input', e => {
+      applyFontStyle(fontSizeInput ? fontSizeInput.value : defaults.fontSize, e.target.value);
+    });
+  }
 
 });
 
@@ -43,7 +103,6 @@ $(document).on('click', '.load-page', function (e) {
             initRevenueChart();  //dashboard chart
             initPatientChart();   //for dashboard chart
             initPatientsTable();  //patient datatable
-            initThemeColor();   //Theme color change
         },
         error: function (xhr) {
             console.log(xhr.responseText);
@@ -58,11 +117,10 @@ $(document).ready(function () {
     $('#patientsTable').DataTable({
   pageLength: 10,
   lengthMenu: [5, 10, 25, 50],
-  order: [[4, 'desc']],
-  scrollY: '200px',     // fixed height for the scrolling body — adjust to taste
+  order: [],
+  scrollY: false,     // fixed height for the scrolling body — adjust to taste
   scrollX: false,        // horizontal scroll if columns overflow
-  scrollCollapse: true, // shrink the scroll area if there's less content than 320px
-  paging: false,
+  paging: true,
   language: { search: '',
             searchPlaceholder: 'Search patients...'}
 });
@@ -98,10 +156,10 @@ new Chart(canvas, {
     datasets: [{
       label: 'Revenue',
       data: [68000,74000,81000,95000,110000,125000],
-      borderColor: '#0d6efd',
+      borderColor: '#3096f0',
       backgroundColor: 'rgba(79,142,247,0.12)',
       borderWidth: 2.5,
-      pointBackgroundColor: '#0d6efd',
+      pointBackgroundColor: '#3096f0',
       pointBorderColor: '#13161e',
       pointBorderWidth: 2,
       pointRadius: 4,
@@ -142,7 +200,7 @@ function initPatientChart() {
 
 const patientData = [450, 620, 180, 95];
 const patientLabels = ['New registrations', 'Returning patients', 'Referrals', 'Others'];
-const patientColors = ['#349ed3', '#0d6efd', '#36699c', '#fbbf24'];
+const patientColors = ['#349ed3', '#3096f0', '#36699c', '#fbbf24'];
 const total = patientData.reduce((a, b) => a + b, 0);
 
 patientCanvas.innerHTML = patientLabels.map((label, i) => {
@@ -328,8 +386,9 @@ function initChatWidget() {
 
   function canned(text){
     const t = text.toLowerCase();
-    if(t.includes('order')) return "I can help with that. Could you share your order number? It usually starts with #.";
-    if(t.includes('pricing') || t.includes('price')) return "Our plans start at $12/month. Want me to walk you through the tiers?";
+    if(t.includes('appointment')) return "I can help you book an appointment. Which department would you like to visit — General Medicine, Cardiology, Orthopedics, or another?";
+    if(t.includes('doctor')) return "Sure — could you tell me the specialty or the doctor's name you're looking for? I can check their availability.";
+    if(t.includes('visit') || t.includes('visiting')) return "General visiting hours are 10 AM–12 PM and 5 PM–7 PM daily. ICU visits may have separate timings — would you like me to check for a specific ward?";
     if(t.includes('human')) return "Sure thing — connecting you with a teammate now. Average wait time is under 2 minutes.";
     return "Thanks for your message! A specific answer would go here — wire this widget up to your backend or LLM API to make replies dynamic.";
   }
@@ -342,7 +401,7 @@ function initChatWidget() {
         if (!badge) return;
         badge.querySelector('.title-section-icon i').className = 'bi ' + iconClass;
         document.getElementById('titleSectionText').textContent = text;
-        document.getElementById('page-breadcrumb').textContent = breadcrumb;
+        document.getElementById('page-breadcrumb').innerHTML = breadcrumb;
     }
 
     if (!window.__pageTitleBadgeBound) {
@@ -354,19 +413,19 @@ function initChatWidget() {
 
            const title = link.dataset.title;
             const icon = link.dataset.icon;
-            let breadcrumb = `
-            <li class="breadcrumb-item">
-                Dashboard
-            </li>
-        `;
+            const items = link.dataset.breadcrumb.split('|');
 
-        if (title !== 'Dashboard') {
+            let breadcrumb = '';
+
+            items.forEach((item, index) => {
             breadcrumb += `
-                <li class="breadcrumb-item active" aria-current="page">
-                    ${title}
+                <li class="breadcrumb-item ${index === items.length - 1 ? 'active' : ''}">
+                     ${item}
                 </li>
-            `;
-        }
+                `;
+            });
+
+            setPageTitleBadge(icon, title, breadcrumb);
     });
 }
 
@@ -399,87 +458,7 @@ function showSuccess(message, title = 'Success!') {
       });
     }
 
-//theme color change options
-function initThemeColor(){
-    const headerColor = document.getElementById('headerColor');
-    const sidebarColor = document.getElementById('sidebarColor');
-    const footerColor = document.getElementById('footerColor');
-    const resetBtn = document.getElementById('resetThemeColors');
 
-  const fontSizeInput = document.getElementById('fontSizeRange');
-  const fontSizeOutput = document.getElementById('fontSizeValue');
-  const fontColorInput = document.getElementById('fontColor');
-
-    if (!headerColor || !sidebarColor || !footerColor || !resetBtn) {
-        console.warn('initThemeColor: picker elements not found in DOM, skipping init.');
-        return;
-    }
-
-        const selectors = {
-    header: '.top-header',
-    sidebar: '.sidebar',
-    footer: '.footer'
-  };
-
-  const defaults = {
-    header: '#000000',
-    sidebar: '#000000',
-    footer: '#000000',
-    fontSize: '16',
-    fontColor: '#eeeeee'
-  };
-
-   function applyColor(targetKey, color) {
-    const els = document.querySelectorAll(selectors[targetKey]);
-    els.forEach(el => {
-      el.style.backgroundColor = color;
-      el.style.setProperty('background-color', color, 'important');
-    });
-  }
-
- // Applies font-size / font-color to the entire page (demo scope)
-  function applyFontStyle(size, color) {
-    document.body.style.setProperty('font-size', size + 'px', 'important');
-    document.body.style.setProperty('color', color, 'important');
-  }
-
-  // Wire up each picker
-  headerColor.addEventListener('input', e => applyColor('header', e.target.value));
-  sidebarColor.addEventListener('input', e => applyColor('sidebar', e.target.value));
-  footerColor.addEventListener('input', e => applyColor('footer', e.target.value));
-
-  // Font size + font color (optional — only wire up if present on this page)
-  if (fontSizeInput) {
-    fontSizeInput.addEventListener('input', e => {
-      if (fontSizeOutput) fontSizeOutput.textContent = e.target.value;
-      applyFontStyle(e.target.value, fontColorInput ? fontColorInput.value : defaults.fontColor);
-    });
-  }
-
-  if (fontColorInput) {
-    fontColorInput.addEventListener('input', e => {
-      applyFontStyle(fontSizeInput ? fontSizeInput.value : defaults.fontSize, e.target.value);
-    });
-  }
-
-  // Reset button
-  resetBtn.addEventListener('click', () => {
-    headerColor.value = defaults.header;
-    sidebarColor.value = defaults.sidebar;
-    footerColor.value = defaults.footer;
-    applyColor('header', defaults.header);
-    applyColor('sidebar', defaults.sidebar);
-    applyColor('footer', defaults.footer);
-
-    if (fontSizeInput) {
-      fontSizeInput.value = defaults.fontSize;
-      if (fontSizeOutput) fontSizeOutput.textContent = defaults.fontSize;
-    }
-    if (fontColorInput) fontColorInput.value = defaults.fontColor;
-    applyFontStyle(defaults.fontSize, defaults.fontColor);
-  });
-
-  }
 
 
 /*--- Sidebar menu search ---*/
@@ -546,4 +525,16 @@ function initSidebarSearch() {
         el.innerHTML = `${before}<mark>${match}</mark>${after}`;
     }
 }
+
+  // Language toggle (En / Arabic) — visual state only
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      // TODO: hook this up to your i18n switcher, e.g.:
+      // setLanguage(btn.dataset.lang);
+      // For Arabic you'll likely also want to set dir="rtl" on <html>:
+      // document.documentElement.setAttribute('dir', btn.dataset.lang === 'ar' ? 'rtl' : 'ltr');
+    });
+  });
 

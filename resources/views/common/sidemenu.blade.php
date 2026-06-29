@@ -23,7 +23,7 @@
 
         <li>
             <a href="#" class="active load-page" data-url="{{ url('/dashboard/home') }}" data-title="Dashboard"
-                data-icon="bi-grid">
+                data-icon="bi-grid" data-breadcrumb="Dashboard">
                 <i class="bi bi-grid"></i>
                 <span class="menu-text">Dashboard</span>
             </a>
@@ -31,7 +31,7 @@
 
         <li>
             <a href="#" class="load-page" data-url="{{ url('/patients') }}" data-title="Patients"
-                data-icon="bi-people">
+                data-icon="bi-people" data-breadcrumb="Dashboard|Patients|Add Patient">
                 <i class="bi bi-people"></i>
                 <span class="menu-text">Patients</span>
             </a>
@@ -53,7 +53,7 @@
             <ul class="collapse submenu" id="doctorMenu">
                 <li>
                     <a href="#" class="load-page" data-url="{{ url('/doctors') }}" data-title="Add Doctor"
-                        data-icon="bi-person-plus">
+                        data-icon="bi-person-plus" data-breadcrumb="Dashboard|Doctors|Add Doctor">
                         <i class="bi bi-person-plus"></i>
                         Add Doctor
 
@@ -61,9 +61,9 @@
                 </li>
                 <li>
                     <a href="#" class="load-page" data-url="" data-title="Doctor List"
-                        data-icon="bi-person-vcard-fill">
+                        data-icon="bi-person-vcard-fill" data-breadcrumb="Dashboard|Doctors|List Doctor">
                         <i class="bi bi-person-vcard-fill"></i>
-                        Doctor List
+                        List Doctor
 
                     </a>
                 </li>
@@ -73,23 +73,16 @@
         </li>
         <li>
             <a href="#" class="load-page" data-url="{{ url('/receptionists') }}" data-title="Receptionists"
-                data-icon="bi-person-badge">
+                data-icon="bi-person-badge" data-breadcrumb="Dashboard|Receptionists">
                 <i class="bi bi-person-badge"></i>
                 <span class="menu-text">Receptionists</span>
             </a>
         </li>
         <li>
             <a href="#" class="load-page" data-url="{{ route('common.alerts') }}"
-                data-title="Alerts - Stay Updated" data-icon="bi-bell">
+                data-title="Alerts - Stay Updated" data-icon="bi-bell" data-breadcrumb="Dashboard|Sweet Alerts">
                 <i class="bi bi-bell"></i>
                 <span class="menu-text">Sweet Alerts</span>
-            </a>
-        </li>
-        <li>
-            <a href="#" class="load-page" data-url="{{ route('common.theme') }}" data-title="Theme Options"
-                data-icon="bi-gear">
-                <i class="bi bi-gear"></i>
-                <span class="menu-text">Theme Options</span>
             </a>
         </li>
 
