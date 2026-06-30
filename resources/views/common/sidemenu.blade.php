@@ -31,7 +31,7 @@
 
         <li>
             <a href="#" class="load-page" data-url="{{ url('/patients') }}" data-title="Patients"
-                data-icon="bi-people" data-breadcrumb="Dashboard|Patients|Add Patient">
+                data-icon="bi-people" data-breadcrumb="Dashboard|Patients|Add Patient" data-scroll="datatable">
                 <i class="bi bi-people"></i>
                 <span class="menu-text">Patients</span>
             </a>

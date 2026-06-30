@@ -1,16 +1,4 @@
 <div class="row g-4">
-    {{-- Page header --}}
-    <!--div class="page-header">
-        <div class="page-header-items">
-            <div class="page-title-icon">
-                <i class="bi bi-people-fill"></i>
-            </div>
-            <div class="page-title-text">
-                <div class="page-title">Add New Doctor</div>
-                <div class="page-subtitle">Fill in the details below to register a new doctor</div>
-            </div>
-        </div>
-    </div-->
 
     {{-- Doctors add form --}}
 
@@ -193,7 +181,7 @@
             </div>
         </div>
         <!-- ── Action Bar ── -->
-        <div class="d-flex align-items-center justify-content-end flex-wrap gap-3">
+        <div class="d-flex align-items-center justify-content-center flex-wrap gap-3">
             <div class="action-bar">
                 <button type="button" class="btn-default">Discard</button>
                 <button type="button" class="btn-primary-custom">

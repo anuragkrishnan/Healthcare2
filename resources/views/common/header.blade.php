@@ -31,8 +31,7 @@
 
                 <div class="" id="user-menu-toggle">
 
-                    <button type="button" class="user-info-toggle dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-expanded="false"
+                    <button type="button" class="user-info-toggle"
                         style="background:none;border:none;display:flex;align-items:center;gap:8px;">
                         <img src="{{ asset('images/user-avatar.jpg') }}" class="user-img">
                         <div class="user-details">
@@ -40,18 +39,6 @@
                             <div class="user-role">Administrator</div>
                         </div>
                     </button>
-
-                    <!-- User dropdown -->
-                    <!--ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="user-menu-toggle">
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> My Profile</a></li>
-                        <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Settings</a></li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="{{ route('logout') }}" class="logout-item">
-                                <i class="bi bi-box-arrow-right"></i> Logout
-                            </a>
-                        </li>
-                    </ul-->
 
                 </div>
                 <div class="d-flex align-items-center gap-2">
