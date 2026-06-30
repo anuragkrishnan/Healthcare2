@@ -16,6 +16,7 @@ body{
     width:100%;
     height:100%;
     overflow:hidden;
+    min-height: 100vh;
     background:var(--dark);
     color:#fff;
     font-family:'Segoe UI',sans-serif;
@@ -544,41 +545,7 @@ a[aria-expanded="true"] .submenu-arrow{
   }
 
 
-/*---header title----
-.page-title-badge {
-    display: flex;
-    gap: 10px;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    width: 100%;
-    height:52px;
-    display: flex;
-    align-items: center;
-    padding-left: 15px;
-    background: #020d16;
-}
-.page-title-badge-icon{
-    flex-shrink:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
 
-.page-title-badge-icon i{
-    color:#fff;
-    font-size:22px;
-
-}
-
-.page-title-badge-text{
-    color:#fff;
-    font-size:18px;
-    font-weight:500;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-}
-    */
 
 /* Title section: icon tile + title/subtitle, blue left accent */
 .title-section{
@@ -588,8 +555,7 @@ a[aria-expanded="true"] .submenu-arrow{
     align-items:center;
     gap:14px;
     padding:14px 20px;
-    background:#10161d;
-    border-radius:8px;
+    background:transparent;
 }
 
 .title-section-icon{
@@ -681,8 +647,8 @@ a[aria-expanded="true"] .submenu-arrow{
 
 .page-title-icon {
     flex-shrink: 0;
-    width: 48px;
-    height: 48px;
+    width: 38px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -820,7 +786,7 @@ a[aria-expanded="true"] .submenu-arrow{
       color: #b8c2bc;
       border-radius: 10px;
       font-size: 0.775rem;
-      padding: 0.55rem 0.85rem;
+      padding: 0.6rem 0.9rem;
       transition: border-color .2s, box-shadow .2s;
     }
 
@@ -901,6 +867,7 @@ input[type="time"] {
     color: #ffffff;
     border: 1px solid var(--border);
     border-radius: 12px;
+    z-index: 10001;
 }
 
 .dark-modal .modal-header {
@@ -909,11 +876,15 @@ input[type="time"] {
 
 .dark-modal .modal-footer {
     border-top: 1px solid var(--border);
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .dark-modal .modal-title {
     color: #ffffff;
 }
+
 
 .dark-modal .form-label {
     color: #e5e7eb;
@@ -938,203 +909,7 @@ input[type="time"] {
     color: #9ca3af;
 }
 
-/*---Table Custom dark-----*/
-/* ── Add button inside the DataTables top control row ── */
-.dt-buttons {
-    margin-bottom: 0.75rem;
-}
 
-.dt-btn-add {
-    background: var(--primary) !important;
-    border: none !important;
-    color: #fff !important;
-    border-radius: 8px !important;
-    padding: 0.45rem 1rem !important;
-    font-size: 0.82rem !important;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: background .18s, box-shadow .18s;
-}
-
-.dt-btn-add:hover {
-    background: #486bf9 !important;
-    box-shadow: 0 4px 18px rgba(79,142,247,.35);
-}
-/* Table base */
-  table.dataTable {
-    color: #e7e9ec;
-    border-color: var(--border) !important;
-    margin-top: 0.5rem !important;
-  }
-
-  table.dataTable thead th,
-  table.dataTable thead td {
-    background-color: #23272f;
-    color: #e7e9ec;
-    border-bottom: 1px solid var(--border) !important;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    font-size: 0.82rem;
-  }
-
-  table.dataTable thead th{
-    border-top: 1px solid var(--border) !important;
-  }
-
-  table.dataTable tbody tr {
-    background-color: #1c1f25;
-    color: #e7e9ec;
-  }
-
-  table.dataTable tbody tr:hover {
-    background-color: #23272f !important;
-  }
-
-table.dataTable.table-striped > tbody > tr:nth-of-type(odd) > * {
-    background-color: rgba(255, 255, 255, 0.03);
-    box-shadow: none;
-  }
-
-  table.dataTable td,
-  table.dataTable th {
-    border-color: #2e333d !important;
-  }
-
-
-  /* ============ DataTables controls ============ */
-
-  div.dt-container {
-    color: #e7e9ec;
-  }
-
-  /* Top row: "Show N entries" + Search box */
-  div.dt-container div.dt-length label,
-  div.dt-container div.dt-search label,
-  div.dt-container div.dt-info {
-    color: #9ca3af;
-  }
-div.dt-paging nav>ul>li {
-    color: #e7e9ec !important;
-    background-color: #23272f;
-    border: 1px solid #2e333d;
-
-}
-
-
-  /* Bottom row: "Showing X to Y of Z entries" + pagination */
-  div.dt-container .dt-info {
-    color: #9aa1ac !important;
-    padding-top: 0.85rem;
-  }
-
-  div.dt-container .dt-processing {
-    color: #e7e9ec !important;
-    background-color: #23272f;
-    border: 1px solid #2e333d;
-    border-radius: 0.4rem;
-  }
-
-  .dt-container .dt-paging,
-  .dataTables_wrapper .dataTables_paginate  {
-    margin-top: 0.5rem;
-  }
-
-  .dt-container .dt-paging .pagination,
-  .dataTables_wrapper .dataTables_paginate .pagination {
-    flex-wrap: wrap;
-  }
-
-  /* Pagination buttons — cover both Bootstrap .page-link markup
-     and DataTables' own .dt-paging-button markup */
-  div.dt-container .page-link,
-  div.dt-container .dt-paging-button {
-    background-color: #23272f;
-    border: 1px solid #2e333d;
-    color: #e7e9ec;
-    margin: 0 2px;
-    border-radius: 0.4rem;
-  }
-
-  .dt-container .page-item.active .page-link,
-  .dt-container .dt-paging-button.current {
-    background-color: #5b9dff !important;
-    border-color: #5b9dff !important;
-    color: #0c1117 !important;
-    font-weight: 600;
-  }
-
-  .dt-container .page-item.disabled .page-link,
-  .dt-container .dt-paging-button.disabled {
-    background-color: #1c1f25 !important;
-    border-color: #2e333d !important;
-    color: #5b6068 !important;
-    opacity: 0.6;
-  }
-
-  .dt-container .page-link:hover,
-  .dt-container .dt-paging-button:not(.disabled):not(.current):hover {
-    background-color: #2a2f38 !important;
-    color: #e7e9ec !important;
-  }
-
-  /* Sort icons in header should stay visible on dark surface */
-  table.dataTable thead .dt-column-order::before,
-  table.dataTable thead .dt-column-order::after,
-  table.dataTable thead th.sorting::before,
-  table.dataTable thead th.sorting::after,
-  table.dataTable thead th.sorting_asc::after,
-  table.dataTable thead th.sorting_desc::after {
-    color: #9aa1ac !important;
-    opacity: 0.9;
-  }
-
-/* ── Fixed header, scrollable body ── */
-/* DataTables wraps the split table into these containers when scrollY is set */
-
-.dt-scroll-head,
-.dataTables_scrollHead {
-    background-color: #23272f;
-}
-
-.dt-scroll-head table,
-.dataTables_scrollHead table {
-    background-color: #23272f !important;
-}
-
-.dt-scroll-head th,
-.dataTables_scrollHead th {
-    border-bottom: 2px solid #2e333d !important;
-}
-
-.dt-scroll-body,
-.dataTables_scrollBody {
-    background-color: #1c1f25;
-}
-
-/* Thin dark-aware scrollbar inside the scrolling body, matching your
-   #content-area scrollbar style */
-.dt-scroll-body::-webkit-scrollbar,
-.dataTables_scrollBody::-webkit-scrollbar {
-    width: 6px;
-}
-
-.dt-scroll-body::-webkit-scrollbar-track,
-.dataTables_scrollBody::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.dt-scroll-body::-webkit-scrollbar-thumb,
-.dataTables_scrollBody::-webkit-scrollbar-thumb {
-    background: rgba(13, 93, 31, 0.7);
-    border-radius: 20px;
-}
-
-.dt-scroll-body::-webkit-scrollbar-thumb:hover,
-.dataTables_scrollBody::-webkit-scrollbar-thumb:hover {
-    background: rgba(13, 93, 31, 0.9);
-}
 
 /*--- CHATBOT WIDGET-----  */
 .chat-widget{
@@ -1257,18 +1032,16 @@ div.dt-paging nav>ul>li {
     pointer-events:auto;
   }
 
-  /* ---- header ---- */
-  .chat-header{
-    background:transparent;
-    color:#fff;
-    padding:14px 14px 10px;
-    display:flex;
-    justify-content: flex-end;
-    gap:6px;
-    flex-shrink:0;
-  }
-  .chat-header .close-btn{
-    background:rgba(255,255,255,0.16);
+  /* ----chat header close btn---- */
+
+
+
+  .close-btn{
+    position:absolute;
+    top:14px;
+    right:14px;
+    z-index:1;
+    background:rgba(255,255,255,0.16);;
     border:none;
     width:32px;
     height:32px;
@@ -1278,11 +1051,12 @@ div.dt-paging nav>ul>li {
     display:flex;
     align-items:center;
     justify-content:center;
+    box-shadow:0 2px 8px rgba(13,30,75,0.12);
     transition:background 0.15s ease, color 0.15s ease;
-    flex-shrink:0;
   }
-  .chat-header .close-btn:hover{ background:rgba(255,255,255,0.28); }
-  .chat-header .close-btn svg{ width:16px; height:16px; }
+
+  .close-btn:hover{ background:rgba(255,255,255,0.28); }
+  .close-btn svg{ width:16px; height:16px; }
 
 
   /* ---- messages ---- */
@@ -1296,6 +1070,7 @@ div.dt-paging nav>ul>li {
     flex-direction:column;
     gap:10px;
     background:#15171c;
+    position: S;
   }
   .chat-body::-webkit-scrollbar{ width:6px; }
   .chat-body::-webkit-scrollbar-thumb{ background:#7f838b; border-radius:3px; margin:8px 0; }
@@ -1455,15 +1230,291 @@ div.dt-paging nav>ul>li {
   .send-btn:disabled svg{ opacity:0.5; }
   .send-btn svg{ width:16px; height:16px; }
 
-  .chat-footer-note{
-    text-align:center;
-    font-size:0.68rem;
-    color:#5b6068;
-    padding:6px 0 10px;
-    background:#1c1f26;
-  }
 
 
+ /* DataTAble Design - Card */
+
+    .table-card {
+        background: #1f2937;
+        border: 1px solid #374151;
+        border-radius: 12px;
+        height: calc(100vh - 140px);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden !important;
+    }
+
+    .table-card .card-body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow: hidden;
+    }
+/*for removing body scroll in datatable appearing pages*/
+    #content-area.datatable-page {
+    overflow: hidden !important;
+}
+    /* Toolbar */
+
+    .table-toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        height: 42px;
+        flex-shrink: 0;
+    }
+
+
+    /* Left */
+
+    .table-length {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #e7e9ec;
+    }
+
+    /* Right */
+
+    .table-actions {
+
+        margin-left: auto;
+
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+    }
+
+    /* Search */
+
+    .search-wrapper {
+
+        position: relative;
+
+    }
+
+    .search-wrapper i {
+
+        position: absolute;
+
+        left: 12px;
+
+        top: 50%;
+
+        transform: translateY(-50%);
+
+        color: #9ca3af;
+
+    }
+
+    .search-wrapper input {
+
+        width: 260px;
+
+        padding-left: 38px;
+
+    }
+
+    /* Inputs */
+
+    .table-card .form-control,
+    .table-card .form-select {
+
+        background: #111827;
+
+        border: 1px solid #4b5563;
+
+        color: #fff;
+
+    }
+
+    .table-card .form-control:focus,
+    .table-card .form-select:focus {
+
+        background: #111827;
+
+        color: #fff;
+
+        box-shadow: none;
+
+        border-color: #3b82f6;
+
+    }
+
+    /* Table */
+
+    .table-dark {
+
+        --bs-table-bg: #1f2937;
+
+        --bs-table-hover-bg: #2b3648;
+
+        --bs-table-border-color: #374151;
+
+    }
+
+    .table-dark thead th {
+
+        font-size: .9rem;
+        letter-spacing: .4px;
+        font-weight: 600;
+        background: #111827;
+        border-bottom: 2px solid #374151;
+        position: sticky;
+        top: 0;
+        z-index: 5;
+
+    }
+
+    .table-dark tbody td {
+
+        padding: 5px;
+
+    }
+
+    .table-dark tbody tr {
+
+        height: 35px;
+
+    }
+
+    /* Scroll Area */
+
+    .table-wrapper {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    /* Footer */
+
+    .table-footer {
+        margin-top: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        color: #e7e9ec;
+        flex-shrink: 0;
+        position: sticky;
+        bottom: 0;
+        background: #1f2937;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-top: 1px solid #374151;
+        z-index: 20;
+    }
+
+    /* Laravel Pagination */
+
+    .pagination {
+        margin: 0;
+    }
+
+    .page-link {
+
+        background: #111827;
+
+        border: 1px solid #374151;
+
+        color: #d1d5db;
+
+    }
+
+    .page-link:hover {
+
+        background: #2563eb;
+
+        color: #fff;
+
+    }
+
+    .page-item.active .page-link {
+
+        background: #2563eb;
+
+        border-color: #2563eb;
+
+    }
+
+     .page-item.disabled .page-link{
+        background: #9fa5b2 !important;
+        border-color: #9fa5b2;
+        color: #fff;
+    }
+
+    /* Button */
+
+    .btn-primary {
+
+        border-radius: 8px;
+
+    }
+
+    /* Scrollbar */
+
+    .table-wrapper::-webkit-scrollbar {
+
+        width: 6px;
+
+    }
+
+    .table-wrapper::-webkit-scrollbar-thumb {
+
+        background: rgba(13, 58, 93, 0.7);
+        border-radius: 20px;
+
+    }
+
+    .table-wrapper::-webkit-scrollbar-thumb:hover,
+    {
+
+    background: rgba(13, 93, 31, 0.9);
+
+    }
+
+    .table-wrapper::-webkit-scrollbar-track {
+
+        background: transparent;
+
+    }
+
+    /* Responsive */
+
+    @media(max-width:768px) {
+
+        .table-toolbar {
+
+            flex-direction: column;
+
+            align-items: stretch;
+
+        }
+
+        .table-actions {
+
+            margin-left: 0;
+
+            justify-content: space-between;
+
+        }
+
+        .search-wrapper {
+
+            flex: 1;
+
+        }
+
+        .search-wrapper input {
+
+            width: 100%;
+
+        }
+
+    }
 
 
 /*---- Responsive */

@@ -137,6 +137,11 @@
     .field-underline-select option {
         background: #1a1e28;
         color: #fff;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        font-size: 0.875rem;
+        padding: 0.6rem 0.9rem !important;
+        transition: border-color .2s, box-shadow .2s;
     }
 
     .field-underline .select-chevron {
@@ -226,10 +231,10 @@
 </style>
 
 <div class="modal fade" id="patientAddModal" tabindex="-1" aria-labelledby="patientAddModalLabel" aria-modal="true"
-    role="dialog">
+    role="dialog" style="z-index: 10000;">
     <div class="modal-dialog modal-dialog-scrollable modal-fullscreen">
         <div class="modal-content dark-modal">
-            <div class="modal-header page-header" style="height: 70px;">
+            <div class="modal-header page-header" style="height: 40px;">
                 <div class="page-header-items">
                     <div class="page-title-icon">
                         <i class="bi bi-people-fill"></i>

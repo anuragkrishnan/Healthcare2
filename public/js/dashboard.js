@@ -100,9 +100,11 @@ $(document).on('click', '.load-page', function (e) {
         type: 'GET',
         success: function (response) {
             $('#content-area').html(response);
+
             initRevenueChart();  //dashboard chart
             initPatientChart();   //for dashboard chart
             initPatientsTable();  //patient datatable
+
         },
         error: function (xhr) {
             console.log(xhr.responseText);
@@ -538,3 +540,23 @@ function initSidebarSearch() {
     });
   });
 
+///datatable search functionality
+const searchInput = document.getElementById('tableSearch');
+
+searchInput.addEventListener('keyup', function () {
+
+    const value = this.value.toLowerCase();
+
+    const rows = document.querySelectorAll('#patientTable tr');
+
+    rows.forEach(row => {
+
+        const text = row.innerText.toLowerCase();
+
+        row.style.display = text.includes(value)
+            ? ''
+            : 'none';
+
+    });
+
+});

@@ -44,7 +44,7 @@
 
             @include('common.header')
 
-            <div id="content-area">
+            <div id="content-area" class=" ">
                 @yield('content')
 
 

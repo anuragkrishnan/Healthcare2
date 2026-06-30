@@ -3,13 +3,11 @@
 <!-- ============================================ -->
 <div class="chat-widget" id="chatWidget">
     <div class="chat-panel" role="dialog" aria-label="Chat support" aria-hidden="true">
-        <div class="chat-header">
-            <button class="close-btn" id="closeBtn" aria-label="Close chat">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-                    <path d="M18 6 6 18M6 6l12 12" />
-                </svg>
-            </button>
-        </div>
+        <button class="close-btn" id="closeBtn" aria-label="Close chat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+                <path d="M18 6 6 18M6 6l12 12" />
+            </svg>
+        </button>
         <div class="chat-body" id="chatBody">
             <div class="msg-row bot">
                 <div class="msg-avatar">
@@ -42,7 +40,6 @@
                 </svg>
             </button>
         </div>
-        <div class="chat-footer-note"> Replies may take a moment</div>
     </div>
 
     <button class="chat-launcher" id="chatLauncher" aria-label="Open chat" aria-expanded="false">
