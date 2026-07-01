@@ -29,12 +29,40 @@
             </a>
         </li>
 
-        <li>
-            <a href="#" class="load-page" data-url="{{ url('/patients') }}" data-title="Patients"
-                data-icon="bi-people" data-breadcrumb="Dashboard|Patients|Add Patient" data-scroll="datatable">
-                <i class="bi bi-people"></i>
-                <span class="menu-text">Patients</span>
+
+        <li class="menu-item">
+
+            <a href="#patientMenu" class="d-flex align-items-center justify-content-between" data-bs-toggle="collapse"
+                role="button" aria-expanded="false">
+
+                <div class="d-flex align-items-center">
+                    <i class="bi bi-person"></i>
+                    <span class="menu-text ms-2">Patients</span>
+                </div>
+
+                <i class="bi bi-chevron-down submenu-arrow"></i>
             </a>
+
+            <ul class="collapse submenu" id="patientMenu">
+                <li>
+                    <a href="#" class="load-page" data-url="{{ url('/patients/add') }}" data-title="Patient Registration"
+                        data-icon="bi-person-add" data-breadcrumb="Dashboard|Patients|Patient Registration">
+                        <i class="bi bi-person-add"></i>
+                        Add Patient
+
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="load-page" data-url="{{ url('/patients') }}" data-title="Patient List"
+                        data-icon="bi-person-fill" data-breadcrumb="Dashboard|Patients|List Patient">
+                        <i class="bi bi-person-fill"></i>
+                        List Patient
+
+                    </a>
+                </li>
+
+
+            </ul>
         </li>
 
         <li class="menu-item">

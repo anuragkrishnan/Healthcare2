@@ -28,6 +28,9 @@ Route::get('/dashboard/home', function () {
 Route::get('/patients', function () {
     return view('patients.index');
 });
+Route::get('/patients/add', function () {
+    return view('patients.add');
+});
 
 Route::get('/doctors', function () {
     return view('doctors.index');
