@@ -23,7 +23,7 @@
 
     <div class="col-md-3">
         <div class="dashboard-card">
-            <h6>Inventory</h6>
+            <h6>Consultants</h6>
             <h5>3,450</h5>
         </div>
     </div>
