@@ -45,8 +45,9 @@
 
             <ul class="collapse submenu" id="patientMenu">
                 <li>
-                    <a href="#" class="load-page" data-url="{{ url('/patients/add') }}" data-title="Patient Registration"
-                        data-icon="bi-person-add" data-breadcrumb="Dashboard|Patients|Patient Registration">
+                    <a href="#" class="load-page" data-url="{{ url('/patients/add') }}"
+                        data-title="Patient Registration" data-icon="bi-person-add"
+                        data-breadcrumb="Dashboard|Patients|Patient Registration">
                         <i class="bi bi-person-add"></i>
                         Add Patient
 
@@ -71,8 +72,8 @@
                 role="button" aria-expanded="false">
 
                 <div class="d-flex align-items-center">
-                    <i class="bi bi-person-vcard-fill"></i>
-                    <span class="menu-text ms-2">Doctors</span>
+                    <i class="bi bi-hdd-stack"></i>
+                    <span class="menu-text ms-2">Master</span>
                 </div>
 
                 <i class="bi bi-chevron-down submenu-arrow"></i>
@@ -80,18 +81,19 @@
 
             <ul class="collapse submenu" id="doctorMenu">
                 <li>
-                    <a href="#" class="load-page" data-url="{{ url('/doctors') }}" data-title="Add Doctor"
-                        data-icon="bi-person-plus" data-breadcrumb="Dashboard|Doctors|Add Doctor">
+                    <a href="#" class="load-page" data-url="{{ url('/consultants') }}"
+                        data-title="List Consultants" data-icon="bi-person-plus"
+                        data-breadcrumb="Dashboard|Consultants|List">
                         <i class="bi bi-person-plus"></i>
-                        Add Doctor
+                        Consultants
 
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="load-page" data-url="" data-title="Doctor List"
-                        data-icon="bi-person-vcard-fill" data-breadcrumb="Dashboard|Doctors|List Doctor">
+                    <a href="#" class="load-page" data-url="" data-title="Specialities List"
+                        data-icon="bi-person-vcard-fill" data-breadcrumb="Dashboard|Specialities|List Specialities">
                         <i class="bi bi-person-vcard-fill"></i>
-                        List Doctor
+                        Speciality
 
                     </a>
                 </li>

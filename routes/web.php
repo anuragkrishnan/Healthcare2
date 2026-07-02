@@ -32,8 +32,8 @@ Route::get('/patients/add', function () {
     return view('patients.add');
 });
 
-Route::get('/doctors', function () {
-    return view('doctors.index');
+Route::get('/consultants', function () {
+    return view('consultants.index');
 });
 
 Route::get('/receptionists', function () {

@@ -5,8 +5,10 @@
     }
 
     .form-control-sm,
+    .form-select,
     .btn-sm {
-        font-size: 12px;
+        font-size: 10px;
+        height: 28px;
     }
 
     /* ── Form Controls Override ── */
@@ -29,7 +31,6 @@
         border: 1px solid #abaeac;
         color: #1a1e28;
         border-radius: 10px;
-        font-size: 0.775rem;
         padding: 0.6rem 0.9rem;
         transition: border-color .2s, box-shadow .2s;
     }
@@ -38,7 +39,7 @@
     .form-select:focus {
         background: #d3d5da;
         border-color: #abaeac;
-        box-shadow: 0 0 0 3.5px #abaeac;
+        box-shadow: 0 0 0 1.5px #d7d8d7;
         color: #1a1e28;
         outline: none;
     }
@@ -239,41 +240,48 @@
                 </div-->
 
                 <div class="col-lg-6">
-                    <div class="row align-items-center mb-1">
-                        <label for="dob" class="col-sm-3 col-form-label small-label">
+                    <div class="row mb-2">
+
+                        <label class="col-sm-3 col-form-label small-label">
                             DOB <span class="text-danger">*</span>
                         </label>
 
-                        <div class="col-sm-3">
-                            <input type="date" class="form-control form-control-sm" id="dob">
+                        <div class="col-sm-9">
+                            <div class="row g-2">
+
+                                <div class="col-6">
+                                    <input type="date" class="form-control form-control-sm" id="dob">
+                                </div>
+
+                                <div class="col-3">
+                                    <input type="number" class="form-control form-control-sm" placeholder="Age">
+                                </div>
+
+                                <div class="col-3">
+                                    <select class="form-select form-select-sm" id="gender">
+                                        <option selected>Gender</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+                                </div>
+
+                            </div>
                         </div>
 
-                        <label for="age" class="col-sm-1 col-form-label small-label text-end">
-                            Age
-                        </label>
-
-                        <div class="col-sm-2">
-                            <input type="number" class="form-control form-control-sm" id="age">
-                        </div>
-
-                        <label for="gender" class="col-sm-1 col-form-label small-label text-end">
-                            Gender
-                        </label>
-
-                        <div class="col-sm-2">
-                            <select class="form-select form-select-sm" id="gender">
-                                <option>Male</option>
-                                <option>Female</option>
-                            </select>
-                        </div>
                     </div>
 
                     <div class="row align-items-center mb-1">
                         <label for="contactNo" class="col-sm-3 col-form-label small-label">
                             Contact No<span class="text-danger">*</span>
                         </label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm" id="contactNo">
+                        <div class="col-sm-9">
+                            <div class="row g-2">
+                                <div class="col-9">
+                                    <input type="text" class="form-control form-control-sm" id="contactNo">
+                                </div>
+
+                                <div class="col-3"></div>
+                            </div>
                         </div>
                     </div>
 
