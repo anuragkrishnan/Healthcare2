@@ -1,111 +1,3 @@
-<style>
-    .small-label {
-        font-size: 10px;
-        padding-right: 2px;
-    }
-
-    .form-control-sm,
-    .form-select,
-    .btn-sm {
-        font-size: 10px;
-        height: 28px;
-    }
-
-    /* ── Form Controls Override ── */
-    .custom-divider {
-        width: 1px;
-        height: 100%;
-        min-height: 420px;
-        background: linear-gradient(to bottom,
-                transparent,
-                #c7c7c7 10%,
-                #9ca3af 50%,
-                #c7c7c7 90%,
-                transparent);
-        opacity: .8;
-    }
-
-    .form-control,
-    .form-select {
-        background: #eee;
-        border: 1px solid #abaeac;
-        color: #1a1e28;
-        border-radius: 10px;
-        padding: 0.6rem 0.9rem;
-        transition: border-color .2s, box-shadow .2s;
-    }
-
-    .form-control:focus,
-    .form-select:focus {
-        background: #d3d5da;
-        border-color: #abaeac;
-        box-shadow: 0 0 0 1.5px #d7d8d7;
-        color: #1a1e28;
-        outline: none;
-    }
-
-    .form-control::placeholder {
-        color: #1a1e28;
-    }
-
-    .form-select option {
-        background: #eee;
-    }
-
-    .input-group-text {
-        background: #eee;
-        border: 1px solid var(--border);
-        color: #1a1e28;
-        border-radius: 10px 0 0 10px;
-        font-size: 0.85rem;
-    }
-
-    .input-group .form-control {
-        border-radius: 0 10px 10px 0;
-    }
-
-    .input-group .form-control:focus {
-        z-index: 2;
-    }
-
-    /* inline icon inside input */
-    .field-icon-wrap {
-        position: relative;
-    }
-
-    .field-icon-wrap .form-control {
-        padding-left: 2.2rem;
-    }
-
-    .field-icon-wrap .field-icon {
-        position: absolute;
-        left: 0.7rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #171a18;
-        font-size: 0.85rem;
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    /* Make native date/time picker icons visible on dark backgrounds */
-    input[type="date"],
-    input[type="time"] {
-        opacity: 0.85;
-        transition: opacity 0.15s;
-    }
-
-    input[type="date"]:hover,
-    input[type="time"]:hover {
-        opacity: 1;
-    }
-
-    /* Firefox uses a different rendering path — this targets the icon area */
-    input[type="date"],
-    input[type="time"] {
-        color-scheme: light;
-    }
-</style>
 <div class="row g-8">
     <div class="card">
 
@@ -130,7 +22,7 @@
                         </label>
                         <div class="col-sm-8">
                             <div class="input-group input-group-sm">
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control form-control-sm">
 
                                 <button class="btn btn-light border" type="button">
                                     <i class="bi bi-search"></i>
@@ -242,7 +134,7 @@
                 <div class="col-lg-6">
                     <div class="row mb-2">
 
-                        <label class="col-sm-3 col-form-label small-label">
+                        <label class="col-sm-2 col-form-label small-label">
                             DOB <span class="text-danger">*</span>
                         </label>
 
@@ -271,49 +163,121 @@
                     </div>
 
                     <div class="row align-items-center mb-1">
-                        <label for="contactNo" class="col-sm-3 col-form-label small-label">
+                        <label for="contactNo" class="col-sm-2 col-form-label small-label">
                             Contact No<span class="text-danger">*</span>
                         </label>
                         <div class="col-sm-9">
                             <div class="row g-2">
                                 <div class="col-9">
-                                    <input type="text" class="form-control form-control-sm" id="contactNo">
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">+966</span>
+                                        <input type="text" class="form-control form-control-sm"
+                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                            id="contactNo">
+                                    </div>
                                 </div>
 
-                                <div class="col-3"></div>
+                                <div class="col-3">
+                                    <select class="form-select form-select-sm" id="blood-group">
+                                        <option selected>Blood Group</option>
+                                        <option>A+</option>
+                                        <option>A-</option>
+                                        <option>B+</option>
+                                        <option>B-</option>
+                                        <option>AB+</option>
+                                        <option>AB-</option>
+                                        <option>O+</option>
+                                        <option>O-</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-1">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-9">
+                            <div class="row g-2">
+
+                                <div class="col-9">
+                                    <div class="input-group input-group-sm mb-1">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm">+966</span>
+                                        <input type="text" class="form-control form-control-sm"
+                                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+                                            id="contactNo2">
+                                    </div>
+                                </div>
+
+                                <div class="col-3">
+                                    <input type="text" placeholder="Nationality"
+                                        class="form-control form-control-sm" id="nationality">
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="row align-items-center mb-1">
-                        <label for="Id1" class="col-sm-3 col-form-label small-label">
+                        <label for="Id1" class="col-sm-2 col-form-label small-label">
                             ID Card No<span class="text-danger">*</span>
                         </label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm" id="Id1">
+                        <div class="col-sm-9">
+                            <div class="row g-2">
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control form-control-sm" id="Id1">
+                                </div>
+                                <div class="col-sm-3">
+                                    <select class="form-select form-select-sm" id="IdType">
+                                        <option selected>Select Type</option>
+                                        <option>Iqama</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-3">
+                                    <input type="date" class="form-control form-control-sm" id="idexp">
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                     <div class="row align-items-center mb-1">
-                        <label for="Id2" class="col-sm-3 col-form-label small-label">
+                        <label for="Id2" class="col-sm-2 col-form-label small-label">
                             ID Card II
                         </label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control form-control-sm" id="Id2">
+                        <div class="col-sm-9">
+                            <div class="row g-2">
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control form-control-sm" id="Id2">
+                                </div>
+                                <div class="col-sm-3">
+                                    <select class="form-select form-select-sm" id="Id2Type">
+                                        <option selected>Select Type</option>
+                                        <option>Iqama</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-3">
+                                    <input type="date" placeholder="Expiry Date"
+                                        class="form-control form-control-sm" id="id2exp">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row align-items-center mb-1">
-                        <label for="status" class="col-sm-3 col-form-label small-label">
+                        <label for="status" class="col-sm-2 col-form-label small-label">
                             Pat Status
                         </label>
-                        <div class="col-sm-8">
+                        <div class="col-sm-6">
                             <div class="checkbox">
-                                <input type="checkbox" value="active" checked> Active
+                                <input type="checkbox" value="active" checked>
+                                Active
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
+            <div class="row d-flex align-items-center g-0 mt-2">
+                <div class="col-lg-12">
+                    <label>Company Related Details</label>
 
+                </div>
+            </div>
         </div>
