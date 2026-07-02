@@ -35,8 +35,8 @@
                         style="background:none;border:none;display:flex;align-items:center;gap:8px;">
                         <img src="{{ asset('images/user-avatar.jpg') }}" class="user-img">
                         <div class="user-details">
-                            <div class="user-name">Dr. Anurag</div>
-                            <div class="user-role">Administrator</div>
+                            <div class="user-name">Mr. Anurag</div>
+                            <div class="user-role">Receptionist</div>
                         </div>
                     </button>
 
