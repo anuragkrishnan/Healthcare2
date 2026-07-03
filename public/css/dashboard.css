@@ -1,6 +1,7 @@
 :root{
-    --primary:#3096f0;
-    --dark:#020d16;
+    /* Core Accent & Brand Colors */
+    --primary:#1c6489;
+    --dark:#1c6489;
     --card:#07270e;
     --border:#082d4b;
 }
@@ -46,7 +47,7 @@ body{
 
   z-index:1200;
 
-background:#06141f;
+background:#1c6489;
 backdrop-filter:blur(14px);
 }
 
@@ -229,7 +230,7 @@ a[aria-expanded="true"] .submenu-arrow{
     display:flex;
     flex-direction:column;
     height:100vh;
-    overflow-y:auto;
+    overflow:hidden;
     margin-left:60px;
     width:calc(100% - 60px);
 }
@@ -247,12 +248,12 @@ a[aria-expanded="true"] .submenu-arrow{
     overflow: visible !important;
 }
 
-/* Content Area */
+/* Content Area Fixes */
 #content-area{
     flex:1;
     overflow-y:auto;
-    padding:15px 18px 15px 28px;
-    height: auto;
+    padding:4px;
+    background: #f4f6f9 !important; /* Forces the dashboard content background to be light gray instead of copying dark-theme variables */
 }
 
 /* Scrollbar */
@@ -284,10 +285,10 @@ a[aria-expanded="true"] .submenu-arrow{
     font-size: 12px;
 }
 
-/* Cards */
+/* Cards Visibility Tuning */
 .dashboard-card{
-    background:#020d16;
-    border:1px solid #082d4b;
+    background:#ffffff !important; /* Cards are now forced to clear white panels */
+    border:1px solid #e2e8f0 !important; /* Gentle gray border lines */
     border-radius:12px;
     padding:12px 16px;
     height:100%;
@@ -296,14 +297,14 @@ a[aria-expanded="true"] .submenu-arrow{
 .dashboard-card h6{
     margin-bottom:4px;
     font-size:0.85rem;
-    color:#b8c2bc;
+    color:#64748b !important; /* Accessible gray text for card subtitles */
 }
 
 .dashboard-card h5{
     margin-bottom:0;
     font-size:1em;
     font-weight:600;
-    color:#fff;
+    color:#1e293b !important; /* Deep dark tone for numerical counts/metrics */
 }
 
 /* Chart Area */
@@ -330,14 +331,14 @@ a[aria-expanded="true"] .submenu-arrow{
   gap: 14px;
   margin-top: 1.25rem;
   font-size: 12px;
-  color: #b8c2bc;
+  color: #64748b !important; /* Darkened text colors for legend labels */
 }
 
 .doughnut-legend span {
   display: flex;
   align-items: center;
   gap: 5px;
-  color:#b8c2bc;
+  color:#64748b !important;
 }
 .legend-dot {
   width: 9px;
@@ -424,7 +425,7 @@ a[aria-expanded="true"] .submenu-arrow{
     display: inline-flex; align-items: center; justify-content: center;
     border-radius: .6rem;
     border: 1px solid rgba(255,255,255,.08);
-    background: #232838;
+    background: #1c6489;
     color: #e7e9f0;
     transition: background .15s ease, border-color .15s ease;
   }
@@ -495,7 +496,7 @@ a[aria-expanded="true"] .submenu-arrow{
     color: #fff;
   }
 
-    /* Logout footer */
+     /* Logout footer */
   .drawer-footer{
     padding: 1rem 1.25rem 1.25rem;
     border-top: 1px solid rgba(255,255,255,.08);
@@ -683,22 +684,21 @@ a[aria-expanded="true"] .submenu-arrow{
 }
 
 
-/* Patient Table */
-
+/* Patient Table Forms Integration colors */
 .data-card{
-    background:#04220b;
-    border:1px solid var(--border);
+    background:#ffffff !important; /* Sets registration panels cleanly to white context */
+    border:1px solid #cbd5e1 !important;
 }
 
 
 
 /* ── Card wrapper ── */
     .card-section {
-      background: var(--dark);
-      border: 1px solid var(--border);
+      background: #ffffff !important; /* Forms containers changed from dark-blue to clean white surface profiles */
+      border: 1px solid #e2e8f0 !important;
       border-radius: 16px;
-      padding: 1.75rem 2rem;
-      margin-bottom: 1.25rem;
+      padding: 0.5rem 0.5rem;
+      margin-bottom: 0.5rem;
     }
 
     .section-label {
@@ -706,7 +706,7 @@ a[aria-expanded="true"] .submenu-arrow{
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #b8c2bc;
+      color: #475569 !important; /* Label fonts are darkened */
       margin-bottom: 1.25rem;
       display: flex;
       align-items: center;
@@ -726,25 +726,25 @@ a[aria-expanded="true"] .submenu-arrow{
     .avatar-preview {
       width: 76px; height: 76px;
       border-radius: 50%;
-      background: #8891aa;
-      border: 2px dashed #0d5d1f;
+      background: #f1f5f9 !important;
+      border: 2px dashed #94a3b8 !important;
       display: flex; align-items: center; justify-content: center;
       font-size: 1.8rem;
-      color: #b8c2bc;
+      color: #64748b !important;
       flex-shrink: 0;
       overflow: hidden;
       cursor: pointer;
       transition: border-color .2s;
     }
 
-    .avatar-preview:hover { border-color: #1f3d25; }
-    .avatar-upload-text p { margin: 0; font-size: 0.82rem; color: #b8c2bc; }
-    .avatar-upload-text p span { color: #d0d5d2; font-size: 0.75rem;}
+    .avatar-preview:hover { border-color: #475569 !important; }
+    .avatar-upload-text p { margin: 0; font-size: 0.82rem; color: #475569 !important; }
+    .avatar-upload-text p span { color: #64748b !important; font-size: 0.75rem;}
 
     .btn-default {
       background: transparent;
-      border: 1px solid #2a2f40;
-      color: #8891aa;
+      border: 1px solid #cbd5e1 !important;
+      color: #475569 !important;
       border-radius: 10px;
       padding: 0.55rem 1.4rem;
       font-size: 0.875rem;
@@ -753,9 +753,9 @@ a[aria-expanded="true"] .submenu-arrow{
     }
 
     .btn-default:hover {
-      border-color: #555d75;
-      color: #e8eaf2;
-      background: #1a1e28;
+      border-color: #94a3b8 !important;
+      color: #1e293b !important;
+      background: #f8fafc !important;
     }
 
     .btn-primary-custom {
@@ -774,30 +774,17 @@ a[aria-expanded="true"] .submenu-arrow{
       box-shadow: 0 4px 18px rgba(79,142,247,.35);
     }
 
-    /*---Patient Page Designs----*/
-
-    .section-heading {
-       background: #d3d5da;
-        border-color: #abaeac;
-        height: 28px;
-        padding: 0.15rem 0.4rem;
-        text-align: left;
-        border-radius: 0.35rem;
-        font-size: small;
-    }
-
     /* ── Form Controls Override ── */
-    /*
     .form-label {
       font-size: 0.78rem;
       font-weight: 500;
-      color: #b8c2bc;
+      color: #334155 !important; /* Visible text for standard form descriptions */
       margin-bottom: 0.4rem;
     }
     .form-control, .form-select {
-      background: #1a1e28;
-      border: 1px solid var(--border);
-      color: #b8c2bc;
+      background: #ffffff !important; /* Standardized inputs with white background setup */
+      border: 1px solid #cbd5e1 !important;
+      color: #1e293b !important;
       border-radius: 10px;
       font-size: 0.775rem;
       padding: 0.6rem 0.9rem;
@@ -805,40 +792,38 @@ a[aria-expanded="true"] .submenu-arrow{
     }
 
     .form-control:focus, .form-select:focus {
-      background: #1a1e28;
-      border-color: var(--border);
-      box-shadow: 0 0 0 3.5px var(--border);
-      color: #b8c2bc;
+      background: #ffffff !important;
+      border-color: #94a3b8 !important;
+      box-shadow: 0 0 0 3.5px #e2e8f0 !important;
+      color: #1e293b !important;
       outline: none;
     }
-    .form-control::placeholder { color: #abaeac; }
-    .form-select option { background: #1a1e28; }
+    .form-control::placeholder { color: #94a3b8 !important; }
+    .form-select option { background: #ffffff !important; color: #1e293b !important; }
 
     .input-group-text {
-      background: #1a1e28;
-      border: 1px solid var(--border);
-      color: #b8c2bc;
-      border-radius: 10px 0 0 10px;
-      font-size: 0.85rem;
+      background: #f8fafc !important;
+      border: 1px solid #cbd5e1 !important;
+      color: #475569 !important;
+      border-radius: 5px 0 0 5px;
+      font-size: 0.5rem;
     }
     .input-group .form-control { border-radius: 0 10px 10px 0; }
     .input-group .form-control:focus { z-index: 2; }
-*/
+
     /* inline icon inside input */
-    /*
     .field-icon-wrap { position: relative; }
     .field-icon-wrap .form-control { padding-left: 2.2rem; }
     .field-icon-wrap .field-icon {
       position: absolute;
       left: 0.7rem; top: 50%; transform: translateY(-50%);
-      color: #d0d5d2;
+      color: #64748b !important;
       font-size: 0.85rem;
       pointer-events: none;
       z-index: 1;
     }
-*/
-    /* Make native date/time picker icons visible on dark backgrounds */
-    /*
+
+    /* Make native date/time picker icons visible on light backgrounds */
 input[type="date"],
 input[type="time"] {
   opacity: 0.85;
@@ -849,171 +834,25 @@ input[type="date"]:hover,
 input[type="time"]:hover {
   opacity: 1;
 }
-*/
-/* Firefox uses a different rendering path — this targets the icon area */
-/*
+
+/* Fixed color-scheme constraint for standard light backgrounds */
 input[type="date"],
 input[type="time"] {
-  color-scheme: dark;
+  color-scheme: light !important;
 }
 
 .status-note{
     font-size: 0.62rem;
-    color: #b8c2bc;
+    color: #64748b !important;
 }
-*/
+
 /* ── Status toggle ── */
-/*
     .form-check-input:checked {
       background-color: var(--primary);
       border-color: var(--primary);
     }
-    .form-check-label { font-size: 0.83rem; color: #b8c2bc; }
-*/
- .small-label {
-        font-size: 10px;
-        padding-right: 2px;
-    }
+    .form-check-label { font-size: 0.83rem; color: #475569 !important; }
 
-    .form-control-sm,
-    .btn-sm,
-    .form-select {
-        font-size: 10px;
-        padding: 4px 6px !important;
-    }
-
-    /* ── Form Controls Override ── */
-    .custom-divider {
-        width: 1px;
-        height: 100%;
-        min-height: 420px;
-        background: linear-gradient(to bottom,
-                transparent,
-                #c7c7c7 10%,
-                #9ca3af 50%,
-                #c7c7c7 90%,
-                transparent);
-        opacity: .8;
-    }
-
-    .form-control,
-    .form-select
-    {
-    background: #eee;
-    border: 1px solid #abaeac;
-    color: #1a1e28;
-    border-radius: 3px;
-    padding: 0.6rem 0.7rem;
-    transition: border-color .2s, box-shadow .2s;
-    }
-
-    .form-control:focus,
-    .form-select:focus {
-        background: #d3d5da;
-        border-color: #abaeac;
-        box-shadow: 0 0 0 0.5px #abaeac;
-        color: #1a1e28;
-        outline: none;
-    }
-
-    .form-control::placeholder {
-        color: #1a1e28;
-    }
-
-    .form-select option {
-        background: #eee;
-    }
-
-    .input-group-text {
-        background-color: #d3d5da;
-        border: 1px solid #abaeac;
-        color: #1a1e28;
-        border-radius: 3px 0 0 3px;
-        font-size: 0.65rem !important;
-    }
-
-    .input-group .form-control {
-        border-radius: 0 3px 3px 0;
-        height: 25px;
-        font-size: 10px;
-        padding: 4px 6px;
-    }
-
-    .input-group .btn {
-        height: 25px;
-        font-size: 0.75rem;
-    }
-    .input-group .form-control:focus {
-        z-index: 2;
-    }
-
-    /* inline icon inside input */
-    .field-icon-wrap {
-        position: relative;
-    }
-
-    .field-icon-wrap .form-control {
-        padding-left: 2.2rem;
-    }
-
-    .field-icon-wrap .field-icon {
-        position: absolute;
-        left: 0.7rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #171a18;
-        font-size: 0.85rem;
-        pointer-events: none;
-        z-index: 1;
-    }
-
-.checkbox-group{
-    display:flex;
-    align-items:center;
-    border:1px solid #ced4da;
-    border-radius:6px;
-    background:#fff;
-}
-
-.checkbox-group .form-check{
-    display:flex;
-    align-items:center;
-    gap:4px;
-    padding:6px 12px;
-    margin-left:18px;
-    border-right:1px solid #ced4da;
-}
-
-.checkbox-group .form-check:last-child{
-    border-right:none;
-}
-
-.checkbox-group .form-check-input{
-    margin-top:0;
-}
-
-.checkbox-group .form-check-label{
-    margin-bottom:0;
-    white-space:nowrap;
-}
-
-    /* Make native date/time picker icons visible on dark backgrounds */
-    input[type="date"],
-    input[type="time"] {
-        opacity: 0.85;
-        transition: opacity 0.15s;
-    }
-
-    input[type="date"]:hover,
-    input[type="time"]:hover {
-        opacity: 1;
-    }
-
-    /* Firefox uses a different rendering path — this targets the icon area */
-    input[type="date"],
-    input[type="time"] {
-        color-scheme: light;
-    }
  /* ── Action bar ── */
     .action-bar {
       display: flex;
@@ -1022,86 +861,58 @@ input[type="time"] {
       padding-top: 0.25rem;
     }
 
- /*Nav-tab Custom */
-    .nav-tabs-sm{
-        padding: 4px 6px;
-        font-size: 12px;
-    }
 
-    .nav-tabs-sm .nav-link {
-        height: 30px;
-    }
-
-    .nav-tab-btn  {
-       position:absolute;
-       top:0;
-       right:0;
-        display: flex;
-    }
-
-    .nav-tab-btn li{
-        list-style: none;
-        margin-right: 4px;
-    }
-
-    .nav-tab-btn button {
-        border: 1px solid #abaeac;
-    }
-    #consultation-tab {
-        position: relative;
-    }
-
-/* Modal for dark theme */
+/* Modal for light theme context consistency */
 .dark-modal {
-    background: #1f2937;
-    color: #ffffff;
-    border: 1px solid var(--border);
+    background: #ffffff !important;
+    color: #1e293b !important;
+    border: 1px solid #e2e8f0 !important;
     border-radius: 12px;
     z-index: 10001;
 }
 
 .dark-modal .modal-header {
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid #e2e8f0 !important;
 }
 
 .dark-modal .modal-footer {
-    border-top: 1px solid var(--border);
+    border-top: 1px solid #e2e8f0 !important;
     display:flex;
     align-items: center;
     justify-content: center;
 }
 
 .dark-modal .modal-title {
-    color: #ffffff;
+    color: #1e293b !important;
 }
 
 
 .dark-modal .form-label {
-    color: #e5e7eb;
+    color: #334155 !important;
 }
 
 .dark-modal .form-control,
 .dark-modal .form-select {
-    background: #111827;
-    border: 1px solid var(--border);
-    color: #ffffff;
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #1e293b !important;
 }
 
 .dark-modal .form-control:focus,
 .dark-modal .form-select:focus {
-    background: #111827;
-    color: #ffffff;
-    border-color: var(--border);
+    background: #ffffff !important;
+    color: #1e293b !important;
+    border-color: #94a3b8 !important;
     box-shadow: none;
 }
 
 .dark-modal .form-control::placeholder {
-    color: #9ca3af;
+    color: #94a3b8 !important;
 }
 
 
 
-/*--- CHATBOT WIDGET-----  */
+/*--- CHATBOT WIDGET-----   */
 .chat-widget{
     position:fixed;
     bottom:24px;
@@ -1260,7 +1071,7 @@ input[type="time"] {
     flex-direction:column;
     gap:10px;
     background:#15171c;
-    position: S;
+    position: relative;
   }
   .chat-body::-webkit-scrollbar{ width:6px; }
   .chat-body::-webkit-scrollbar-thumb{ background:#7f838b; border-radius:3px; margin:8px 0; }
@@ -1422,11 +1233,11 @@ input[type="time"] {
 
 
 
- /* DataTAble Design - Card */
+ /* DataTAble Design - Card Panels Alignment to light workflow profiles */
 
     .table-card {
-        background: #1f2937;
-        border: 1px solid #374151;
+        background: #ffffff !important; /* Fixed dark table backgrounds back to natural white lists */
+        border: 1px solid #e2e8f0 !important;
         border-radius: 12px;
         height: calc(100vh - 140px);
         display: flex;
@@ -1463,7 +1274,7 @@ input[type="time"] {
         display: flex;
         align-items: center;
         gap: 10px;
-        color: #e7e9ec;
+        color: #334155 !important; /* Visible pagination details text */
     }
 
     /* Right */
@@ -1496,7 +1307,7 @@ input[type="time"] {
 
         transform: translateY(-50%);
 
-        color: #9ca3af;
+        color: #64748b !important;
 
     }
 
@@ -1508,41 +1319,41 @@ input[type="time"] {
 
     }
 
-    /* Inputs */
+    /* Inputs within tables profiles */
 
     .table-card .form-control,
     .table-card .form-select {
 
-        background: #111827;
+        background: #ffffff !important;
 
-        border: 1px solid #4b5563;
+        border: 1px solid #cbd5e1 !important;
 
-        color: #fff;
+        color: #1e293b !important;
 
     }
 
     .table-card .form-control:focus,
     .table-card .form-select:focus {
 
-        background: #111827;
+        background: #ffffff !important;
 
-        color: #fff;
+        color: #1e293b !important;
 
         box-shadow: none;
 
-        border-color: #3b82f6;
+        border-color: #3b82f6 !important;
 
     }
 
-    /* Table */
+    /* Table Column Header Color Tuning */
 
     .table-dark {
 
-        --bs-table-bg: #1f2937;
+        --bs-table-bg: #ffffff !important;
 
-        --bs-table-hover-bg: #2b3648;
+        --bs-table-hover-bg: #f8fafc !important;
 
-        --bs-table-border-color: #374151;
+        --bs-table-border-color: #e2e8f0 !important;
 
     }
 
@@ -1551,23 +1362,26 @@ input[type="time"] {
         font-size: .9rem;
         letter-spacing: .4px;
         font-weight: 600;
-        background: #111827;
-        border-bottom: 2px solid #374151;
+        background: #f1f5f9 !important; /* Light steel headers for crisp contrast */
+        border-bottom: 2px solid #cbd5e1 !important;
         position: sticky;
         top: 0;
         z-index: 5;
+        color: #334155 !important;
 
     }
 
     .table-dark tbody td {
 
         padding: 5px;
+        color: #334155 !important; /* Fixed rows content text visibility rules */
 
     }
 
     .table-dark tbody tr {
 
         height: 35px;
+        background: #ffffff !important;
 
     }
 
@@ -1579,7 +1393,7 @@ input[type="time"] {
         overflow-x: hidden;
     }
 
-    /* Footer */
+    /* Footer structure alignment colors */
 
     .table-footer {
         margin-top: 8px;
@@ -1587,18 +1401,18 @@ input[type="time"] {
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        color: #e7e9ec;
+        color: #334155 !important;
         flex-shrink: 0;
         position: sticky;
         bottom: 0;
-        background: #1f2937;
+        background: #ffffff !important;
         padding-top: 10px;
         padding-bottom: 10px;
-        border-top: 1px solid #374151;
+        border-top: 1px solid #e2e8f0 !important;
         z-index: 20;
     }
 
-    /* Laravel Pagination */
+    /* Laravel Pagination layout overrides */
 
     .pagination {
         margin: 0;
@@ -1606,34 +1420,35 @@ input[type="time"] {
 
     .page-link {
 
-        background: #111827;
+        background: #ffffff !important;
 
-        border: 1px solid #374151;
+        border: 1px solid #cbd5e1 !important;
 
-        color: #d1d5db;
+        color: #475569 !important;
 
     }
 
     .page-link:hover {
 
-        background: #2563eb;
+        background: #2563eb !important;
 
-        color: #fff;
+        color: #fff !important;
 
     }
 
     .page-item.active .page-link {
 
-        background: #2563eb;
+        background: #2563eb !important;
 
-        border-color: #2563eb;
+        border-color: #2563eb !important;
+        color: #fff !important;
 
     }
 
      .page-item.disabled .page-link{
-        background: #9fa5b2 !important;
-        border-color: #9fa5b2;
-        color: #fff;
+        background: #f1f5f9 !important;
+        border-color: #e2e8f0 !important;
+        color: #94a3b8 !important;
     }
 
     /* Button */
@@ -1654,15 +1469,15 @@ input[type="time"] {
 
     .table-wrapper::-webkit-scrollbar-thumb {
 
-        background: rgba(13, 58, 93, 0.7);
+        background: rgba(148, 163, 184, 0.5) !important;
         border-radius: 20px;
 
     }
 
-    .table-wrapper::-webkit-scrollbar-thumb:hover,
+    .table-wrapper::-webkit-scrollbar-thumb:hover
     {
 
-    background: rgba(13, 93, 31, 0.9);
+    background: rgba(100, 116, 139, 0.7) !important;
 
     }
 
@@ -1730,3 +1545,106 @@ input[type="time"] {
       animation:none !important;
     }
   }
+  
+        #content-area {
+            box-sizing: border-box !important;
+            margin: 0 !important;
+            color:#000;
+            
+            font-size: 11px !important;
+              flex:1;
+            overflow-y:auto;
+            padding:4px;
+            background: #f4f6f9 !important; 
+                }
+
+      .grid-3-col {
+            display: grid;
+            grid-template-columns: 2fr 1fr 2fr;
+            gap: 10px;
+            background: #f8fafc;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-top: none;
+        }
+
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 10px;
+            background: #f8fafc;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-top: none;
+        }
+
+        /* Form Controls */
+        .form-group {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .form-group.double-input {
+            grid-template-columns: 100px 1fr 1fr;
+            gap: 5px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #475569;
+            text-align: left;
+            padding-right: 5px;
+        }
+
+        label.required::after {
+            content: " *";
+            color: #dc2626;
+        }
+
+       input[type="text"], input[type="date"], select, textarea {
+            width: 100%;
+            padding: 4px 6px;
+            border: 1px solid #cbd5e1;
+            border-radius: 3px;
+            background-color: #fff;
+            height: 24px;
+            outline: none;
+        }
+
+        textarea {
+            height: 50px;
+            resize: none;
+        }
+
+        /* Tabs styling */
+        .tabs {
+            display: flex;
+            gap: 2px;
+            margin-top: 10px;
+        }
+
+        .tab {
+            background: #cbd5e1;
+            padding: 6px 12px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px 4px 0 0;
+            border: 1px solid #94a3b8;
+            border-bottom: none;
+        }
+
+        .tab.active {
+            background: #f8fafc;
+            border-bottom: 1px solid #f8fafc;
+            margin-bottom: -1px;
+            z-index: 2;
+        }
+
+        /* Arabic Support alignment */
+        .arabic-label {
+            text-align: right;
+            padding-right: 10px;
+            font-family: Arial, sans-serif;
+        }
