@@ -90,8 +90,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="load-page" data-url="" data-title="Specialities List"
-                        data-icon="bi-person-vcard-fill" data-breadcrumb="Dashboard|Specialities|List Specialities">
+                    <a href="#" class="load-page" data-url="{{ url('/speciality') }}"
+                        data-title="Specialities List" data-icon="bi-person-vcard-fill"
+                        data-breadcrumb="Dashboard|Specialities|List Specialities">
                         <i class="bi bi-person-vcard-fill"></i>
                         Speciality
 
