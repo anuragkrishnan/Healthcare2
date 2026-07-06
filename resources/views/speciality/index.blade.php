@@ -177,8 +177,6 @@
 
             </div>
 
-            <!-- Footer -->
-
 
             <div class="table-footer">
 
