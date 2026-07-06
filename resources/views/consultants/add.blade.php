@@ -51,8 +51,7 @@
 <div class="form-container">
     <div class="tabs">
         <div class="tab active">Doctor Details</div>
-        <div class="tab">Doctor Information</div>
-        <div class="tab">Package Details</div>
+        
     </div>
 
     <div class="grid-3-col">
@@ -62,90 +61,164 @@
                 <input type="text" placeholder="🔍">
             </div>
             <div class="form-group">
-                <label>First Name</label>
+                <label>Doctor Name</label>
                 <input type="text" value="SHIS">
             </div>
             <div class="form-group">
-                <label>Middle Name</label>
-                <input type="text">
-            </div>
-            <div class="form-group">
-                <label>Last Name</label>
-                <input type="text">
-            </div>
-            <div class="form-group">
-                <label>Qualification</label>
+                <label>Cost centre</label>
                 <input type="text">
             </div>
             <div class="form-group" style="align-items: start;">
                 <label>Address</label>
                 <textarea></textarea>
             </div>
+        
+                <div class="form-group">
+                    <label>Qualification</label>
+                    <input type="text">
+                </div>
+                <div class="form-group double-input">
+                <label class="required">Date of birth</label>
+                <input type="text" value="">
+                 </div>
+                 <div class="form-group">
+                <label class="required">Gender</label>
+                <select><option>Male</option><option>Female</option></select>
+            </div>
+             <div class="form-group">
+                <label class="required">Contact No</label>
+                <input type="text" value="SAUDI ARABIA (+966) 0542395255">
+            </div>
+            <div class="form-group">
+                <label>Email id</label>
+                <input type="text">
+            </div>
+            <div class="form-group" style="align-items: start;">
+                <label>Remarks</label>
+                <textarea></textarea>
+            </div>
+             <div class="form-group">
+                <label>Free  Consultation Days for cash Registration</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label>Free  Consultation Days for credit Registration</label>
+                <input type="text">
+            </div>
+            
+
+   <div class="form-group">
+    <label></label>
+
+    <div class="d-flex flex-column gap-2">
+
+        <div class="form-check">
+            <input class="form-check-input"
+                   type="checkbox"
+                   id="appointment">
+
+            <label class="form-check-label"
+                   for="appointment">
+                Show in Appointment Diary
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input"
+                   type="checkbox"
+                   id="registration">
+
+            <label class="form-check-label"
+                   for="registration">
+                Show in Registration Entry
+            </label>
+        </div>
+
+    </div>
+</div>
+
+
         </div>
 
         <div>
             <div class="form-group">
                 <label style="font-size:10px;">User ID</label>
                 <input type="text" value="639564" style="background:#e2e8f0;" readonly>
-            </div>
-            <div class="form-group">
-                <label class="arabic-label">الاسم الأول</label>
-                <input type="text" style="text-align: right;" value="سهيس">
-            </div>
-            <div class="form-group">
-                <label class="arabic-label">الاسم الوسطى</label>
-                <input type="text">
-            </div>
-            <div class="form-group">
-                <label class="arabic-label">الاسم الأخير</label>
-                <input type="text">
-            </div>
-            <div class="form-group">
-                <label class="arabic-label">اسم العائلة</label>
-                <input type="text">
-            </div>
-            <div class="form-group">
-                <label>Email</label>
-                <input type="text">
-            </div>
-            <div class="form-group">
-                <label>Room NO</label>
-                <select><option></option></select>
-            </div>
+            
         </div>
 
         <div>
-            <div class="form-group double-input">
-                <label class="required">Date of birth</label>
-                <input type="text" value="05/05/2021">
-                <div class="flex-row"><span>Age*</span><input type="text" value="4Y 11M" style="width:50px;"></div>
-            </div>
             <div class="form-group">
-                <label class="required">Contact No</label>
-                <input type="text" value="SAUDI ARABIA (+966) 0542395255">
-            </div>
-            <div class="form-group">
-                <label class="required">Gender</label>
-                <select><option>Male</option><option>Female</option></select>
-            </div>
-            <div class="form-group">
-                <label>Schedule</label>
-                <select><option></option></select>
-            </div>
-            <div class="form-group">
-                <label class="required">Nationality</label>
-                <input type="text" value="Indian">
-            </div>
-            <div class="form-group double-input">
-                <label class="required">ID Card No</label>
-                <input type="text" value="2303053215">
-                <div class="flex-row"><span>Type*</span><select><option>Iqama</option></select></div>
-            </div>
-            <div class="form-group double-input">
-                <label>ID Card II</label>
+                <label>License No.</label>
                 <input type="text">
-                <div class="flex-row"><span>Type</span><select><option>Select Type</option></select></div>
             </div>
+            <div class="form-group">
+                <label>Reg No</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label>Id Card No</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label>Id Type</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label>Nationality</label>
+                <input type="text">
+            </div>
+<div class="form-group">
+    <label>Sort Order</label>
+    <input type="text">
+</div>
+
+<div class="form-group">
+    <label>Schedule Interval</label>
+    <input type="text">
+</div>
+             <div class="form-group">
+                    <div class="form-group">
+                    <label>Room No</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label>No. of free visit</label>
+                    <input type="text">
+            </div>
+            
+            <div class="form-group">
+                    <label>Default Rate</label>
+                    <input type="text">
+            </div>
+                    
+            <div class="form-group">
+                    <div class="form-group">
+                    <label>Min Desc%</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label>Min Desc Amt</label>
+                    <input type="text">
+            </div>
+            <div class="form-group">
+                    <div class="form-group">
+                    <label>Max Desc%</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label>Max Desc Amt</label>
+                    <input type="text">
+            </div>
+            <div class="form-group">
+                    <label>Speciality</label>
+                    <input type="text">
+            </div>
+
+
+
+
+         
             <div class="form-group">
                 <label>Consultant type</label>
                 <label><input type="text" checked> </label>
