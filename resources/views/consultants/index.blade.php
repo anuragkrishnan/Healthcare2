@@ -1,193 +1,523 @@
-<div class="row g-4">
+<div class="d-flex justify-content-between align-items-center mb-3">
 
-    {{-- Doctors add form --}}
+    <!-- Left -->
+    <div class="d-flex align-items-center">
+        <span class="me-2">Show</span>
 
-    <div class="form-container">
-        <!-- ── Section 1: Profile ── -->
-        <div class="card-section">
-            <div class="section-label"><i class="bi bi-person-circle"></i> Profile</div>
+        <select class="form-select form-select-sm" style="width:80px;">
+            <option>10</option>
+            <option>25</option>
+            <option>50</option>
+            <option>100</option>
+        </select>
 
-            <!-- Avatar -->
-            <div class="avatar-upload">
-                <div class="avatar-preview" title="Upload photo">
-                    <i class="bi bi-camera"></i>
-                </div>
-                <div class="avatar-upload-text">
-                    <p>Upload a profile photo</p>
-                    <span style="color: #d0d5d2; font-size: 0.75rem;">JPG or PNG · Max 2 MB · Recommended 200×200
-                        px</span>
-                    <div class="mt-2">
-                        <button type="button" class="btn btn-sm btn-default" id="btn-upload"
-                            style="padding:.3rem .85rem;font-size:.75rem;">Choose file</button>
-                    </div>
-                </div>
-                <div class="row g-3">
-                    <div class="col-sm-2">
-                        <label class="form-label">Title</label>
-                        <select class="form-select">
-                            <option>Dr.</option>
-                            <option>Prof.</option>
-                            <option>Mr.</option>
-                            <option>Ms.</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-5">
-                        <label class="form-label">First Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" placeholder="First name" />
-                    </div>
-                    <div class="col-sm-5">
-                        <label class="form-label">Last Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" placeholder="Last name" />
-                    </div>
+        <span class="ms-2">entries</span>
+    </div>
 
-                    <div class="col-sm-6">
-                        <label class="form-label">Date of Birth</label>
-                        <input type="date" class="form-control" />
-                    </div>
-                    <div class="col-sm-6">
-                        <label class="form-label">Gender</label>
-                        <select class="form-select">
-                            <option value="" disabled selected>Select gender</option>
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Non-binary</option>
-                            <option>Prefer not to say</option>
-                        </select>
-                    </div>
+    <!-- Right -->
+    <button
+        type="button"
+        class="btn btn-primary btn-sm"
+        data-bs-toggle="modal"
+        data-bs-target="#consultantAddModal">
 
-                    <div class="col-sm-6">
-                        <label class="form-label">National ID / Passport</label>
-                        <input type="text" class="form-control" placeholder="ID number" />
-                    </div>
-                    <div class="col-sm-6">
-                        <label class="form-label">Nationality</label>
-                        <input type="text" class="form-control" placeholder="e.g. Indian" />
-                    </div>
-                </div>
+        <i class="bi bi-plus-lg"></i> New
+
+    </button>
+
+</div>
+
+            <!-- Table -->
+
+            <div class="table-wrapper mt-1">
+
+                <table class="table table-dark table-hover align-middle mb-0">
+
+                    <thead>
+
+                        <tr>
+
+                            <th width="70"><code></code></th>
+                            <th>Name</th>
+                            <th>Speciality</th>
+                            <th>User id</th>
+                            <th>Mobile</th>
+                            <th>Schedule</th>
+                            <th width="150" class="text-center">Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="consultantTable">
+
+                        <tr>
+
+                            <td class="text-secondary">1100</td>
+                            <td>John Doe</td>
+                            <td>Physician</td>
+                            <td class="text-secondary">001</td>
+                            <td class="text-secondary">9097865456 </td>
+                            <td><span
+                                    class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25">Morning</span>
+                            </td>
+
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">PT-0001</td>
+                            <td>Aarav Sharma</td>
+                            <td>Pediatrician</td>
+                            <td class="text-secondary">002</td>
+                            <td class="text-secondary">9087556765</td>
+                            <td><span
+                                    class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25">Morning
+                                    </span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">PT-0002</td>
+                            <td>Diya Verma</td>
+                            <td>Gynecologist</td>
+                            <td class="text-secondary">003</td>
+                            <td class="text-secondary">8787565434</td>
+                            <td><span
+                                    class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25">Evening</span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">PT-0003</td>
+                            <td>Kabir Nair</td>
+                            <td>Gynecologist</td>
+                            <td class="text-secondary">004</td>
+                            <td class="text-secondary">7890878767</td>
+                            <td><span
+                                    class="badge bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25">Evening</span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">PT-0004</td>
+                            <td>Meera Iyer</td>
+                            <td>Cardiologist</td>
+                            <td class="text-secondary">005</td>
+                            <td class="text-secondary">9034567867</td>
+                            <td><span
+                                    class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25">Day</span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">PT-0005</td>
+                            <td>Rohan Gupta</td>
+                            <td>Neurologist</td>
+                            <td class="text-secondary">006</td>
+                            <td class="text-secondary">6785678989</td>
+                            <td><span
+                                    class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25">Day</span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">PT-0006</td>
+                            <td>Ishaan Reddy</td>
+                            <td>Pediatrician</td>
+                            <td class="text-secondary">007</td>
+                            <td class="text-secondary">9087564567</td>
+                            <td><span
+                                    class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25">Night</span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">PT-0007</td>
+                            <td>Ananya Menon</td>
+                            <td>Obstetrician</td>
+                            <td class="text-secondary">008</td>
+                            <td class="text-secondary">8978967876</td>
+                            <td><span
+                                    class="badge bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25">Morning</span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">PT-0008</td>
+                            <td>Vivaan Pillai</td>
+                            <td>Psychiatrist</td>
+                            <td class="text-secondary">009</td>
+                            <td class="text-secondary">9087867875 </td>
+                            <td><span
+                                    class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25">Evening</span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">PT-0009</td>
+                            <td>Sara Joshi</td>
+                            <td>Psychologist</td>
+                            <td class="text-secondary">010</td>
+                            <td class="text-secondary">8978909898</td>
+                            <td><span
+                                    class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25">Morning</span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">PT-0010</td>
+                            <td>Aditi Kapoor</td>
+                            <td>Pulmonologist</td>
+                            <td class="text-secondary">011</td>
+                            <td class="text-secondary">7867567890</td>
+                            <td><span
+                                    class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25">Evening</span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">PT-0011D</td>
+                            <td>Karan Sharma</td>
+                            <td>Pulmonologist</td>
+                            <td class="text-secondary">012</td>
+                            <td class="text-secondary">8967567890</td>
+                            <td><span
+                                    class="badge bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25">Evening</span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">PT-0012</td>
+                            <td>Neha Verma</td>
+                            <td>ENT Specialist</td>
+                            <td class="text-secondary">013</td>
+                            <td class="text-secondary">786789873</td>
+                            <td><span
+                                    class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25">Day</span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                       
+                     
+                        
+                       
+                     
+                        <tr>
+                            <td class="text-secondary">PT-0018</td>
+                            <td>Tanvi Pillai</td>
+                            <td>Psychiatrist</td>
+                            <td class="text-secondary">018</td>
+                            <td class="text-secondary">7890875678</td>
+                            <td><span
+                                    class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25">Evening</span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                     
+                        <tr>
+                            <td class="text-secondary">PT-0020</td>
+                            <td>Simran Kapoor</td>
+                            <td>Pulmonologist</td>
+                            <td class="text-secondary">020</td>
+                            <td class="text-secondary">6756789098</td>
+                            <td><span
+                                    class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25">Morning</span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                       
+                      
+                        <tr>
+                            <td class="text-secondary">PT-0022</td>
+                            <td>Priya Verma</td>
+                            <td>Pulmonologist</td>
+                            <td class="text-secondary">022</td>
+                            <td class="text-secondary">8909897876</td>
+                            <td><span
+                                    class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25">Night</span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                       
+                        <tr>
+                            <td class="text-secondary">PT-0024</td>
+                            <td>Kavya Iyer</td>
+                            <td>ENT Specialist</td>
+                            <td class="text-secondary">024</td>
+                            <td class="text-secondary">9089786756</td>
+                            <td><span
+                                    class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25">Morning</span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                      
+                        <tr>
+                            <td class="text-secondary">PT-0026</td>
+                            <td>Lavanya Reddy</td>
+                            <td>ENT Specialist</td>
+                            <td class="text-secondary">026</td>
+                            <td class="text-secondary">7890987867</td>
+                            <td><span
+                                    class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25">Evening</span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                       
+                        <tr>
+                            <td class="text-secondary">PT-0029</td>
+                            <td>Manish Joshi</td>
+                            <td>ENT Specialist</td>
+                            <td class="text-secondary">029</td>
+                            <td class="text-secondary">787878789</td>
+                            <td><span
+                                    class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25">Day</span>
+                            </td>
+                            <td class="text-center">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                       
+
+                    </tbody>
+
+                </table>
 
             </div>
+
+            <!-- Footer -->
+
+
+            <div class="table-footer">
+
+                <div id="tableInfo">
+                    Showing 1 to 10 of 35 entries
+                </div>
+
+                <nav aria-label="Table Pagination">
+
+                    <ul class="pagination pagination-sm mb-0">
+
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">Previous</a>
+                        </li>
+
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+
+
+            </div>
+
         </div>
 
-        <!-- ── Section 2: Professional ── -->
-        <div class="card-section">
-            <div class="section-label"><i class="bi bi-briefcase"></i> Professional</div>
-            <div class="row g-3">
-                <div class="col-sm-6">
-                    <label class="form-label">Medical Registration No. <span class="text-danger">*</span></label>
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="bi bi-shield-check"></i></span>
-                        <input type="text" class="form-control" placeholder="MCI / State council number" />
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label">Licence Expiry</label>
-                    <input type="date" class="form-control" />
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label">Primary Specialisation <span class="text-danger">*</span></label>
-                    <select class="form-select">
-                        <option value="" disabled selected>Choose specialisation</option>
-                        <option>Cardiology</option>
-                        <option>Dermatology</option>
-                        <option>Endocrinology</option>
-                        <option>Gastroenterology</option>
-                        <option>General Practice</option>
-                        <option>Neurology</option>
-                        <option>Oncology</option>
-                        <option>Orthopaedics</option>
-                        <option>Paediatrics</option>
-                        <option>Psychiatry</option>
-                        <option>Radiology</option>
-                    </select>
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label">Sub-specialisations / Expertise tags</label>
-                    <select class="form-control">
-                        <option>Interventional Cardiology</option>
-                        <option>Heart Failure</option>
-                        <option>Echocardiography</option>
-                    </select>
-                    <!--to show selected tags  -->
-                    <div class="tag-list">
-                        <span class="tag"> <span class="tag-remove"></span></span>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label">Highest Qualification <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="e.g. MBBS, MD, DM" />
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label">Years of Experience</label>
-                    <div class="field-icon-wrap">
-                        <i class="bi bi-briefcase field-icon"></i>
-                        <input type="number" min="0" max="60" class="form-control"
-                            placeholder="e.g. 12" />
-                    </div>
-                </div>
-                <div class="col-12">
-                    <label class="form-label">Affiliated Hospital / Clinic</label>
-                    <input type="text" class="form-control" placeholder="Current institution name" />
-                </div>
-            </div>
-        </div>
-
-        <!-- ── Section 3: Contact ── -->
-        <div class="card-section">
-            <div class="section-label"><i class="bi bi-telephone"></i> Contact</div>
-            <div class="row g-3">
-                <div class="col-sm-6">
-                    <label class="form-label">Email Address <span class="text-danger">*</span></label>
-                    <div class="field-icon-wrap">
-                        <i class="bi bi-envelope field-icon"></i>
-                        <input type="email" class="form-control" placeholder="doctor@example.com" />
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label">Mobile Number <span class="text-danger">*</span></label>
-                    <div class="input-group">
-                        <span class="input-group-text">+966</span>
-                        <input type="tel" class="form-control" placeholder="98765 43210" />
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label">Emergency / Alternate Contact</label>
-                    <input type="tel" class="form-control" placeholder="Alternate number" />
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label">Department</label>
-                    <select class="form-select">
-                        <option value="" disabled selected>Select department</option>
-                        <option>Outpatient (OPD)</option>
-                        <option>Inpatient (IPD)</option>
-                        <option>Emergency</option>
-                        <option>ICU</option>
-                        <option>Surgical Block</option>
-                    </select>
-                </div>
-                <hr class="mt-4 mb-3" />
-                <div class="col-12">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div>
-                            <div class="form-label mb-0">Account Status</div>
-                            <div class="status-note">Active doctors are visible for booking immediately</div>
-                        </div>
-                        <div class="form-check form-switch mb-0">
-                            <input class="form-check-input" type="checkbox" role="switch" id="statusSwitch"
-                                checked>
-                            <label class="form-check-label" for="statusSwitch">Active</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ── Action Bar ── -->
-        <div class="d-flex align-items-center justify-content-center flex-wrap gap-3">
-            <div class="action-bar">
-                <button type="button" class="btn-default">Discard</button>
-                <button type="button" class="btn-primary-custom">
-                    <i class="bi bi-check2-circle"></i> Save Doctor
-                </button>
-            </div>
-        </div>
     </div>
 </div>
+
+{{-- INCLUDE MODAL HERE --}}
+@include('consultants.add')
