@@ -229,7 +229,6 @@ a[aria-expanded="true"] .submenu-arrow{
     flex:1;
     display:flex;
     flex-direction:column;
-    height:100vh;
     overflow:hidden;
     margin-left:60px;
     width:calc(100% - 60px);
@@ -250,9 +249,16 @@ a[aria-expanded="true"] .submenu-arrow{
 
 /* Content Area Fixes */
 #content-area{
-    flex:1;
-    overflow-y:auto;
-    padding:4px;
+    height:100%;
+     box-sizing: border-box !important;
+            margin: 0 !important;
+            color:#000;
+
+            font-size: 11px !important;
+              flex:1;
+            overflow-y:auto;
+            padding:4px;
+
     background: #f4f6f9 !important; /* Forces the dashboard content background to be light gray instead of copying dark-theme variables */
 }
 
@@ -627,7 +633,7 @@ a[aria-expanded="true"] .submenu-arrow{
     border: 1px solid #334155;
     border-radius: 12px;
     padding: 15px 20px;
-
+    margin-left: 0.6rem;
     box-shadow:
         0 4px 12px rgba(0,0,0,.35),
         0 0 15px rgba(59,130,246,.15);
@@ -694,11 +700,13 @@ a[aria-expanded="true"] .submenu-arrow{
 
 /* ── Card wrapper ── */
     .card-section {
+        height: auto;
       background: #ffffff !important; /* Forms containers changed from dark-blue to clean white surface profiles */
       border: 1px solid #e2e8f0 !important;
       border-radius: 16px;
       padding: 0.5rem 0.5rem;
       margin-bottom: 0.5rem;
+      margin-left: 0.6rem;
     }
 
     .section-label {
@@ -1520,8 +1528,38 @@ input[type="time"] {
         }
 
     }
+ /*---Patient Page Designs----*/
 
+    .section-heading {
+       background: #d3d5da;
+        border-color: #abaeac;
+        height: 25px;
+        padding: 0.15rem 0.4rem;
+        text-align: left;
+        border-radius: 0.35rem;
+        font-size: 11px;
+    }
+    .section-body{
+    padding-top:8px;
+    border:none;
+    background:#f8fafc;
+}
 
+     .nav-tab-btn  {
+
+        height: 28px;
+       position:absolute;
+       top:0;
+       right:0;
+        display: flex;
+
+    }
+     .nav-tab-btn button {
+        border: 1px solid #abaeac;
+    }
+    #consultation-tab {
+        position: relative;
+    }
 /*---- Responsive */
 
     @media (max-width: 576px) {
@@ -1545,18 +1583,7 @@ input[type="time"] {
       animation:none !important;
     }
   }
-  
-        #content-area {
-            box-sizing: border-box !important;
-            margin: 0 !important;
-            color:#000;
-            
-            font-size: 11px !important;
-              flex:1;
-            overflow-y:auto;
-            padding:4px;
-            background: #f4f6f9 !important; 
-                }
+
 
       .grid-3-col {
             display: grid;
