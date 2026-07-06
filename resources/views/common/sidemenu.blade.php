@@ -90,8 +90,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="load-page" data-url="" data-title="Specialities List"
-                        data-icon="bi-person-vcard-fill" data-breadcrumb="Dashboard|Specialities|List Specialities">
+                    <a href="#" class="load-page" data-url="{{ url('/speciality') }}"
+                        data-title="Specialities List" data-icon="bi-person-vcard-fill"
+                        data-breadcrumb="Dashboard|Specialities|List Specialities">
                         <i class="bi bi-person-vcard-fill"></i>
                         Speciality
 
@@ -101,13 +102,13 @@
 
             </ul>
         </li>
-        <!--li>
+        <li>
             <a href="#" class="load-page" data-url="{{ url('/receptionists') }}" data-title="Receptionists"
                 data-icon="bi-person-badge" data-breadcrumb="Dashboard|Receptionists">
                 <i class="bi bi-person-badge"></i>
-                <span class="menu-text">Receptionists</span>
+                <span class="menu-text">Sample</span>
             </a>
-        </li-->
+        </li>
         <li>
             <a href="#" class="load-page" data-url="{{ route('common.alerts') }}"
                 data-title="Alerts - Stay Updated" data-icon="bi-bell" data-breadcrumb="Dashboard|Sweet Alerts">
