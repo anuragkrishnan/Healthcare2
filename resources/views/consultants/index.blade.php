@@ -1,193 +1,572 @@
-<div class="row g-4">
+<div class="d-flex justify-content-between align-items-center mb-3">
 
-    {{-- Doctors add form --}}
+    <!-- Left -->
+    
+    <div class="table-wrapper mt-1">
+    <table class="table table-sm table-borderless w-auto align-middle ml-3 d-inline-block text-secondary">
+    <tbody>
+        <tr class="d-flex gap-3 align-items-center">
+            <td></td>
+            <td>
+                <div class="d-flex align-items-center">
+        <span class="me-2">Show</span>
 
-    <div class="form-container">
-        <!-- ── Section 1: Profile ── -->
-        <div class="card-section">
-            <div class="section-label"><i class="bi bi-person-circle"></i> Profile</div>
+        <select class="form-select form-select-sm" style="width:80px;">
+            <option>10</option>
+            <option>25</option>
+            <option>50</option>
+            <option>100</option>
+        </select>
 
-            <!-- Avatar -->
-            <div class="avatar-upload">
-                <div class="avatar-preview" title="Upload photo">
-                    <i class="bi bi-camera"></i>
-                </div>
-                <div class="avatar-upload-text">
-                    <p>Upload a profile photo</p>
-                    <span style="color: #d0d5d2; font-size: 0.75rem;">JPG or PNG · Max 2 MB · Recommended 200×200
-                        px</span>
-                    <div class="mt-2">
-                        <button type="button" class="btn btn-sm btn-default" id="btn-upload"
-                            style="padding:.3rem .85rem;font-size:.75rem;">Choose file</button>
-                    </div>
-                </div>
-                <div class="row g-3">
-                    <div class="col-sm-2">
-                        <label class="form-label">Title</label>
-                        <select class="form-select">
-                            <option>Dr.</option>
-                            <option>Prof.</option>
-                            <option>Mr.</option>
-                            <option>Ms.</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-5">
-                        <label class="form-label">First Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" placeholder="First name" />
-                    </div>
-                    <div class="col-sm-5">
-                        <label class="form-label">Last Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" placeholder="Last name" />
-                    </div>
+        <span class="ms-2">entries</span>
+         </div>
+            </td>
+            <td>
+                                <input type="text" class="d-inline-block p-0 px-1 text-center border rounded" placeholder="Search..." style="width: 100px;"> 
+                <i class="bi bi-search cursor-pointer text-primary ms-1"></i>
+            </td>
+            
+          
+        </tr>
+    </tbody>
+</table></div>
 
-                    <div class="col-sm-6">
-                        <label class="form-label">Date of Birth</label>
-                        <input type="date" class="form-control" />
-                    </div>
-                    <div class="col-sm-6">
-                        <label class="form-label">Gender</label>
-                        <select class="form-select">
-                            <option value="" disabled selected>Select gender</option>
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Non-binary</option>
-                            <option>Prefer not to say</option>
-                        </select>
-                    </div>
+    <!-- Right -->
+   
 
-                    <div class="col-sm-6">
-                        <label class="form-label">National ID / Passport</label>
-                        <input type="text" class="form-control" placeholder="ID number" />
-                    </div>
-                    <div class="col-sm-6">
-                        <label class="form-label">Nationality</label>
-                        <input type="text" class="form-control" placeholder="e.g. Indian" />
-                    </div>
-                </div>
-
-            </div>
+     <div class="d-flex gap-1">
+            <button class="btn btn-sm btn-outline-success px-3" data-bs-toggle="modal"
+                        data-bs-target="#consultantAddModal">
+                        <i class="bi bi-plus-circle me-1"></i> New</button>
+           
+            <button class="btn btn-sm btn-outline-secondary px-3"><i class="bi bi-printer me-1"></i> Print</button>
         </div>
 
-        <!-- ── Section 2: Professional ── -->
-        <div class="card-section">
-            <div class="section-label"><i class="bi bi-briefcase"></i> Professional</div>
-            <div class="row g-3">
-                <div class="col-sm-6">
-                    <label class="form-label">Medical Registration No. <span class="text-danger">*</span></label>
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="bi bi-shield-check"></i></span>
-                        <input type="text" class="form-control" placeholder="MCI / State council number" />
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label">Licence Expiry</label>
-                    <input type="date" class="form-control" />
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label">Primary Specialisation <span class="text-danger">*</span></label>
-                    <select class="form-select">
-                        <option value="" disabled selected>Choose specialisation</option>
-                        <option>Cardiology</option>
-                        <option>Dermatology</option>
-                        <option>Endocrinology</option>
-                        <option>Gastroenterology</option>
-                        <option>General Practice</option>
-                        <option>Neurology</option>
-                        <option>Oncology</option>
-                        <option>Orthopaedics</option>
-                        <option>Paediatrics</option>
-                        <option>Psychiatry</option>
-                        <option>Radiology</option>
-                    </select>
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label">Sub-specialisations / Expertise tags</label>
-                    <select class="form-control">
-                        <option>Interventional Cardiology</option>
-                        <option>Heart Failure</option>
-                        <option>Echocardiography</option>
-                    </select>
-                    <!--to show selected tags  -->
-                    <div class="tag-list">
-                        <span class="tag"> <span class="tag-remove"></span></span>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label">Highest Qualification <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" placeholder="e.g. MBBS, MD, DM" />
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label">Years of Experience</label>
-                    <div class="field-icon-wrap">
-                        <i class="bi bi-briefcase field-icon"></i>
-                        <input type="number" min="0" max="60" class="form-control"
-                            placeholder="e.g. 12" />
-                    </div>
-                </div>
-                <div class="col-12">
-                    <label class="form-label">Affiliated Hospital / Clinic</label>
-                    <input type="text" class="form-control" placeholder="Current institution name" />
-                </div>
+
+
+        <!-- <button type="button" class="btn btn-primary btn-sm btn-add-patient" data-bs-toggle="modal"
+                        data-bs-target="#patientAddModal">
+
+                        <i class="bi bi-plus-lg"></i>
+
+                        Add New
+
+                    </button>
+                    @include('patients.modals.add') -->
+
+</div>
+
+            <!-- Table -->
+
+            <div class="table-wrapper mt-1">
+
+                <table class="table table-dark table-hover align-middle mb-0">
+
+                    <thead>
+
+                        <tr>
+                            <th class="text-secondary" style="width:5%">Sl No.</th>
+                            <th class="text-secondary" style="width:10%">Code</th>
+                            <th  class="text-secondary" style="width:10%">Name</th>
+                            <th  class="text-secondary" style="width:10%">Speciality</th>
+                            <th  class="text-secondary" style="width:10%">User id</th>
+                            <th class="text-secondary" style="width:10%">Mobile</th>
+                            <th class="text-secondary" style="width:8%">Scheduler</th>
+                            <th class="text-secondary" style="width:8%">Document</th>
+                            <th class="text-secondary" style="width:5%">Edit</th>
+                            <th class="text-secondary" style="width:5%">Delete</th>
+
+
+         
+
+                            <!-- <th width="150" class="text-center">Action</th> -->
+
+                        </tr>
+                    </thead>
+
+                    <tbody id="consultantTable">
+
+                        <tr>
+                            <td class="text-secondary">1</td>
+                            <td class="text-secondary">1100</td>
+                            <td>John Doe</td>
+                            <td>Physician</td>
+                            <td class="text-secondary">001</td>
+                            <td class="text-secondary">9097865456 </td>
+                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
+                                <i class="bi bi-calendar-event"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                 <button class="btn btn-sm text-secondary" title="Document">
+                                 <i class="bi bi-file-earmark-text"></i>
+                                 </button>
+                            </td>                            
+
+                            <td class="text-secondary">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">2</td>
+                            <td class="text-secondary">PT-0001</td>
+                            <td>Aarav Sharma</td>
+                            <td>Pediatrician</td>
+                            <td class="text-secondary">002</td>
+                            <td class="text-secondary">9087556765</td>
+                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
+                                <i class="bi bi-calendar-event"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                 <button class="btn btn-sm text-secondary" title="Document">
+                                 <i class="bi bi-file-earmark-text"></i>
+                                 </button>
+                            </td>                            
+
+                            <td class="text-secondary">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">3</td>
+                            <td class="text-secondary">PT-0002</td>
+                            <td>Diya Verma</td>
+                            <td>Gynecologist</td>
+                            <td class="text-secondary">003</td>
+                            <td class="text-secondary">8787565434</td>
+                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
+                                <i class="bi bi-calendar-event"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                 <button class="btn btn-sm text-secondary" title="Document">
+                                 <i class="bi bi-file-earmark-text"></i>
+                                 </button>
+                            </td>                            
+
+                            <td class="text-secondary">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">4</td>
+                            <td class="text-secondary">PT-0003</td>
+                            <td>Kabir Nair</td>
+                            <td>Gynecologist</td>
+                            <td class="text-secondary">004</td>
+                            <td class="text-secondary">7890878767</td>
+                          <td text-center><button class="btn btn-sm text-success" title="Schedule">
+                                <i class="bi bi-calendar-event"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                 <button class="btn btn-sm text-secondary" title="Document">
+                                 <i class="bi bi-file-earmark-text"></i>
+                                 </button>
+                            </td>                            
+
+                            <td class="text-secondary">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">6</td>
+                            <td class="text-secondary">PT-0004</td>
+                            <td>Meera Iyer</td>
+                            <td>Cardiologist</td>
+                            <td class="text-secondary">005</td>
+                            <td class="text-secondary">9034567867</td>
+                           <td text-center><button class="btn btn-sm text-success" title="Schedule">
+                                <i class="bi bi-calendar-event"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                 <button class="btn btn-sm text-secondary" title="Document">
+                                 <i class="bi bi-file-earmark-text"></i>
+                                 </button>
+                            </td>                            
+
+                            <td class="text-secondary">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">7</td>
+                            <td class="text-secondary">PT-0005</td>
+                            <td>Rohan Gupta</td>
+                            <td>Neurologist</td>
+                            <td class="text-secondary">006</td>
+                            <td class="text-secondary">6785678989</td>
+                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
+                                <i class="bi bi-calendar-event"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                 <button class="btn btn-sm text-secondary" title="Document">
+                                 <i class="bi bi-file-earmark-text"></i>
+                                 </button>
+                            </td>                            
+
+                            <td class="text-secondary">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">8</td>
+                            <td class="text-secondary">PT-0006</td>
+                            <td>Ishaan Reddy</td>
+                            <td>Pediatrician</td>
+                            <td class="text-secondary">007</td>
+                            <td class="text-secondary">9087564567</td>
+                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
+                                <i class="bi bi-calendar-event"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                 <button class="btn btn-sm text-secondary" title="Document">
+                                 <i class="bi bi-file-earmark-text"></i>
+                                 </button>
+                            </td>                            
+
+                            <td class="text-secondary">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">9</td>
+                            <td class="text-secondary">PT-0007</td>
+                            <td>Ananya Menon</td>
+                            <td>Obstetrician</td>
+                            <td class="text-secondary">008</td>
+                            <td class="text-secondary">8978967876</td>
+                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
+                                <i class="bi bi-calendar-event"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                 <button class="btn btn-sm text-secondary" title="Document">
+                                 <i class="bi bi-file-earmark-text"></i>
+                                 </button>
+                            </td>                            
+
+                            <td class="text-secondary">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">10</td>
+                            <td class="text-secondary">PT-0008</td>
+                            <td>Vivaan Pillai</td>
+                            <td>Psychiatrist</td>
+                            <td class="text-secondary">009</td>
+                            <td class="text-secondary">9087867875 </td>
+                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
+                                <i class="bi bi-calendar-event"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                 <button class="btn btn-sm text-secondary" title="Document">
+                                 <i class="bi bi-file-earmark-text"></i>
+                                 </button>
+                            </td>                            
+
+                            <td class="text-secondary">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">11</td>
+                            <td class="text-secondary">PT-0009</td>
+                            <td>Sara Joshi</td>
+                            <td>Psychologist</td>
+                            <td class="text-secondary">010</td>
+                            <td class="text-secondary">8978909898</td>
+                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
+                                <i class="bi bi-calendar-event"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                 <button class="btn btn-sm text-secondary" title="Document">
+                                 <i class="bi bi-file-earmark-text"></i>
+                                 </button>
+                            </td>                            
+
+                            <td class="text-secondary">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">12</td>
+                            <td class="text-secondary">PT-0010</td>
+                            <td>Aditi Kapoor</td>
+                            <td>Pulmonologist</td>
+                            <td class="text-secondary">011</td>
+                            <td class="text-secondary">7867567890</td>
+                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
+                                <i class="bi bi-calendar-event"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                 <button class="btn btn-sm text-secondary" title="Document">
+                                 <i class="bi bi-file-earmark-text"></i>
+                                 </button>
+                            </td>                            
+
+                            <td class="text-secondary">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">13</td>
+                            <td class="text-secondary">PT-0011D</td>
+                            <td>Karan Sharma</td>
+                            <td>Pulmonologist</td>
+                            <td class="text-secondary">012</td>
+                            <td class="text-secondary">8967567890</td>
+                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
+                                <i class="bi bi-calendar-event"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                 <button class="btn btn-sm text-secondary" title="Document">
+                                 <i class="bi bi-file-earmark-text"></i>
+                                 </button>
+                            </td>                            
+
+                            <td class="text-secondary">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-secondary">14</td>
+                            <td class="text-secondary">PT-0012</td>
+                            <td>Neha Verma</td>
+                            <td>ENT Specialist</td>
+                            <td class="text-secondary">013</td>
+                            <td class="text-secondary">786789873</td>
+                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
+                                <i class="bi bi-calendar-event"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                 <button class="btn btn-sm text-secondary" title="Document">
+                                 <i class="bi bi-file-earmark-text"></i>
+                                 </button>
+                            </td>                            
+
+                            <td class="text-secondary">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                       
+                     
+                        
+                       
+                     
+                        
+                       
+                        <tr>
+                            <td class="text-secondary">15</td>
+                            <td class="text-secondary">PT-0029</td>
+                            <td>Manish Joshi</td>
+                            <td>ENT Specialist</td>
+                            <td class="text-secondary">029</td>
+                            <td class="text-secondary">787878789</td>
+                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
+                                <i class="bi bi-calendar-event"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                 <button class="btn btn-sm text-secondary" title="Document">
+                                 <i class="bi bi-file-earmark-text"></i>
+                                 </button>
+                            </td>                            
+
+                            <td class="text-secondary">
+
+                                <button class="btn btn-sm text-primary">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                            </td>
+                            <td class="text-secondary">
+                                <button class="btn btn-sm text-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </td>
+                        </tr>
+                       
+
+                    </tbody>
+
+                </table>
+
             </div>
+
+            <!-- Footer -->
+
+
+            <div class="table-footer">
+
+                <div id="tableInfo">
+                    Showing 1 to 10 of 35 entries
+                </div>
+
+                <nav aria-label="Table Pagination">
+
+                    <ul class="pagination pagination-sm mb-0">
+
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">Previous</a>
+                        </li>
+
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+
+
+            </div>
+
         </div>
 
-        <!-- ── Section 3: Contact ── -->
-        <div class="card-section">
-            <div class="section-label"><i class="bi bi-telephone"></i> Contact</div>
-            <div class="row g-3">
-                <div class="col-sm-6">
-                    <label class="form-label">Email Address <span class="text-danger">*</span></label>
-                    <div class="field-icon-wrap">
-                        <i class="bi bi-envelope field-icon"></i>
-                        <input type="email" class="form-control" placeholder="doctor@example.com" />
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label">Mobile Number <span class="text-danger">*</span></label>
-                    <div class="input-group">
-                        <span class="input-group-text">+966</span>
-                        <input type="tel" class="form-control" placeholder="98765 43210" />
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label">Emergency / Alternate Contact</label>
-                    <input type="tel" class="form-control" placeholder="Alternate number" />
-                </div>
-                <div class="col-sm-6">
-                    <label class="form-label">Department</label>
-                    <select class="form-select">
-                        <option value="" disabled selected>Select department</option>
-                        <option>Outpatient (OPD)</option>
-                        <option>Inpatient (IPD)</option>
-                        <option>Emergency</option>
-                        <option>ICU</option>
-                        <option>Surgical Block</option>
-                    </select>
-                </div>
-                <hr class="mt-4 mb-3" />
-                <div class="col-12">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div>
-                            <div class="form-label mb-0">Account Status</div>
-                            <div class="status-note">Active doctors are visible for booking immediately</div>
-                        </div>
-                        <div class="form-check form-switch mb-0">
-                            <input class="form-check-input" type="checkbox" role="switch" id="statusSwitch"
-                                checked>
-                            <label class="form-check-label" for="statusSwitch">Active</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ── Action Bar ── -->
-        <div class="d-flex align-items-center justify-content-center flex-wrap gap-3">
-            <div class="action-bar">
-                <button type="button" class="btn-default">Discard</button>
-                <button type="button" class="btn-primary-custom">
-                    <i class="bi bi-check2-circle"></i> Save Doctor
-                </button>
-            </div>
-        </div>
     </div>
 </div>
+
+{{-- INCLUDE MODAL HERE --}}
+@include('consultants.add')
