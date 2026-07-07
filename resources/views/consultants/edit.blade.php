@@ -1,7 +1,7 @@
 
 <div class="add-consultant-page">
-<div class="modal fade"
-     id="consultantAddModal"
+    <div class="modal fade"
+     id="consultantEditModal"
      tabindex="-1"
      aria-hidden="true">
 
@@ -12,7 +12,7 @@
             <div class="modal-header">
 
                 <h5 class="modal-title">
-                    Consultant Master
+                   Edit Consultant Master
                 </h5>
 
                 <button
@@ -35,7 +35,6 @@
             <button class="btn btn-sm btn-outline-secondary px-3"><i class="bi bi-x-circle me-1"></i> Cancel</button>
             <button class="btn btn-sm btn-outline-secondary px-3"><i class="bi bi-printer me-1"></i> Print</button>
         </div>
-    
         <div class="d-flex gap-1 text-secondary">
     <table class="table table-sm table-borderless w-auto align-middle m-0 d-inline-block text-secondary">
 </table>
@@ -64,7 +63,7 @@
                        
                             <div class="form-group">
                                 <label>Doctor ID</label>
-                                <input type="text" placeholder="🔍">
+                                <input type="text" placeholder="🔍" value="1100">
                             </div>
                             <div class="form-group">
                                 <label>Doctor Name</label>
@@ -72,20 +71,20 @@
                             </div>
                             <div class="form-group">
                                 <label>Cost centre</label>
-                                <input type="text">
+                                <input type="text" value="C01">
                             </div>
                             <div class="form-group" style="align-items: start;">
                                 <label>Address</label>
-                                <textarea></textarea>
+                                <textarea>123 Street</textarea>
                             </div>
                         
                                 <div class="form-group">
                                     <label>Qualification</label>
-                                    <input type="text">
+                                    <input type="text" value="MBBS">
                                 </div>
                                 <div class="form-group">
                                 <label class="required">Date of birth</label>
-                                <input type="text" value="">
+                                <input type="text" value="03/02/2012">
                                 </div>
                                 <div class="form-group">
                                 <label class="required">Gender</label>
@@ -97,19 +96,19 @@
                             </div>
                             <div class="form-group">
                                 <label>Email id</label>
-                                <input type="text">
+                                <input type="text" value="john@gmail.com">
                             </div>
                             <div class="form-group" style="align-items: start;">
                                 <label>Remarks</label>
-                                <textarea></textarea>
+                                <textarea>Remarks</textarea>
                             </div>
                             <div class="form-group">
                                 <label>Free  Consultation Days for cash Registration</label>
-                                <input type="text">
+                                <input type="text" value="500">
                             </div>
                             <div class="form-group">
                                 <label>Free  Consultation Days for credit Registration</label>
-                                <input type="text">
+                                <input type="text" value="600">
                             </div>
                             
 
@@ -122,7 +121,7 @@
         <div class="form-check">
             <input class="form-check-input"
                    type="checkbox"
-                   id="appointment">
+                   id="appointment" checked>
 
             <label class="form-check-label" for="appointment">
                 Show in Appointment Diary
@@ -158,32 +157,32 @@
                         
                             <div class="form-group">
                                 <label>License No.</label>
-                                <input type="text">
+                                <input type="text" value="1276587">
                             </div>
                             <div class="form-group">
                                 <label>Reg No</label>
-                                <input type="text">
+                                <input type="text" value="128999">
                             </div>
                             <div class="form-group">
                                 <label>Id Card No</label>
-                                <input type="text">
+                                <input type="text" value="IC-001">
                             </div>
                             <div class="form-group">
                                 <label>Id Type</label>
-                                <input type="text">
+                                <input type="text" value="Aadhaar">
                             </div>
                             <div class="form-group">
                                 <label>Nationality</label>
-                                <input type="text">
+                                <input type="text" value="Indian">
                             </div>
                             <div class="form-group">
                                 <label>Sort Order</label>
-                                <input type="text">
+                                <input type="text" value="1">
                             </div>
 
                             <div class="form-group">
                                 <label>Schedule Interval</label>
-                                <input type="text">
+                                <input type="text" value="30 Minutes">
                             </div>
 
 
@@ -197,7 +196,7 @@
 
                             <div class="form-group">
                                 <label>Room No</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" value="101">
                             </div>
 
                         </div>
@@ -206,7 +205,7 @@
 
                         <div class="form-group">
                             <label>No. of Free Visit</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="5">
                         </div>
 
                  </div>
@@ -220,7 +219,7 @@
         <!-- Default Rate -->
 <div class="form-group">
     <label>Default Rate</label>
-    <input type="text" class="form-control">
+    <input type="text" class="form-control" value="1000">
 </div>
 
 <!-- Min Discount -->
@@ -228,14 +227,14 @@
     <div class="col-6">
         <div class="form-group">
             <label>Min Desc %</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" value="10">
         </div>
     </div>
 
     <div class="col-6">
         <div class="form-group">
             <label>Min Desc Amt</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" value="300">
         </div>
     </div>
 </div>
@@ -245,14 +244,14 @@
     <div class="col-6">
         <div class="form-group">
             <label>Max Desc %</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" value="20">
         </div>
     </div>
 
     <div class="col-6">
         <div class="form-group">
             <label>Max Desc Amt</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" value="100">
         </div>
     </div>
 </div>
@@ -262,14 +261,14 @@
     <div class="col-6">
         <div class="form-group">
             <label>Speciality</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" value="Physician">
         </div>
     </div>
 
     <div class="col-6">
         <div class="form-group">
             <label>Consultant Type</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" value="General">
         </div>
     </div>
 </div>
@@ -302,8 +301,8 @@
 
     </div>
 
-</div> </div>
-
+</div> 
+</div>
  
  
  
