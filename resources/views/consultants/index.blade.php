@@ -1,3 +1,4 @@
+
 <div class="d-flex justify-content-between align-items-center mb-3">
 
     <!-- Left -->
@@ -59,8 +60,8 @@
             <!-- Table -->
 <div class="table-responsive">
             <div class="table-wrapper mt-1">
-
-                <table class="table table-dark table-hover align-middle mb-0">
+                <div class="consultant-page">
+                <table class="table table-dark table-hover align-middle mb-0" >
 
                     <thead>
 
@@ -526,7 +527,7 @@
 
                 </table>
 
-            </div></div>
+            </div></div></div>
 
             <!-- Footer -->
 

@@ -1,3 +1,5 @@
+
+<div class="add-consultant-page">
 <div class="modal fade"
      id="consultantAddModal"
      tabindex="-1"
@@ -33,6 +35,7 @@
             <button class="btn btn-sm btn-outline-secondary px-3"><i class="bi bi-x-circle me-1"></i> Cancel</button>
             <button class="btn btn-sm btn-outline-secondary px-3"><i class="bi bi-printer me-1"></i> Print</button>
         </div>
+    
         <div class="d-flex gap-1 text-secondary">
     <table class="table table-sm table-borderless w-auto align-middle m-0 d-inline-block text-secondary">
 </table>
@@ -299,8 +302,8 @@
 
     </div>
 
-</div> 
- 
+</div> </div>
+
  
  
  

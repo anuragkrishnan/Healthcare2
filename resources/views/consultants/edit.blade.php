@@ -1,4 +1,6 @@
-<div class="modal fade"
+
+<div class="add-consultant-page">
+    <div class="modal fade"
      id="consultantEditModal"
      tabindex="-1"
      aria-hidden="true">
@@ -300,7 +302,7 @@
     </div>
 
 </div> 
- 
+</div>
  
  
  
