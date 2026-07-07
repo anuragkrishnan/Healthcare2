@@ -250,8 +250,8 @@
      </div>
  </div>
  <div class="card-section">
-     <div class="form-container" id="consultation-tab">
-         <div class="tabs">
+     <div class="form-container">
+         <div class="tabs" id="consultation-tab">
              <div class="tab active">Consultation</div>
              <div class="tab">Insurance Details</div>
              <div class="tab">Attach Documents</div>
