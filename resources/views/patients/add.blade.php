@@ -250,8 +250,8 @@
      </div>
  </div>
  <div class="card-section">
-     <div class="form-container" id="consultation-tab">
-         <div class="tabs">
+     <div class="form-container">
+         <div class="tabs" id="consultation-tab">
              <div class="tab active">Consultation</div>
              <div class="tab">Insurance Details</div>
              <div class="tab">Attach Documents</div>
@@ -385,7 +385,7 @@
                          <input type="text" value="" placeholder="0.00">
                      </div>
                      <div class="form-group" style="align-items: start;">
-                         <label class="text-danger font-bold">Net Cash Payable</label>
+                         <label class="text-danger font-bold"><strong>Net Cash Payable</strong></label>
                          <input type="text" value="" placeholder="0.00">
                      </div>
                  </div>

@@ -38,7 +38,7 @@ body {
     white-space: nowrap;
 
     transition: width 0.2s ease, box-shadow .28s ease;
-    ;
+    
     border-right: 1px solid var(--border);
     background: var(--dark);
 
@@ -257,18 +257,12 @@ a[aria-expanded="true"] .submenu-arrow {
 }
 
 /* Content Area Fixes */
-#content-area{
-    height:100%;
-     box-sizing: border-box !important;
-            margin: 0 !important;
-            color:#000;
-
-            font-size: 11px !important;
-              flex:1;
-            overflow-y:auto;
-            padding:4px;
-
-    background: #f4f6f9 !important; /* Forces the dashboard content background to be light gray instead of copying dark-theme variables */
+#content-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 4px;
+    background: #f4f6f9 !important;
+    /* Forces the dashboard content background to be light gray instead of copying dark-theme variables */
 }
 
 /* Scrollbar */
@@ -670,7 +664,7 @@ hr.drawer-divider {
     border: 1px solid #334155;
     border-radius: 12px;
     padding: 15px 20px;
-    margin-left: 0.6rem;
+
     box-shadow:
         0 4px 12px rgba(0, 0, 0, .35),
         0 0 15px rgba(59, 130, 246, .15);
@@ -738,15 +732,14 @@ hr.drawer-divider {
 
 
 /* ── Card wrapper ── */
-    .card-section {
-        height: auto;
-      background: #ffffff !important; /* Forms containers changed from dark-blue to clean white surface profiles */
-      border: 1px solid #e2e8f0 !important;
-      border-radius: 16px;
-      padding: 0.5rem 0.5rem;
-      margin-bottom: 0.5rem;
-      margin-left: 0.6rem;
-    }
+.card-section {
+    background: #ffffff !important;
+    /* Forms containers changed from dark-blue to clean white surface profiles */
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 16px;
+    padding: 0.5rem 0.5rem;
+    margin-bottom: 0.5rem;
+}
 
 .section-label {
     font-size: 0.7rem;
@@ -1736,38 +1729,10 @@ input[type="time"] {
         width: 100%;
 
     }
- /*---Patient Page Designs----*/
 
-    .section-heading {
-       background: #d3d5da;
-        border-color: #abaeac;
-        height: 25px;
-        padding: 0.15rem 0.4rem;
-        text-align: left;
-        border-radius: 0.35rem;
-        font-size: 11px;
-    }
-    .section-body{
-    padding-top:8px;
-    border:none;
-    background:#f8fafc;
 }
 
-     .nav-tab-btn  {
 
-        height: 28px;
-       position:absolute;
-       top:0;
-       right:0;
-        display: flex;
-
-    }
-     .nav-tab-btn button {
-        border: 1px solid #abaeac;
-    }
-    #consultation-tab {
-        position: relative;
-    }
 /*---- Responsive */
 
 @media (max-width: 576px) {
@@ -1954,4 +1919,4 @@ textarea {
     margin-left: 50px;
 }
 
-/*  Speciality Form*/
+/* speciality form end */
