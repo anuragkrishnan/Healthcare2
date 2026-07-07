@@ -385,7 +385,7 @@
                          <input type="text" value="" placeholder="0.00">
                      </div>
                      <div class="form-group" style="align-items: start;">
-                         <label class="text-danger font-bold">Net Cash Payable</label>
+                         <label class="text-danger font-bold"><strong>Net Cash Payable</strong></label>
                          <input type="text" value="" placeholder="0.00">
                      </div>
                  </div>
