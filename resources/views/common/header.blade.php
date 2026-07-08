@@ -31,12 +31,11 @@
 
                 <div class="" id="user-menu-toggle">
 
-                    <button type="button" class="user-info-toggle"
-                        style="background:none;border:none;display:flex;align-items:center;gap:8px;">
+                    <button type="button" class="d-flex align-items-center gap-2 user-info-toggle">
                         <img src="{{ asset('images/user-avatar.jpg') }}" class="user-img">
                         <div class="user-details">
-                            <div class="user-name">Mr. Anurag</div>
-                            <div class="user-role">Receptionist</div>
+                            <div class="user-name col-sm-hidden">Mr. Anurag</div>
+                            <div class="user-role col-sm-hidden">Receptionist</div>
                         </div>
                     </button>
 
