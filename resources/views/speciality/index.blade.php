@@ -30,15 +30,11 @@
 
                     <button class="btn btn-sm btn-outline-secondary px-3"><i class="bi bi-printer me-1"></i>
                         Print</button>
-                    <button type="button" class="btn btn-primary btn-sm btn-add-speciality" data-bs-toggle="modal"
-                        data-bs-target="#specialityAddModal">
+                    <button type="button" class="btn btn-sm btn-outline-success px-3" data-bs-toggle="modal"
+                        data-bs-target="#specialityAddModal"><i class="bi bi-plus-circle me-1"></i> New</button>
 
-                        <i class="bi bi-plus-lg"></i>
-
-                        Add New
-
-                    </button>
                     @include('speciality.modals.add')
+                    @include('speciality.modals.edit')
 
                     <div class="search-wrapper">
 
@@ -81,11 +77,11 @@
 
                             <td class="text-center">
 
-                                <button class="btn btn-sm text-primary">
+                                <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"
+                                    data-bs-target="#specialityEditModal">
                                     <i class="bi bi-pencil"></i>
                                 </button>
-
-                                <button class="btn btn-sm text-danger">
+                                <button class="btn btn-sm text-danger delete-btn">
                                     <i class="bi bi-trash"></i>
                                 </button>
 
@@ -98,11 +94,12 @@
                             <td>ANESTHESIA</td>
                             <td class="text-center">
 
-                                <button class="btn btn-sm text-primary">
+                                <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"
+                                    data-bs-target="#specialityEditModal">
                                     <i class="bi bi-pencil"></i>
                                 </button>
 
-                                <button class="btn btn-sm text-danger">
+                                <button class="btn btn-sm text-danger delete-btn">
                                     <i class="bi bi-trash"></i>
                                 </button>
 
@@ -114,11 +111,12 @@
                             <td>CARDIOLOGIST</td>
                             <td class="text-center">
 
-                                <button class="btn btn-sm text-primary">
+                                <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"
+                                    data-bs-target="#specialityEditModal">
                                     <i class="bi bi-pencil"></i>
                                 </button>
 
-                                <button class="btn btn-sm text-danger">
+                                <button class="btn btn-sm text-danger delete-btn">
                                     <i class="bi bi-trash"></i>
                                 </button>
                             </td>
@@ -129,11 +127,12 @@
                             <td>NEUROLOGIST</td>
                             <td class="text-center">
 
-                                <button class="btn btn-sm text-primary">
+                                <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"
+                                    data-bs-target="#specialityEditModal">
                                     <i class="bi bi-pencil"></i>
                                 </button>
 
-                                <button class="btn btn-sm text-danger">
+                                <button class="btn btn-sm text-danger delete-btn">
                                     <i class="bi bi-trash"></i>
                                 </button>
 
@@ -145,11 +144,12 @@
                             <td>ORTHOPEDIC SURGEON</td>
                             <td class="text-center">
 
-                                <button class="btn btn-sm text-primary">
+                                <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"
+                                    data-bs-target="#specialityEditModal">
                                     <i class="bi bi-pencil"></i>
                                 </button>
 
-                                <button class="btn btn-sm text-danger">
+                                <button class="btn btn-sm text-danger delete-btn">
                                     <i class="bi bi-trash"></i>
                                 </button>
                         </tr>
@@ -159,11 +159,12 @@
                             <td>DERMATOLOGIST</td>
                             <td class="text-center">
 
-                                <button class="btn btn-sm text-primary">
+                                <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"
+                                    data-bs-target="#specialityEditModal">
                                     <i class="bi bi-pencil"></i>
                                 </button>
 
-                                <button class="btn btn-sm text-danger">
+                                <button class="btn btn-sm text-danger delete-btn">
                                     <i class="bi bi-trash"></i>
                                 </button>
 
@@ -176,8 +177,6 @@
                 </table>
 
             </div>
-
-            <!-- Footer -->
 
 
             <div class="table-footer">

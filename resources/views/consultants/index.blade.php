@@ -1,3 +1,4 @@
+
 <div class="d-flex justify-content-between align-items-center mb-3">
 
     <!-- Left -->
@@ -57,10 +58,10 @@
 </div>
 
             <!-- Table -->
-
+<div class="table-responsive">
             <div class="table-wrapper mt-1">
-
-                <table class="table table-dark table-hover align-middle mb-0">
+                <div class="consultant-page">
+                <table class="table table-dark table-hover align-middle mb-0" >
 
                     <thead>
 
@@ -105,12 +106,18 @@
 
                             <td class="text-secondary">
 
-                                <button class="btn btn-sm text-primary">
+                               <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"
+                                    data-bs-target="#consultantEditModal">
                                     <i class="bi bi-pencil"></i>
+                                    </a>
                                 </button>
+                                @include('consultants.edit')
+
+
+                                
                             </td>
                             <td class="text-secondary">
-                                <button class="btn btn-sm text-danger">
+                                <button class="btn btn-sm text-danger delete-btn">
                                     <i class="bi bi-trash"></i>
                                 </button>
 
@@ -520,7 +527,7 @@
 
                 </table>
 
-            </div>
+            </div></div></div>
 
             <!-- Footer -->
 
