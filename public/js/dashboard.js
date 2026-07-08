@@ -23,8 +23,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 
+        //Patient Search Section DataTable
+    new DataTable('#patientSearchTable', {
+    // Position search top-left, paging top-right
+    layout: {
+      topStart: 'search',
+      topEnd: 'paging',
+      bottomStart: null,   // hide default "Showing x of y" info
+      bottomEnd: null      // hide bottom pagination
+    },
+    paging: true,
+    pagingType: 'simple',   // gives only "Previous" / "Next" (no page numbers)
+    searching: true,
+    info: false,
+    ordering: true,
+    language: {
+      emptyTable: 'No records found',
+      search: '',
+      searchPlaceholder: 'Search'
+    }
+  });
+
     //theme color change JS
-    const headerColor = document.getElementById('headerColor');
+       const headerColor = document.getElementById('headerColor');
     const sidebarColor = document.getElementById('sidebarColor');
     const footerColor = document.getElementById('footerColor');
 
@@ -83,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
             applyFontStyle(fontSizeInput ? fontSizeInput.value : defaults.fontSize, e.target.value);
         });
     }
+
 
 });
 
@@ -211,6 +233,8 @@ $(document).ready(function () {
     });
 });
 
+
+
 //Due to ajax calling-need to initialize
 function initPatientsTable() {
 
@@ -222,6 +246,8 @@ function initPatientsTable() {
         pageLength: 10,
         responsive: true
     });
+
+
 }
 
 
@@ -481,13 +507,14 @@ function initChatWidget() {
 
 /*---Dynamic page title  ----*/
 
-function setPageTitleBadge(iconClass, text, breadcrumb) {
-    const badge = document.getElementById('pageTitleSection');
-    if (!badge) return;
-    badge.querySelector('.title-section-icon i').className = 'bi ' + iconClass;
-    document.getElementById('titleSectionText').textContent = text;
-    document.getElementById('page-breadcrumb').innerHTML = breadcrumb;
-}
+    function setPageTitleBadge(iconClass, text, breadcrumb) {
+
+        const badge = document.getElementById('pageTitleSection');
+        if (!badge) return;
+        badge.querySelector('.title-section-icon i').className = 'bi ' + iconClass;
+        document.getElementById('titleSectionText').textContent = text;
+        document.getElementById('page-breadcrumb').innerHTML = breadcrumb;
+    }
 
 if (!window.__pageTitleBadgeBound) {
     window.__pageTitleBadgeBound = true;
@@ -623,13 +650,15 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
     });
 });
 
-///datatable search functionality
+//datatable search functionality
+$(document).ready(function () {
 const searchInput = document.getElementById('tableSearch');
 
-searchInput.addEventListener('keyup', function () {
+if (searchInput) {
+    console.log(searchInput);
+    searchInput.addEventListener('keyup', function () {
 
     const value = this.value.toLowerCase();
-
     const rows = document.querySelectorAll('#patientTable tr');
 
     rows.forEach(row => {
@@ -642,5 +671,7 @@ searchInput.addEventListener('keyup', function () {
 
     });
 
+});
+}
 });
 
