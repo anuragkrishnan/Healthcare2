@@ -28,7 +28,7 @@
         <div class="col-md-4">
 
             <div class="header-right">
-
+                <!--Avatar Section -->
                 <div class="" id="user-menu-toggle">
 
                     <button type="button" class="d-flex align-items-center gap-2 user-info-toggle">

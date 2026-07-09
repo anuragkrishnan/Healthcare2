@@ -61,6 +61,7 @@
 
                     </a>
                 </li>
+                <!-- Search feature -->
                 <li>
                     <a href="#" class="load-page" data-url="{{ url('/patients/search') }}"
                         data-title="Patient Search" data-icon="bi-person-bounding-box"

@@ -9,10 +9,10 @@ Route::get('/', function () {
 
 Route::get('/login', [AuthController::class, 'index']);
 
-//Route::get('/redirectToDashboard', [AuthController::class, 'showDashboard'])
-//->name('auth.redirectToDashboard');
-Route::post('/login', [AuthController::class, 'authenticate'])
-    ->name('auth.login');
+Route::get('/redirectToDashboard', [AuthController::class, 'showDashboard'])
+    ->name('auth.redirectToDashboard');
+//Route::post('/login', [AuthController::class, 'authenticate'])
+// ->name('auth.login');
 
 Route::get('/logout', [AuthController::class, 'logout'])
     ->name('logout');

@@ -1,5 +1,5 @@
 <div
-    class="page-header bg-white border border-light-subtle rounded-3 p-2 mb-3 shadow-sm d-flex flex-wrap gap-2 justify-content-between align-items-center">
+    class="page-header bg-white border border-light-subtle rounded-3 p-2 mb-3 shadow-sm d-flex flex-wrap gap-2 justify-content-between align-items-center overflow-hidden">
     <div class="d-flex gap-1 text-secondary">
         <table class="table table-sm table-borderless w-auto align-middle m-0 d-inline-block text-secondary">
             <tbody>
@@ -68,104 +68,109 @@
             </div>
         </div>
         <div class="table-wrapper">
+            <div class="table-responsive">
+                <table class="table table-light table-hover align-middle mb-0">
 
-            <table class="table table-dark table-hover table-responsive align-middle mb-0">
+                    <thead>
 
-                <thead>
+                        <tr>
 
-                    <tr>
+                            <th>Patient ID</th>
+                            <th>Name</th>
+                            <th>MiddleName</th>
+                            <th>Last Name</th>
+                            <th>Age</th>
+                            <th>Gender</th>
+                            <th>Mobile</th>
+                            <th>Nationality</th>
+                            <th>Occupation</th>
+                            <th>Employee ID</th>
+                            <th>Customer</th>
+                            <th>Remarks</th>
 
-                        <th>Patient ID</th>
-                        <th>Name</th>
-                        <th>MiddleName</th>
-                        <th>Last Name</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>Mobile</th>
-                        <th>Nationality</th>
-                        <th>Occupation</th>
-                        <th>Employee ID</th>
-                        <th>Customer</th>
-                        <th>Remarks</th>
+                        </tr>
 
-                    </tr>
+                    </thead>
+                    <tbody id="resultsBody">
+                        <tr class="no-data-row">
+                            <td colspan="12" class="text-center" style="height:150px;">No data found</td>
+                        </tr>
+                    </tbody>
 
-                </thead>
-                <tbody id="resultsBody">
-                    <tr class="no-data-row">
-                        <td colspan="12" class="text-center" style="height:150px;">No data found</td>
-                    </tr>
-                </tbody>
-
-            </table>
+                </table>
+            </div>
             <div class="section-heading mt-1">
                 <p>Patient History</p>
             </div>
-            <table class="table table-dark table-hover table-responsive align-middle mb-0">
+            <div class="table-responsive">
+                <table class="table table-light table-hover align-middle mb-0">
 
-                <thead>
+                    <thead>
 
-                    <tr>
+                        <tr>
 
-                        <th>Type</th>
-                        <th>Doc No.</th>
-                        <th>Doc. Date</th>
-                        <th>Consultant</th>
-                        <th>Net Amount</th>
-                        <th>Payment Mode</th>
-                        <th>Remarks</th>
+                            <th>Type</th>
+                            <th>Doc No.</th>
+                            <th>Doc. Date</th>
+                            <th>Consultant</th>
+                            <th>Net Amount</th>
+                            <th>Payment Mode</th>
+                            <th>Remarks</th>
 
-                    </tr>
+                        </tr>
 
-                </thead>
-                <tbody id="patientHistoryBody">
-                    <tr class="no-data-row">
-                        <td colspan="7">
-                            Select a patient above to view history
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody id="patientHistoryBody">
+                        <tr class="no-data-row">
+                            <td colspan="7">
+                                Select a patient above to view history
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <div class="section-heading mt-1">
                 <p>Billing</p>
             </div>
-            <table class="table table-dark table-hover table-responsive align-middle mb-3">
+            <div class="table-responsive">
+                <table class="table table-light table-hover align-middle mb-3">
 
-                <thead>
+                    <thead>
 
-                    <tr>
+                        <tr>
 
-                        <th>S. No</th>
-                        <th>Item Code</th>
-                        <th>Item Description</th>
-                        <th>Quantity</th>
-                        <th>Rate</th>
-                        <th>Discount</th>
-                        <th>Tax Amount</th>
-                        <th>Net Amount</th>
+                            <th>S. No</th>
+                            <th>Item Code</th>
+                            <th>Item Description</th>
+                            <th>Quantity</th>
+                            <th>Rate</th>
+                            <th>Discount</th>
+                            <th>Tax Amount</th>
+                            <th>Net Amount</th>
 
-                    </tr>
+                        </tr>
 
-                </thead>
-                <tbody id="billingBody">
-                    <tr class="no-data-row">
-                        <td colspan="8">
-                            <div>Select a patient above to view billing</div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody id="billingBody">
+                        <tr class="no-data-row">
+                            <td colspan="8">
+                                <div>Select a patient above to view billing</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+    <div class="d-flex align-items-center gap-2 ml-3 pl-2">
+        <span class="badge text-bg-success mr-3"> </span> Cash Bill
+        <span class="badge text-bg-danger mr-3"> </span> Inactive Patient
+        <span class="badge text-bg-warning"> </span> Cancelled
+    </div>
+</div>
 
-</div>
-<div class="d-flex align-items-center gap-2 ml-2">
-    <span class="badge text-bg-success mr-3"> </span> Cash Bill
-    <span class="badge text-bg-danger mr-3"> </span> Inactive Patient
-    <span class="badge text-bg-warning"> </span> Cancelled
-</div>
 <!-- ── Action Bar ── -->
-<div class="d-flex align-items-center justify-content-center flex-wrap gap-3 mb-4">
+<div class="sticky-section d-flex align-items-center justify-content-center flex-wrap gap-3 mb-2">
     <div class="action-bar">
         <button type="button" class="btn btn-sm btn-outline-dark"><strong>
                 <i class="bi bi-check2-circle text-primary"></i> Ok</strong>

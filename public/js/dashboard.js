@@ -650,7 +650,7 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
     });
 });
 
-//datatable search functionality
+//datatable search functionality--need modification
 $(document).ready(function () {
 const searchInput = document.getElementById('tableSearch');
 

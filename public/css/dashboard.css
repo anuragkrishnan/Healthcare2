@@ -271,6 +271,7 @@ a[aria-expanded="true"] .submenu-arrow {
     background: #f4f6f9 !important;
 }
 
+
 /* Scrollbar */
 #content-area::-webkit-scrollbar {
     width: 6px;
@@ -288,6 +289,7 @@ a[aria-expanded="true"] .submenu-arrow {
 #content-area::-webkit-scrollbar-thumb:hover {
     background: rgba(13, 38, 93, 0.7);
 }
+
 
 /* Footer */
 .footer {
@@ -2061,6 +2063,21 @@ textarea {
     #consultation-tab {
         position: relative;
     }
+
+/* Table light design */
+.table-light  thead th {
+    background: var(--primary);
+    color: #fff;
+    text-align: left;
+    font-weight: 600;
+    padding: 8px 10px;
+    white-space: nowrap;
+    border-right: 1px solid rgba(255,255,255,0.15);
+  }
+
+ .table-light thead th:last-child { border-right: none; }
+
+
 
 @media (max-width:992px){
 
