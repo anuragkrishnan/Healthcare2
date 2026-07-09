@@ -1653,9 +1653,20 @@ input[type="time"] {
             font-family: Arial, sans-serif;
         }
 
+
+
+
+         /* Scroll Area */
+
+    .consultant-page .table-wrapper {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    
 /* Table alignment for list Consultant */
 
- .consultant-page.table {
+ .consultant-page .table {
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
@@ -1747,6 +1758,7 @@ input[type="time"] {
     align-items:flex-start;
     margin-top:10px;
 }
+
 
 .checkbox-wrapper{
     display:flex;

@@ -35,6 +35,9 @@ Route::get('/patients/add', function () {
 Route::get('/consultants', function () {
     return view('consultants.index');
 });
+Route::get('/consultants/schedule', function () {
+    return view('consultants.schedule');
+});
 
 Route::get('/receptionists', function () {
     return view('receptionists.index');
