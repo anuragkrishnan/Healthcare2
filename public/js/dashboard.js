@@ -169,7 +169,7 @@ $(document).on('click', '.delete-btn', function () {
     const row = $(this).closest('tr');
 
     Swal.fire({
-        title: 'Delete Speciality?',
+        title: 'Delete Item?',
         text: 'Are you sure you want to delete this?',
         icon: 'warning',
         showCancelButton: true,
