@@ -259,14 +259,14 @@ a[aria-expanded="true"] .submenu-arrow {
 
 /* Content Area Fixes -2 copy*/
 #content-area {
-     box-sizing: border-box !important;
+    box-sizing: border-box !important;
     margin: 0 !important;
-    color:#000;
+    color: #000;
 
     font-size: 11px !important;
-    flex:1;
-    overflow-y:auto;
-    padding:4px;
+    flex: 1;
+    overflow-y: auto;
+    padding: 4px;
 
     background: #f4f6f9 !important;
 }
@@ -2031,6 +2031,181 @@ textarea {
     cursor:pointer;
 }
 /* speciality form end */
+/* customer form starts */
+.customer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    background: #f8fafc;
+    padding: 20px;
+    border: 1px solid #cbd5e1;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+}
+
+.customer-form {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.customer-form .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.customer-form label {
+    width: 180px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.customer-form input {
+    flex: 1;
+}
+
+.customer-table-card {
+    margin-left: 10px;
+}
+
+/* customer form end */
+.customer-filter-th {
+    vertical-align: top;
+    padding: 8px 10px;
+}
+
+.customer-filter-input {
+    margin-bottom: 8px;
+}
+
+.customer-filter-input input {
+    width: 100%;
+}
+
+.customer-filter-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+/* ================= CUSTOMER ADD MODAL ================= */
+
+.customer-modal {
+    max-width: 95%;
+}
+
+.customer-modal-body {
+    padding: 12px;
+}
+
+/* Reduce spacing between sections */
+.customer-modal-body .card-section {
+    margin-bottom: 10px;
+}
+
+.customer-modal-body .form-container {
+    padding: 10px;
+}
+
+/* Compact 3-column layout */
+.customer-modal-body .grid-3-col {
+    gap: 12px;
+    padding: 8px;
+}
+
+/* Compact 2-column layout */
+.customer-modal-body .grid-2-col {
+    gap: 12px;
+}
+
+/* Reduce label width */
+.customer-modal-body .form-group {
+    grid-template-columns: 120px 1fr;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+/* Smaller labels */
+.customer-modal-body .form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+/* Compact inputs */
+.customer-modal-body .form-group input,
+.customer-modal-body .form-group select {
+    height: 30px;
+    font-size: 12px;
+    padding: 2px 8px;
+}
+
+/* Compact textarea */
+.customer-modal-body .form-group textarea {
+    height: 55px;
+    font-size: 12px;
+    padding: 5px 8px;
+    resize: none;
+}
+
+/* Radio & Checkbox */
+.customer-modal-body .form-check {
+    margin-bottom: 4px;
+}
+
+.customer-modal-body .form-check-label {
+    font-size: 12px;
+}
+
+.customer-modal-body .form-check-input {
+    width: 14px;
+    height: 14px;
+}
+
+/* Tabs */
+.customer-modal-body .nav-tabs .nav-link {
+    padding: 6px 15px;
+    font-size: 13px;
+}
+
+/*patient add consultation tab btns*/
+/*---Patient Page Designs----*/
+
+.section-heading {
+    background: #d3d5da;
+    border-color: #abaeac;
+    height: 25px;
+    padding: 0.15rem 0.4rem;
+    text-align: left;
+    border-radius: 0.35rem;
+    font-size: 11px;
+}
+
+.section-body {
+    padding-top: 8px;
+    border: none;
+    background: #f8fafc;
+}
+
+.nav-tab-btn {
+    height: 28px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+
+}
+
+.nav-tab-btn button {
+    font-size: 11px;
+    border: 1px solid #abaeac;
+}
+
+#consultation-tab {
+    position: relative;
+}
 /*---Patient Page Designs----*/
 /*patient add consultation tab btns*/
 
