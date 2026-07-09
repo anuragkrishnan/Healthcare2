@@ -37,6 +37,9 @@ Route::get('/consultants', function () {
 });
 Route::get('/consultants/schedule', function () {
     return view('consultants.schedule');
+});    
+Route::get('/speciality', function () {
+    return view('speciality.index');
 });
 
 Route::get('/receptionists', function () {

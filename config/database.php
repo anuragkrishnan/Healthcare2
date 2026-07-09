@@ -29,6 +29,7 @@ return [
     | is supported by Laravel. You're free to add / remove connections.
     |
     */
+    // db url added
 
     'connections' => [
 
