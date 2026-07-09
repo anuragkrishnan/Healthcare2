@@ -49,15 +49,25 @@
                         data-title="Patient Registration" data-icon="bi-person-add"
                         data-breadcrumb="Dashboard|Patients|Patient Registration">
                         <i class="bi bi-person-add"></i>
-                        Add Patient
+                        Patient Registration
 
                     </a>
                 </li>
                 <li>
                     <a href="#" class="load-page" data-url="{{ url('/patients') }}" data-title="Patient List"
-                        data-icon="bi-person-fill" data-breadcrumb="Dashboard|Patients|List Patient">
+                        data-icon="bi-person-fill" data-breadcrumb="Dashboard|Patients|Patient List">
                         <i class="bi bi-person-fill"></i>
-                        List Patient
+                        Patient List
+
+                    </a>
+                </li>
+                <!-- Search feature -->
+                <li>
+                    <a href="#" class="load-page" data-url="{{ url('/patients/search') }}"
+                        data-title="Patient Search" data-icon="bi-person-bounding-box"
+                        data-breadcrumb="Dashboard|Patients|Patient Search">
+                        <i class="bi bi-person-bounding-box"></i>
+                        Patient Search
 
                     </a>
                 </li>
