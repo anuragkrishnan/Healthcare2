@@ -1874,6 +1874,41 @@ textarea {
     font-family: Arial, sans-serif;
 }
 
+
+
+
+         /* Scroll Area */
+
+    .consultant-page .table-wrapper {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    
+/* Table alignment for list Consultant */
+
+ .consultant-page .table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.consultant-page .table th,
+.consultant-page .table td {
+    padding: 8px 10px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+
+        /* Main Form Layout  for List Consultant */
+.add-consultant-page .grid-3-col{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:20px;
+    padding:15px;
+    background:#fff;
 /*  Speciality Form*/
 
 .speciality-grid {
@@ -1912,6 +1947,78 @@ textarea {
     margin-left: 50px;
 }
 
+.add-consultant-page .form-group-vertical{
+    display:flex;
+    flex-direction:column;
+}
+
+.add-consultant-page .form-group-vertical label{
+    margin-bottom:4px;
+    font-weight:600;
+}
+
+.add-consultant-page .form-group-vertical input{
+    height:32px;
+}
+
+.add-consultant-page .border-end{
+    border-right:1px solid #d1d5db;
+}
+
+
+
+ .add-consultant-page #equal_row{
+    display:grid;
+    grid-template-columns:140px 1fr;
+    align-items:center;
+    gap:8px;
+    margin-bottom:8px;
+}
+
+.add-consultant-page .row.mb-2{
+    margin-bottom:8px !important;
+}
+
+.add-consultant-page .col-6{
+    padding-right:8px;
+    padding-left:8px;
+}
+/* Checkbox Section */
+.checkbox-group{
+    display:grid;
+    grid-template-columns:170px 1fr;
+    align-items:flex-start;
+    margin-top:10px;
+}
+
+
+.checkbox-wrapper{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.form-check{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:0;
+}
+
+.form-check-input{
+    width: 16px !important;
+    height:16px !important;
+    margin:0 !important;
+    cursor:pointer;
+}
+
+.form-check-label{
+    margin:0;
+    font-size:13px;
+    font-weight:500;
+    color:#374151;
+    cursor:pointer;
+}
 /* speciality form end */
 /*patient add consultation tab btns*/
  /*---Patient Page Designs----*/
