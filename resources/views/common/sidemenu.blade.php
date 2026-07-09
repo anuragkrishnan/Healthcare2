@@ -7,7 +7,7 @@
         </div>
 
         <div class="logo-text">
-            <h4>MediCare+</h4>
+            <h4>MediCare</h4>
             <small>Hospital System</small>
         </div>
 
