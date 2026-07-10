@@ -101,11 +101,11 @@
                 </li>
 
 
-                
 
-                
+
+
                 <li>
-                    <a href="#" class="load-page" data-url="{{ url('/speciality') }}"
+                    <a href="#" class="load-page" data-url="{{ route('master.specialities.index') }}"
                         data-title="Specialities List" data-icon="bi-person-vcard-fill"
                         data-breadcrumb="Dashboard|Specialities|List Specialities">
                         <i class="bi bi-person-vcard-fill"></i>
@@ -116,7 +116,7 @@
 
 
 
-                 <li>
+                <li>
                     <a href="#" class="load-page" data-url="{{ url('/consultants/schedule') }}"
                         data-title="Consultant Schedule" data-icon="bi-calendar-week"
                         data-breadcrumb="Dashboard|Consultants|Consultant Schedule">
@@ -126,14 +126,14 @@
                     </a>
                 </li>
 
-                
+
 
 
             </ul>
         </li>
 
 
-        
+
         <li>
             <a href="#" class="load-page" data-url="{{ url('/receptionists') }}" data-title="Receptionists"
                 data-icon="bi-person-badge" data-breadcrumb="Dashboard|Receptionists">

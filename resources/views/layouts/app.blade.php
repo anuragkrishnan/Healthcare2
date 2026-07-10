@@ -29,6 +29,8 @@
     <!--Dashboard charts -->
     <script src="{{ asset('js/chart.umd.js') }}"></script>
     <script src="{{ asset('js/chart.umd.min.js') }}"></script>
+    <!--- Jquery Validation --->
+    <script src="{{ asset('js/jquery.validate.min.js') }}"></script>
     <!--Custom JS -->
     <script src="{{ asset('js/dashboard.js') }}"></script>
     @stack('scripts')
