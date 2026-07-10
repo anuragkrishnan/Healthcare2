@@ -126,7 +126,7 @@ $(document).on('click', '.load-page', function (e) {
             initRevenueChart();  //dashboard chart
             initPatientChart();   //for dashboard chart
             initPatientsTable();  //patient datatable
-
+            initSpecialityValidation();
         },
         error: function (xhr) {
             console.log(xhr.responseText);
@@ -135,30 +135,30 @@ $(document).on('click', '.load-page', function (e) {
     });
 });
 // add success speciality
-$(document).on('click', '#btnSucs', function () {
+// $(document).on('click', '#btnSucs', function () {
 
-    Swal.fire({
-        icon: 'success',
-        title: 'Success',
-        text: 'Created successfully!',
-        confirmButtonText: 'OK'
-    }).then((result) => {
+//     Swal.fire({
+//         icon: 'success',
+//         title: 'Success',
+//         text: 'Created successfully!',
+//         confirmButtonText: 'OK'
+//     }).then((result) => {
 
-        if (result.isConfirmed) {
+//         if (result.isConfirmed) {
 
-            const modal = bootstrap.Modal.getInstance(
-                document.getElementById('specialityAddModal')
-            );
+//             const modal = bootstrap.Modal.getInstance(
+//                 document.getElementById('specialityAddModal')
+//             );
 
-            if (modal) {
-                modal.hide();
-            }
+//             if (modal) {
+//                 modal.hide();
+//             }
 
-        }
+//         }
 
-    });
+//     });
 
-});
+// });
 // edit speciality
 $(document).on('click', '#btnSuccess', function () {
 
@@ -675,3 +675,123 @@ if (searchInput) {
 }
 });
 
+//Speciality CRUD VAlidation and form submit
+function initSpecialityValidation() {
+
+    $('#specialityForm').validate({
+
+        rules: {
+            speciality_short_code: {
+                required: true,
+                maxlength: 20
+            },
+
+            speciality_name: {
+                required: true,
+                maxlength: 100
+            }
+        },
+
+        messages: {
+            speciality_short_code: {
+                required: "Please enter Speciality Short Code",
+                maxlength: "Maximum 20 characters allowed"
+            },
+
+            speciality_name: {
+                required: "Please enter Speciality Name",
+                maxlength: "Maximum 100 characters allowed"
+            }
+        },
+
+        errorElement: "span",
+
+        errorClass: "text-danger",
+
+        errorPlacement: function (error, element) {
+            error.insertAfter(element);
+        },
+
+        highlight: function (element) {
+            $(element).addClass("is-invalid");
+        },
+
+        unhighlight: function (element) {
+            $(element).removeClass("is-invalid");
+        }
+
+    });
+
+}
+
+// =============================
+// Save Speciality
+// =============================
+$(document).on('click', '#btnSave', function (e) {
+
+    e.preventDefault();
+
+    if (!$('#specialityForm').valid()) {
+        return;
+    }
+
+    $.ajax({
+
+        url: storeSpecialityUrl,
+
+        type: "POST",
+
+        data: $('#specialityForm').serialize(),
+
+        success: function (response) {
+
+            Swal.fire({
+                icon: "success",
+                title: "Success",
+                text: response.message,
+                timer: 1500,
+                showConfirmButton: false
+            });
+
+            $('#specialityAddModal').modal('hide');
+
+            $('#specialityForm')[0].reset();
+
+            $('#specialityTable').ajax.reload(null, false);
+
+        },
+
+        error: function (xhr) {
+
+            if (xhr.status === 422) {
+
+                let errors = xhr.responseJSON.errors;
+                let message = '';
+
+                $.each(errors, function (key, value) {
+                    message += value[0] + '<br>';
+                });
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Validation Error",
+                    html: message
+                });
+
+            } else {
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "Something went wrong."
+                });
+
+                console.log(xhr.responseText);
+
+            }
+
+        }
+
+    });
+
+});

@@ -54,123 +54,48 @@
 
             <div class="table-wrapper mt-1">
 
-                <table class="table table-dark table-hover align-middle mb-0">
+                <table class="table table-dark table-hover align-middle mb-0" id="specialityTable">
 
                     <thead>
 
                         <tr>
-                            <th width="70">Sl No</th>
-                            <th width="70">Code</th>
-                            <th width="200">Speciality</th>
-                            <th width="150" class="text-center">Action</th>
+                            <th>Sl No</th>
+                            <th>Speciality Code</th>
+                            <th>Speciality Name</th>
+                            <th>Status</th>
+                            <th class="text-center">Action</th>
 
                         </tr>
 
                     </thead>
 
-                    <tbody id="specialityTable">
+                    <tbody>
+                        @foreach ($specialities as $key => $speciality)
+                            <tr>
+                                <td class="text-secondary">{{ $key + 1 }}</td>
+                                <td class="text-secondary"> {{ $speciality->speciality_short_code }}</td>
+                                <td> {{ $speciality->speciality_name }}</td>
+                                <td>
+                                    @if ($speciality->status == 1)
+                                        Active
+                                    @else
+                                        Inactive
+                                    @endif
+                                </td>
+                                <td class="text-center">
 
-                        <tr>
-                            <td class="text-secondary">1</td>
-                            <td class="text-secondary">1100</td>
-                            <td>ANESTHESIA</td>
+                                    <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"
+                                        data-bs-target="#specialityEditModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                    <button class="btn btn-sm text-danger delete-btn">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
 
-                            <td class="text-center">
+                                </td>
 
-                                <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"
-                                    data-bs-target="#specialityEditModal">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                                <button class="btn btn-sm text-danger delete-btn">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td class="text-secondary">2</td>
-                            <td class="text-secondary">1101</td>
-                            <td>ANESTHESIA</td>
-                            <td class="text-center">
-
-                                <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"
-                                    data-bs-target="#specialityEditModal">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-
-                                <button class="btn btn-sm text-danger delete-btn">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-secondary">3</td>
-                            <td class="text-secondary">1102</td>
-                            <td>CARDIOLOGIST</td>
-                            <td class="text-center">
-
-                                <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"
-                                    data-bs-target="#specialityEditModal">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-
-                                <button class="btn btn-sm text-danger delete-btn">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-secondary">4</td>
-                            <td class="text-secondary">1103</td>
-                            <td>NEUROLOGIST</td>
-                            <td class="text-center">
-
-                                <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"
-                                    data-bs-target="#specialityEditModal">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-
-                                <button class="btn btn-sm text-danger delete-btn">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-secondary">5</td>
-                            <td class="text-secondary">1104</td>
-                            <td>ORTHOPEDIC SURGEON</td>
-                            <td class="text-center">
-
-                                <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"
-                                    data-bs-target="#specialityEditModal">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-
-                                <button class="btn btn-sm text-danger delete-btn">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                        </tr>
-                        <tr>
-                            <td class="text-secondary">6</td>
-                            <td class="text-secondary">1105</td>
-                            <td>DERMATOLOGIST</td>
-                            <td class="text-center">
-
-                                <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"
-                                    data-bs-target="#specialityEditModal">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-
-                                <button class="btn btn-sm text-danger delete-btn">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-                        </tr>
-
+                            </tr>
+                        @endforeach
 
                     </tbody>
 

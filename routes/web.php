@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Master\SpecialityController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -9,10 +10,10 @@ Route::get('/', function () {
 
 Route::get('/login', [AuthController::class, 'index']);
 
-Route::get('/redirectToDashboard', [AuthController::class, 'showDashboard'])
-    ->name('auth.redirectToDashboard');
-//Route::post('/login', [AuthController::class, 'authenticate'])
-// ->name('auth.login');
+// Route::get('/redirectToDashboard', [AuthController::class, 'showDashboard'])
+//     ->name('auth.redirectToDashboard');
+Route::post('/login', [AuthController::class, 'authenticate'])
+    ->name('auth.login');
 
 Route::get('/logout', [AuthController::class, 'logout'])
     ->name('logout');
@@ -44,13 +45,23 @@ Route::get('/consultants', function () {
 });
 Route::get('/consultants/schedule', function () {
     return view('consultants.schedule');
-});    
-Route::get('/speciality', function () {
-    return view('speciality.index');
 });
 Route::get('/customers', function () {
     return view('customers.index');
 });
+
+// Speciality Section
+Route::prefix('master')->group(function () {
+
+    Route::get('/speciality', [SpecialityController::class, 'index'])
+        ->name('master.specialities.index');
+
+    Route::post('/specialities', [SpecialityController::class, 'store'])
+        ->name('master.specialities.store');
+});
+// Route::get('/speciality', function () {
+//     return view('speciality.index');
+// });
 
 Route::get('/receptionists', function () {
     return view('receptionists.index');

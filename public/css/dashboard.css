@@ -2269,6 +2269,11 @@ textarea {
     gap: 10px;
 }
 
+label.error {
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
 @media (max-width:992px){
 
     .user-details{
