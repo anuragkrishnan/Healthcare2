@@ -6,7 +6,7 @@
                 <tr class="d-flex gap-3 align-items-center">
                     <td>
                         <strong>Patient Id:</strong>
-                        <input type="text" class="d-inline-block ml-2 p-0 px-1 border" placeholder="eg:17163"
+                        <input type="text" class="d-inline-block ml-2 p-0 px-1 border" placeholder="Type-> 17163"
                             style="width: 100px;" id="patientId">
                         <i class="bi bi-search cursor-pointer text-primary ms-1"></i>
                     </td>
@@ -20,7 +20,7 @@
                     <td>
                         <strong>Name:</strong>
                         <input type="text" style="width: 150px;" class="d-inline-block p-0 px-1 border"
-                            value="" id="name">
+                            value="" id="name" placeholder="Type-> fatima">
                     </td>
 
                     <td>
@@ -180,74 +180,43 @@
 
     </div>
 </div>
+@include('patients.modals.newreg')
 <script>
     // ---- Dummy datasets — replace with real ajax response later ----
 
     // Shown for "known" numeric input, e.g. patient ID 17163 or mobile 0542395255
     const numberDataset = [{
-            patientId: "17163",
-            idCardNo: "784199012345678",
-            name: "SUMESH",
-            middleName: "",
-            lastName: "SIDHARTH",
-            age: "45Y",
-            gender: "M",
-            mobile: "0542395255",
-            nationality: "INDIA",
-            occupation: "",
-            employeeId: "0",
-            customer: "GULF ASIAN MEDICAL CENTER - TCS - AL JAZEERA TAKAFUL",
-            remark: ""
-        },
-        {
-            patientId: "17164",
-            idCardNo: "784199012345679",
-            name: "RAJESH",
-            middleName: "",
-            lastName: "KUMAR",
-            age: "38Y",
-            gender: "M",
-            mobile: "0542395256",
-            nationality: "INDIA",
-            occupation: "DRIVER",
-            employeeId: "45",
-            customer: "GULF ASIAN MEDICAL CENTER - JUBAIL",
-            remark: ""
-        }
-    ];
+        patientId: "17163",
+        idCardNo: "784199012345678",
+        name: "SUMESH",
+        middleName: "",
+        lastName: "SIDHARTH",
+        age: "45Y",
+        gender: "M",
+        mobile: "0542395255",
+        nationality: "INDIA",
+        occupation: "",
+        employeeId: "0",
+        customer: "GULF ASIAN MEDICAL CENTER - TCS - AL JAZEERA TAKAFUL",
+        remark: ""
+    }];
 
     // Shown when letters are typed in the Name field
     const nameLetterDataset = [{
-            patientId: "18420",
-            idCardNo: "784198765432109",
-            name: "AHMED",
-            middleName: "KHALID",
-            lastName: "AL MANSOORI",
-            age: "32Y",
-            gender: "M",
-            mobile: "0501234567",
-            nationality: "UAE",
-            occupation: "ENGINEER",
-            employeeId: "112",
-            customer: "GULF ASIAN MEDICAL CENTER - JUBAIL",
-            remark: ""
-        },
-        {
-            patientId: "19005",
-            idCardNo: "784200011223344",
-            name: "FATIMA",
-            middleName: "",
-            lastName: "HASSAN",
-            age: "27Y",
-            gender: "F",
-            mobile: "0567891234",
-            nationality: "PAKISTAN",
-            occupation: "TEACHER",
-            employeeId: "0",
-            customer: "CASH PATIENT",
-            remark: ""
-        }
-    ];
+        patientId: "19005",
+        idCardNo: "784200011223344",
+        name: "FATIMA",
+        middleName: "",
+        lastName: "HASSAN",
+        age: "27Y",
+        gender: "F",
+        mobile: "0567891234",
+        nationality: "PAKISTAN",
+        occupation: "TEACHER",
+        employeeId: "0",
+        customer: "CASH PATIENT",
+        remark: ""
+    }];
 
     // Larger pool to draw random rows from when a number doesn't match a "known" one
     const randomPool = [{
@@ -341,7 +310,7 @@
 
     function renderRows(rows) {
         resultsBody.innerHTML = rows.map(p => `
-      <tr>
+      <tr class="${p ? 'row-clickable pat-row' : ''}" data-name="${p.name}" data-id="${p.patientId}">
         <td>${p.patientId}</td>
         <td>${p.name}</td>
         <td>${p.middleName}</td>
@@ -365,60 +334,18 @@
         return shuffled.slice(0, count);
     }
 
-    function runSearch(fieldKey, rawValue) {
-        const value = rawValue.trim();
-
-        if (!value) {
-            renderNoData();
-            return;
-        }
-
-        const isNumeric = /^\d+$/.test(value);
-        const isAlpha = /^[a-zA-Z\s]+$/.test(value);
-
-        // Letters typed in the Name field -> fixed letter dataset
-        if (fieldKey === 'name' && isAlpha) {
-            renderRows(nameLetterDataset);
-            return;
-        }
-
-        // Numbers typed in any field
-        if (isNumeric) {
-            if (knownNumbers.includes(value)) {
-                renderRows(numberDataset);
-            } else {
-                // "Random" / unrecognized number -> random set of data
-                renderRows(getRandomRows());
-            }
-            return;
-        }
-
-        // Anything else (e.g. letters in a non-name field) -> no match
-        renderNoData();
-    }
-
-    // Attach Enter-key listener to each top field
-    const fieldMap = {
-        patientId: 'patientId',
-        idCardNo: 'idCardNo',
-        name: 'name',
-        mobile: 'mobile'
-    };
-
-    Object.keys(fieldMap).forEach(inputId => {
-        const input = document.getElementById(inputId);
-        if (!input) return;
-
-        input.addEventListener('keyup', function(e) {
-            if (e.key === 'Enter') {
-                runSearch(fieldMap[inputId], this.value);
-            }
-        });
-    });
-
-    // Dummy history dataset, keyed by patientId — replace with real ajax lookup later
+    // ---- Dummy history dataset, keyed by patientId — replace with real ajax lookup later ----
     const patientHistoryData = {
         "17163": [{
+                type: "REG",
+                docNo: "2622846",
+                docDate: "10/06/2026 10:55PM",
+                consultant: "DR. MADHAVI LATHA MAGATAPALLI",
+                netAmount: "28.75",
+                paymentMode: "Credit",
+                remarks: ""
+            },
+            {
                 type: "PHARMACY",
                 docNo: "11869276",
                 docDate: "11/03/2026 10:09AM",
@@ -467,19 +394,22 @@
     }
 
     function renderHistoryRows(rows) {
-        patientHistoryBody.innerHTML = rows.map(r => `
-    <tr>
-      <td>${r.type}</td>
-      <td>${r.docNo}</td>
-      <td>${r.docDate}</td>
-      <td>${r.consultant}</td>
-      <td>${r.netAmount}</td>
-      <td>${r.paymentMode}</td>
-      <td>${r.remarks}</td>
-    </tr>
-  `).join('');
+        patientHistoryBody.innerHTML = rows.map(r => {
+
+            return `
+      <tr>
+        <td>${r.type}</td>
+        <td>${r.docNo}</td>
+        <td>${r.docDate}</td>
+        <td>${r.consultant}</td>
+        <td>${r.netAmount}</td>
+        <td>${r.paymentMode}</td>
+        <td>${r.remarks}</td>
+      </tr>`;
+        }).join('');
     }
-    // Dummy billing dataset, keyed by patientId — replace with real ajax lookup later
+
+    // ---- Dummy billing dataset, keyed by patientId — replace with real ajax lookup later ----
     const patientBillingData = {
         "17163": [{
             sNo: "4782937",
@@ -538,18 +468,88 @@
   `).join('');
     }
 
-    // Extend the existing click handler so both tables update together
-    document.getElementById('resultsBody').addEventListener('click', function(e) {
-        const row = e.target.closest('tr');
-        if (!row || row.classList.contains('no-data-row')) return;
-
-        const patientId = row.querySelector('td')?.textContent.trim();
-        if (!patientId) return;
-
+    // NEW: populate history + billing together for a given patientId
+    function populateRelatedTables(patientId) {
         const history = patientHistoryData[patientId];
         history ? renderHistoryRows(history) : renderNoHistory();
 
         const billing = patientBillingData[patientId];
         billing ? renderBillingRows(billing) : renderNoBilling();
+    }
+
+    function runSearch(fieldKey, rawValue) {
+        const value = rawValue.trim();
+
+        if (!value) {
+            renderNoData();
+            renderNoHistory();
+            renderNoBilling();
+            return;
+        }
+
+        const isNumeric = /^\d+$/.test(value);
+        const isAlpha = /^[a-zA-Z\s]+$/.test(value);
+
+        let matchedRows = null;
+
+        // Letters typed in the Name field -> fixed letter dataset
+        if (fieldKey === 'name' && isAlpha) {
+            matchedRows = nameLetterDataset;
+        }
+        // Numbers typed in any field
+        else if (isNumeric) {
+            matchedRows = knownNumbers.includes(value) ? numberDataset : getRandomRows();
+        }
+
+        if (matchedRows && matchedRows.length) {
+            renderRows(matchedRows);
+            // NEW: auto-populate history & billing for the first matched patient
+            populateRelatedTables(matchedRows[0].patientId);
+        } else {
+            renderNoData();
+            renderNoHistory();
+            renderNoBilling();
+        }
+    }
+
+    // Attach Enter-key listener to each top field
+    const fieldMap = {
+        patientId: 'patientId',
+        idCardNo: 'idCardNo',
+        name: 'name',
+        mobile: 'mobile'
+    };
+
+    Object.keys(fieldMap).forEach(inputId => {
+        const input = document.getElementById(inputId);
+        if (!input) return;
+
+        input.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                runSearch(fieldMap[inputId], this.value);
+            }
+        });
+    });
+
+    // CHANGED: clicking a patient row in the results table now opens the modal
+    // (instead of populating history/billing, which already happened on search).
+    // Reusing the existing regModal fields — mapped to patient info here.
+    // Swap these mappings/fields if you'd rather show different patient details.
+    resultsBody.addEventListener('click', function(e) {
+        const row = e.target.closest('tr');
+        if (!row || row.classList.contains('no-data-row')) return;
+
+        const cells = row.querySelectorAll('td');
+        const patientId = cells[0]?.textContent.trim();
+        const firstName = cells[1]?.textContent.trim();
+        const lastName = cells[3]?.textContent.trim();
+        const mobile = cells[6]?.textContent.trim();
+
+        document.getElementById('regPatId').value = patientId || '';
+        document.getElementById('regName').value = `${firstName || ''} ${lastName || ''}`.trim();
+        document.getElementById('regMobile').value = mobile || '';
+
+        const modal = new bootstrap.Modal(document.getElementById('regModal'));
+        modal.show();
     });
 </script>

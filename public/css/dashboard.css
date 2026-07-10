@@ -1894,7 +1894,7 @@ textarea {
         overflow-y: auto;
         overflow-x: hidden;
     }
-    
+
 /* Table alignment for list Consultant */
 
  .consultant-page .table {
@@ -2031,7 +2031,14 @@ textarea {
     cursor:pointer;
 }
 /* speciality form end */
-/*---Patient Page Designs----*/
+/*---Patient Search Page Designs----*/
+.row-clickable {
+    cursor: pointer;
+}
+
+.row-clickable:hover {
+    background: #eef4f6 !important;
+}
 /*patient add consultation tab btns*/
 
     .section-heading {
@@ -2077,7 +2084,14 @@ textarea {
 
  .table-light thead th:last-child { border-right: none; }
 
-
+/* new registration modal */
+#regModal .modal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+    gap: 10px;
+}
 
 @media (max-width:992px){
 
