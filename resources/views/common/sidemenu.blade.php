@@ -106,10 +106,18 @@
                 
                 <li>
                     <a href="#" class="load-page" data-url="{{ url('/speciality') }}"
-                        data-title="Specialities List" data-icon="bi-person-vcard-fill"
+                        data-title="Specialities List" data-icon="bi-heart-pulse"
                         data-breadcrumb="Dashboard|Specialities|List Specialities">
-                        <i class="bi bi-person-vcard-fill"></i>
+                        <i class="bi bi-heart-pulse"></i>
                         Speciality
+
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="load-page" data-url="{{ url('/customers') }}" data-title="Customer Master"
+                        data-icon="bi-people-fill" data-breadcrumb="Dashboard|Customers|List Customers">
+                        <i class="bi bi-people-fill"></i>
+                        Customers
 
                     </a>
                 </li>

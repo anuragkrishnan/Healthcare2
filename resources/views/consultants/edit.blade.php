@@ -40,27 +40,27 @@
 </table>
             </div>
         <div class="d-flex align-items-center gap-2">
-           
+
         </div>
     </div>
 
     <!-- Main Registration Section Form Container -->
     <div class="card-section">
-      
+
 
 
 
 <div class="form-container">
     <div class="tabs">
         <div class="tab active">Doctor Details</div>
-        
+
     </div>
      <div class="row g-4">
     <!-- left -->
-   
+
 
                     <div class="col-lg-6 border-end pe-4">
-                       
+
                             <div class="form-group">
                                 <label>Doctor ID</label>
                                 <input type="text" placeholder="🔍" value="1100">
@@ -77,7 +77,7 @@
                                 <label>Address</label>
                                 <textarea>123 Street</textarea>
                             </div>
-                        
+
                                 <div class="form-group">
                                     <label>Qualification</label>
                                     <input type="text" value="MBBS">
@@ -110,7 +110,7 @@
                                 <label>Free  Consultation Days for credit Registration</label>
                                 <input type="text" value="600">
                             </div>
-                            
+
 
               <!-- Checkbox Section -->
 <div class="form-group checkbox-group">
@@ -146,15 +146,15 @@
 
 
         </div>
-<!-- Right -->   
+<!-- Right -->
                 <div class="col-lg-6 ps-4">
                             <div class="form-group">
                                 <label style="font-size:10px;">User ID</label>
                                 <input type="text" value="639564" style="background:#e2e8f0;" readonly>
                             </div>
-                    
 
-                        
+
+
                             <div class="form-group">
                                 <label>License No.</label>
                                 <input type="text" value="1276587">
@@ -186,9 +186,9 @@
                             </div>
 
 
-                            
 
-                
+
+
 
                 <div class="row mb-2">
 
@@ -211,9 +211,9 @@
                  </div>
 
         </div>
-                            
-                       
-        
+
+
+
 
 
         <!-- Default Rate -->
@@ -274,7 +274,7 @@
 </div>
 
 
-        
+
                         </div>
                     </div>
                 </div>
@@ -301,10 +301,10 @@
 
     </div>
 
-</div> 
 </div>
- 
- 
- 
+</div>
+
+
+
 
 
