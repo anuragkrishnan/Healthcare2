@@ -46,6 +46,9 @@ Route::get('/consultants', function () {
 Route::get('/consultants/schedule', function () {
     return view('consultants.schedule');
 });
+Route::get('/customers', function () {
+    return view('customers.index');
+});
 
 // Speciality Section
 Route::prefix('master')->group(function () {
