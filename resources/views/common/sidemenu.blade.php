@@ -7,7 +7,7 @@
         </div>
 
         <div class="logo-text">
-            <h4>MediCare+</h4>
+            <h4>MediCare</h4>
             <small>Hospital System</small>
         </div>
 
@@ -49,15 +49,25 @@
                         data-title="Patient Registration" data-icon="bi-person-add"
                         data-breadcrumb="Dashboard|Patients|Patient Registration">
                         <i class="bi bi-person-add"></i>
-                        Add Patient
+                        Patient Registration
 
                     </a>
                 </li>
                 <li>
                     <a href="#" class="load-page" data-url="{{ url('/patients') }}" data-title="Patient List"
-                        data-icon="bi-person-fill" data-breadcrumb="Dashboard|Patients|List Patient">
+                        data-icon="bi-person-fill" data-breadcrumb="Dashboard|Patients|Patient List">
                         <i class="bi bi-person-fill"></i>
-                        List Patient
+                        Patient List
+
+                    </a>
+                </li>
+                <!-- Search feature -->
+                <li>
+                    <a href="#" class="load-page" data-url="{{ url('/patients/search') }}"
+                        data-title="Patient Search" data-icon="bi-person-bounding-box"
+                        data-breadcrumb="Dashboard|Patients|Patient Search">
+                        <i class="bi bi-person-bounding-box"></i>
+                        Patient Search
 
                     </a>
                 </li>
@@ -89,9 +99,14 @@
 
                     </a>
                 </li>
+
+
+
+
+
                 <li>
-                    <a href="#" class="load-page" data-url="{{ url('/speciality') }}"
-                        data-title="Specialities List" data-icon="bi-heart-pulse"
+                    <a href="#" class="load-page" data-url="{{ route('master.specialities.index') }}"
+                        data-title="Specialities List" data-icon="bi-person-vcard-fill"
                         data-breadcrumb="Dashboard|Specialities|List Specialities">
                         <i class="bi bi-heart-pulse"></i>
                         Speciality
@@ -136,8 +151,25 @@
                 </li>
 
 
+
+                <li>
+                    <a href="#" class="load-page" data-url="{{ url('/consultants/schedule') }}"
+                        data-title="Consultant Schedule" data-icon="bi-calendar-week"
+                        data-breadcrumb="Dashboard|Consultants|Consultant Schedule">
+                        <i class="bi bi-calendar-week"></i>
+                        Consultant Schedule
+
+                    </a>
+                </li>
+
+
+
+
             </ul>
         </li>
+
+
+
         <li>
             <a href="#" class="load-page" data-url="{{ url('/receptionists') }}" data-title="Receptionists"
                 data-icon="bi-person-badge" data-breadcrumb="Dashboard|Receptionists">

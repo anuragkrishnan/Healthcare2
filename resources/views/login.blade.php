@@ -64,7 +64,7 @@
         }
 
         .btn-login {
-            height: 45px;
+            height: 40px;
             border-radius: 12px;
             font-weight: 600;
         }
@@ -75,8 +75,8 @@
         }
 
         .form-control {
-            height: 45px !important;
-            border-radius: 12px;
+            height: 40px !important;
+            border-radius: 8px;
         }
 
         @media (max-width: 991px) {
@@ -118,17 +118,14 @@
                             </p>
                         </div>
 
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul class="mb-0">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
+                        @if (session('error'))
+                            <div class="alert alert-danger d-flex align-items-center"
+                                style="height:30px; font-size:11px;">
+                                {{ session('error') }}
                             </div>
                         @endif
 
-                        <form method="GET" action="{{ route('auth.redirectToDashboard') }}">
+                        <form method="POST" action="{{ route('auth.login') }}">
                             @csrf
 
                             <div class="mb-3">

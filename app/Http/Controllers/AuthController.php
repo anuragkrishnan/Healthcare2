@@ -8,16 +8,16 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function login()
+    public function index()
     {
         return view('login');
     }
 
     //dummy redirect
-    public function showDashboard()
-    {
-        return redirect('/dashboard');
-    }
+    // public function showDashboard()
+    // {
+    //     return redirect('/dashboard');
+    // }
 
     public function authenticate(Request $request)
     {
@@ -30,7 +30,7 @@ class AuthController extends Controller
             return back()->with(
                 'error',
                 'User not found'
-            );
+            )->withInput();
         }
 
         if (!Hash::check(
@@ -40,7 +40,7 @@ class AuthController extends Controller
             return back()->with(
                 'error',
                 'Invalid Password'
-            );
+            )->withInput();
         }
 
         session([

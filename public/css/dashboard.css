@@ -256,6 +256,7 @@ a[aria-expanded="true"] .submenu-arrow {
     overflow: visible !important;
 }
 
+
 /* Content Area Fixes -2 copy*/
 #content-area {
     box-sizing: border-box !important;
@@ -269,6 +270,7 @@ a[aria-expanded="true"] .submenu-arrow {
 
     background: #f4f6f9 !important;
 }
+
 
 /* Scrollbar */
 #content-area::-webkit-scrollbar {
@@ -287,6 +289,7 @@ a[aria-expanded="true"] .submenu-arrow {
 #content-area::-webkit-scrollbar-thumb:hover {
     background: rgba(13, 38, 93, 0.7);
 }
+
 
 /* Footer */
 .footer {
@@ -393,9 +396,10 @@ a[aria-expanded="true"] .submenu-arrow {
 
 /* Header Right */
 .header-right {
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
+     display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:12px;
     align-items: center;
 }
 
@@ -416,6 +420,13 @@ a[aria-expanded="true"] .submenu-arrow {
     gap: 10px;
     padding: 6px 10px;
     cursor: pointer;
+
+}
+
+.user-info-toggle{
+    background:none;
+    border:none;
+    padding:0;
 }
 
 .user-img {
@@ -650,7 +661,7 @@ hr.drawer-divider {
 
 /* Active breadcrumb */
 .title-section .breadcrumb-item.active {
-    color: var(--primary);
+    color: #2195d1;
     font-weight: 600;
 }
 
@@ -1019,8 +1030,8 @@ input[type="time"] {
 
 /* ---- launcher button ---- */
 .chat-launcher {
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background: var(--primary);
     border: none;
@@ -1497,7 +1508,6 @@ input[type="time"] {
 .table-actions {
 
     margin-left: auto;
-
     display: flex;
     align-items: center;
     gap: 12px;
@@ -1516,7 +1526,7 @@ input[type="time"] {
 
     position: absolute;
 
-    left: 12px;
+    left: 130px;
 
     top: 50%;
 
@@ -1874,6 +1884,42 @@ textarea {
     font-family: Arial, sans-serif;
 }
 
+
+
+
+         /* Scroll Area */
+
+    .consultant-page .table-wrapper {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+/* Table alignment for list Consultant */
+
+ .consultant-page .table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.consultant-page .table th,
+.consultant-page .table td {
+    padding: 8px 10px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+
+        /* Main Form Layout  for List Consultant */
+.add-consultant-page .grid-3-col{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:20px;
+    padding:15px;
+    background:#fff;
+}
 /*  Speciality Form*/
 
 .speciality-grid {
@@ -1912,7 +1958,87 @@ textarea {
     margin-left: 50px;
 }
 
+.add-consultant-page .form-group-vertical{
+    display:flex;
+    flex-direction:column;
+}
+
+.add-consultant-page .form-group-vertical label{
+    margin-bottom:4px;
+    font-weight:600;
+}
+
+.add-consultant-page .form-group-vertical input{
+    height:32px;
+}
+
+.add-consultant-page .border-end{
+    border-right:1px solid #d1d5db;
+}
+
+
+
+ .add-consultant-page #equal_row{
+    display:grid;
+    grid-template-columns:140px 1fr;
+    align-items:center;
+    gap:8px;
+    margin-bottom:8px;
+}
+
+.add-consultant-page .row.mb-2{
+    margin-bottom:8px !important;
+}
+
+.add-consultant-page .col-6{
+    padding-right:8px;
+    padding-left:8px;
+}
+/* Checkbox Section */
+.checkbox-group{
+    display:grid;
+    grid-template-columns:170px 1fr;
+    align-items:flex-start;
+    margin-top:10px;
+}
+
+
+.checkbox-wrapper{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.form-check{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:0;
+}
+
+.form-check-input{
+    width: 16px !important;
+    height:16px !important;
+    margin:0 !important;
+    cursor:pointer;
+}
+
+.form-check-label{
+    margin:0;
+    font-size:13px;
+    font-weight:500;
+    color:#374151;
+    cursor:pointer;
+}
 /* speciality form end */
+/*---Patient Search Page Designs----*/
+.row-clickable {
+    cursor: pointer;
+}
+
+.row-clickable:hover {
+    background: #eef4f6 !important;
+}
 /* customer form starts */
 .customer-grid {
     display: grid;
@@ -2269,3 +2395,85 @@ textarea {
     margin-left: 18px;
 
 }
+/*---Patient Page Designs----*/
+/*patient add consultation tab btns*/
+
+    .section-heading {
+       background: #d3d5da;
+        border-color: #abaeac;
+        height: 25px;
+        padding: 0.15rem 0.4rem;
+        text-align: left;
+        border-radius: 0.35rem;
+        font-size: 11px;
+    }
+    .section-body{
+    padding-top:8px;
+    border:none;
+    background:#f8fafc;
+}
+.nav-tab-btn  {
+        height: 28px;
+       position:absolute;
+       top:0;
+       right:0;
+        display: flex;
+
+    }
+     .nav-tab-btn button {
+    font-size:11px;
+        border: 1px solid #abaeac;
+    }
+    #consultation-tab {
+        position: relative;
+    }
+
+/* Table light design */
+.table-light  thead th {
+    background: var(--primary);
+    color: #fff;
+    text-align: left;
+    font-weight: 600;
+    padding: 8px 10px;
+    white-space: nowrap;
+    border-right: 1px solid rgba(255,255,255,0.15);
+  }
+
+ .table-light thead th:last-child { border-right: none; }
+
+/* new registration modal */
+#regModal .modal-header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+    gap: 10px;
+}
+
+label.error {
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+@media (max-width:992px){
+
+    .user-details{
+        display:none;
+    }
+
+    .header-right{
+        gap:8px;
+    }
+
+}
+
+@media (max-width:576px){
+
+    .user-img{
+        width:30px;
+        height:30px;
+    }
+
+}
+
+

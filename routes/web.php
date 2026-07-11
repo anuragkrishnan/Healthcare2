@@ -2,15 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Master\SpecialityController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [AuthController::class, 'login']);
+Route::get('/login', [AuthController::class, 'index']);
 
-Route::get('/redirectToDashboard', [AuthController::class, 'showDashboard'])
-    ->name('auth.redirectToDashboard');
+// Route::get('/redirectToDashboard', [AuthController::class, 'showDashboard'])
+//     ->name('auth.redirectToDashboard');
 Route::post('/login', [AuthController::class, 'authenticate'])
     ->name('auth.login');
 
@@ -25,18 +26,25 @@ Route::get('/dashboard/home', function () {
     return view('dashboard.home');
 });
 
+// patients Section
+
 Route::get('/patients', function () {
     return view('patients.index');
 });
 Route::get('/patients/add', function () {
     return view('patients.add');
 });
+Route::get('/patients/search', function () {
+    return view('patients.search');
+});
+
+
 
 Route::get('/consultants', function () {
     return view('consultants.index');
 });
-Route::get('/speciality', function () {
-    return view('speciality.index');
+Route::get('/consultants/schedule', function () {
+    return view('consultants.schedule');
 });
 Route::get('/customers', function () {
     return view('customers.index');
@@ -44,6 +52,19 @@ Route::get('/customers', function () {
 Route::get('/category', function () {
     return view('customers.category');
 });
+
+// Speciality Section
+Route::prefix('master')->group(function () {
+
+    Route::get('/speciality', [SpecialityController::class, 'index'])
+        ->name('master.specialities.index');
+
+    Route::post('/specialities', [SpecialityController::class, 'store'])
+        ->name('master.specialities.store');
+});
+// Route::get('/speciality', function () {
+//     return view('speciality.index');
+// });
 
 Route::get('/receptionists', function () {
     return view('receptionists.index');
