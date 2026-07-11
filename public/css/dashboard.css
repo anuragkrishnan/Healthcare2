@@ -153,7 +153,7 @@ body {
 /*---sub menu items ----*/
 .submenu {
     list-style: none;
-    padding-left: 25px;
+    padding-left: 42px;
 
 }
 
@@ -396,10 +396,10 @@ a[aria-expanded="true"] .submenu-arrow {
 
 /* Header Right */
 .header-right {
-     display:flex;
-    align-items:center;
-    justify-content:flex-end;
-    gap:12px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
     align-items: center;
 }
 
@@ -423,10 +423,10 @@ a[aria-expanded="true"] .submenu-arrow {
 
 }
 
-.user-info-toggle{
-    background:none;
-    border:none;
-    padding:0;
+.user-info-toggle {
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 .user-img {
@@ -1887,17 +1887,17 @@ textarea {
 
 
 
-         /* Scroll Area */
+/* Scroll Area */
 
-    .consultant-page .table-wrapper {
-        flex: 1;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
+.consultant-page .table-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 
 /* Table alignment for list Consultant */
 
- .consultant-page .table {
+.consultant-page .table {
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
@@ -1912,14 +1912,15 @@ textarea {
 }
 
 
-        /* Main Form Layout  for List Consultant */
-.add-consultant-page .grid-3-col{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:20px;
-    padding:15px;
-    background:#fff;
+/* Main Form Layout  for List Consultant */
+.add-consultant-page .grid-3-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 15px;
+    background: #fff;
 }
+
 /*  Speciality Form*/
 
 .speciality-grid {
@@ -1958,226 +1959,81 @@ textarea {
     margin-left: 50px;
 }
 
-.add-consultant-page .form-group-vertical{
-    display:flex;
-    flex-direction:column;
-}
-
-.add-consultant-page .form-group-vertical label{
-    margin-bottom:4px;
-    font-weight:600;
-}
-
-.add-consultant-page .form-group-vertical input{
-    height:32px;
-}
-
-.add-consultant-page .border-end{
-    border-right:1px solid #d1d5db;
-}
-
-
-
- .add-consultant-page #equal_row{
-    display:grid;
-    grid-template-columns:140px 1fr;
-    align-items:center;
-    gap:8px;
-    margin-bottom:8px;
-}
-
-.add-consultant-page .row.mb-2{
-    margin-bottom:8px !important;
-}
-
-.add-consultant-page .col-6{
-    padding-right:8px;
-    padding-left:8px;
-}
-/* Checkbox Section */
-.checkbox-group{
-    display:grid;
-    grid-template-columns:170px 1fr;
-    align-items:flex-start;
-    margin-top:10px;
-}
-
-
-.checkbox-wrapper{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.form-check{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    margin:0;
-}
-
-.form-check-input{
-    width: 16px !important;
-    height:16px !important;
-    margin:0 !important;
-    cursor:pointer;
-}
-
-.form-check-label{
-    margin:0;
-    font-size:13px;
-    font-weight:500;
-    color:#374151;
-    cursor:pointer;
-}
-/* speciality form end */
-/*---Patient Search Page Designs----*/
-.row-clickable {
-    cursor: pointer;
-}
-
-.row-clickable:hover {
-    background: #eef4f6 !important;
-}
-/* customer form starts */
-.customer-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-    background: #f8fafc;
-    padding: 20px;
-    border: 1px solid #cbd5e1;
-    border-top: none;
-    border-radius: 0 0 10px 10px;
-}
-
-.customer-form {
-    width: 70%;
-    margin: 0 auto;
-}
-
-.customer-form .form-group {
+.add-consultant-page .form-group-vertical {
     display: flex;
-    align-items: center;
-    margin-bottom: 18px;
+    flex-direction: column;
 }
 
-.customer-form label {
-    width: 180px;
+.add-consultant-page .form-group-vertical label {
+    margin-bottom: 4px;
     font-weight: 600;
-    color: #495057;
 }
 
-.customer-form input {
-    flex: 1;
+.add-consultant-page .form-group-vertical input {
+    height: 32px;
 }
 
-.customer-table-card {
-    margin-left: 10px;
+.add-consultant-page .border-end {
+    border-right: 1px solid #d1d5db;
 }
 
-/* customer form end */
-.customer-filter-th {
-    vertical-align: top;
-    padding: 8px 10px;
-}
 
-.customer-filter-input {
+
+.add-consultant-page #equal_row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    align-items: center;
+    gap: 8px;
     margin-bottom: 8px;
 }
 
-.customer-filter-input input {
-    width: 100%;
+.add-consultant-page .row.mb-2 {
+    margin-bottom: 8px !important;
 }
 
-.customer-filter-title {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.2;
-    white-space: nowrap;
+.add-consultant-page .col-6 {
+    padding-right: 8px;
+    padding-left: 8px;
 }
 
-/* ================= CUSTOMER ADD MODAL ================= */
-
-.customer-modal {
-    max-width: 95%;
+/* Checkbox Section */
+.checkbox-group {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    align-items: flex-start;
+    margin-top: 10px;
 }
 
-.customer-modal-body {
-    padding: 12px;
+
+.checkbox-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-/* Reduce spacing between sections */
-.customer-modal-body .card-section {
-    margin-bottom: 10px;
-}
-
-.customer-modal-body .form-container {
-    padding: 10px;
-}
-
-/* Compact 3-column layout */
-.customer-modal-body .grid-3-col {
-    gap: 12px;
-    padding: 8px;
-}
-
-/* Compact 2-column layout */
-.customer-modal-body .grid-2-col {
-    gap: 12px;
-}
-
-/* Reduce label width */
-.customer-modal-body .form-group {
-    grid-template-columns: 120px 1fr;
+.form-check {
+    display: flex;
+    align-items: center;
     gap: 8px;
-    margin-bottom: 5px;
+    margin: 0;
 }
 
-/* Smaller labels */
-.customer-modal-body .form-group label {
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 0;
-    white-space: nowrap;
+.form-check-input {
+    width: 16px !important;
+    height: 16px !important;
+    margin: 0 !important;
+    cursor: pointer;
 }
 
-/* Compact inputs */
-.customer-modal-body .form-group input,
-.customer-modal-body .form-group select {
-    height: 30px;
-    font-size: 12px;
-    padding: 2px 8px;
-}
-
-/* Compact textarea */
-.customer-modal-body .form-group textarea {
-    height: 55px;
-    font-size: 12px;
-    padding: 5px 8px;
-    resize: none;
-}
-
-/* Radio & Checkbox */
-.customer-modal-body .form-check {
-    margin-bottom: 4px;
-}
-
-.customer-modal-body .form-check-label {
-    font-size: 12px;
-}
-
-.customer-modal-body .form-check-input {
-    width: 14px;
-    height: 14px;
-}
-
-/* Tabs */
-.customer-modal-body .nav-tabs .nav-link {
-    padding: 6px 15px;
+.form-check-label {
+    margin: 0;
     font-size: 13px;
+    font-weight: 500;
+    color: #374151;
+    cursor: pointer;
 }
 
+/* speciality */
 /*patient add consultation tab btns*/
 /*---Patient Page Designs----*/
 
@@ -2215,225 +2071,13 @@ textarea {
     position: relative;
 }
 
-/* category */
-.cc-form .form-label {
-    font-size: 13px;
-    font-weight: 600;
-    color: #444;
-    margin-bottom: 4px;
-}
 
-.cc-form .form-control-sm {
-    height: 34px;
-    font-size: 13px;
-}
-
-.cc-form hr {
-    margin: 18px 0;
-}
-
-/*  */
-
-#customerTree {
-    font-size: 14px;
-    padding: 6px 0;
-}
-
-.cc-tree {
-    list-style: none;
-    margin: 0;
-    padding-left: 18px;
-}
-
-.cc-tree ul {
-    list-style: none;
-    margin: 0;
-    padding-left: 22px;
-    position: relative;
-}
-
-/* vertical line */
-.cc-tree ul::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 10px;
-    border-left: 1px solid #cfcfcf;
-}
-
-/* horizontal line */
-.cc-tree li {
-    position: relative;
-    margin: 2px 0;
-}
-
-.cc-tree li::before {
-    content: "";
-    position: absolute;
-    left: 10px;
-    top: 18px;
-    width: 14px;
-    border-top: 1px solid #cfcfcf;
-}
-
-/* root items */
-.cc-tree>li::before {
-    display: none;
-}
-
-.cc-row {
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    min-height: 28px;
-
-    padding: 2px 4px 2px 2px;
-
-    cursor: pointer;
-
-    border-radius: 2px;
-
-    transition: .15s;
-
-}
-
-.cc-row:hover {
-
-    background: #eef6ff;
-
-}
-
-.cc-left {
-
-    display: flex;
-    align-items: center;
-
-    flex: 1;
-
-    overflow: hidden;
-
-}
-
-.cc-arrow {
-
-    width: 14px;
-
-    font-size: 12px;
-
-    color: #555;
-
-    margin-right: 4px;
-
-}
-/* .cc-actions{
-    display:flex;
-    flex-direction:column;
-    margin-left:10px;
-} */
-
-.cc-empty {
-
-    width: 14px;
-
-    display: inline-block;
-
-    margin-right: 4px;
-
-}
-
-.cc-name {
-
-    font-size: 14px;
-
-    color: #222;
-
-    white-space: nowrap;
-
-}
-
-/* folder/file icons */
-
-.cc-folder .fa-folder-open,
-.cc-folder .fa-folder {
-
-    color: #f2b300;
-
-}
-
-.cc-company .fa-file-alt,
-.cc-company .fa-file {
-
-    color: #4f81bd;
-
-}
-
-/* selected row */
-
-.cc-row.active {
-
-    background: #cdeeff;
-
-}
-
-/* right buttons */
-
-
-.cc-row:hover {
-
-    opacity: 1;
-
-}
-
-
-/* child indent */
-
-.cc-child {
-
-    margin-left: 18px;
-
-}
-/*---Patient Page Designs----*/
-/*patient add consultation tab btns*/
-
-    .section-heading {
-       background: #d3d5da;
-        border-color: #abaeac;
-        height: 25px;
-        padding: 0.15rem 0.4rem;
-        text-align: left;
-        border-radius: 0.35rem;
-        font-size: 11px;
-    }
-    .section-body{
-    padding-top:8px;
-    border:none;
-    background:#f8fafc;
-}
-.nav-tab-btn  {
-        height: 28px;
-       position:absolute;
-       top:0;
-       right:0;
-        display: flex;
-
-    }
-     .nav-tab-btn button {
-    font-size:11px;
-        border: 1px solid #abaeac;
-    }
-    #consultation-tab {
-        position: relative;
-    }
-
-
-    /* ---- Light clean table design ---- */
+/* ---- Light clean table design ---- */
 .consultant-schedule-table {
     background: #fff;
     border-collapse: collapse;
 }
+
 .consultant-schedule-table thead th {
     background: #f8f9fa;
     color: #495057;
@@ -2443,15 +2087,18 @@ textarea {
     border-top: none;
     vertical-align: middle;
 }
+
 .consultant-schedule-table tbody td {
     border: none;
     border-bottom: 1px solid #eef0f2;
     color: #212529;
     font-size: 0.9rem;
 }
+
 .consultant-schedule-table tbody tr:hover {
     background-color: #f8fbff;
 }
+
 .consultant-schedule-table .cell-plain-input {
     border: none;
     background: transparent;
@@ -2461,16 +2108,18 @@ textarea {
     width: 100%;
     color: inherit;
 }
+
 .consultant-schedule-table .cell-plain-input:focus {
     border: none;
     background: transparent;
     box-shadow: none;
     outline: none;
 }
+
 .consultant-schedule-table td:first-child,
 .consultant-schedule-table td:nth-child(2) {
     color: #0d6efd;
     font-weight: 500;
 }
 
-
+/*  */
