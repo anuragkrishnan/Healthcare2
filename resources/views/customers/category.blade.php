@@ -284,3 +284,444 @@
          </div>
 
      </div>
+     <script>
+         /* ==========================================================
+                       CUSTOMER CATEGORY DATA
+                    ========================================================== */
+
+         const customerCategoryTree = [
+
+             {
+                 id: 1,
+                 parent: null,
+                 name: "CASH",
+                 type: "Cash",
+                 folder: false
+             },
+
+             {
+                 id: 2,
+                 parent: null,
+                 name: "CREDIT",
+                 type: "Corporate",
+                 folder: false
+             },
+
+             {
+                 id: 3,
+                 parent: null,
+                 name: "INSURANCE CUSTOMER",
+                 folder: true
+             },
+
+             {
+                 id: 4,
+                 parent: 3,
+                 name: "NCCI",
+                 type: "Insurance",
+                 folder: false,
+
+                 code: "INS01",
+                 description: "NCCI",
+                 arabic: "إن سي سي",
+
+                 address1: "Jeddah",
+                 address2: "",
+                 address3: "",
+                 address4: "",
+
+                 buildingNo: "200",
+                 streetName: "King Road",
+                 city: "Jeddah",
+                 district: "North",
+                 postalCode: "21411",
+
+                 taxRegNo: "111111",
+
+                 payerId: "900",
+                 providerId: "22000",
+                 tpaId: "8",
+
+                 discount: "0"
+             },
+
+             {
+                 id: 5,
+                 parent: 3,
+                 name: "BUPA",
+                 type: "Insurance",
+                 folder: false,
+
+                 code: "INS02",
+                 description: "BUPA",
+                 arabic: "بوبا",
+
+                 address1: "3500 Ar Rawdah Street",
+                 address2: "Jeddah 23423",
+                 address3: "Makkah Region",
+                 address4: "Al Khalidiya",
+
+                 buildingNo: "3772",
+                 streetName: "Ar Rawdah",
+                 city: "Jeddah",
+                 district: "Al Khalidiya",
+                 postalCode: "23423",
+
+                 taxRegNo: "987654",
+
+                 payerId: "960",
+                 providerId: "22966",
+                 tpaId: "9",
+
+                 discount: "0"
+             },
+
+             {
+                 id: 6,
+                 parent: 3,
+                 name: "GLOBMED",
+                 folder: true
+             },
+
+             {
+                 id: 7,
+                 parent: 6,
+                 name: "WALAA-GMED",
+                 folder: false,
+
+                 type: "Insurance",
+                 code: "GM01",
+                 description: "WALAA GMED"
+             },
+
+             {
+                 id: 8,
+                 parent: 6,
+                 name: "SOLIDARITY-GMED",
+                 folder: false,
+
+                 type: "Insurance",
+                 code: "GM02",
+                 description: "SOLIDARITY GMED"
+             },
+
+             {
+                 id: 9,
+                 parent: 6,
+                 name: "ARABIA-GMED",
+                 folder: false,
+
+                 type: "Insurance",
+                 code: "GM03",
+                 description: "ARABIA GMED"
+             },
+
+             {
+                 id: 10,
+                 parent: 6,
+                 name: "SALAMA-GMED",
+                 folder: false,
+
+                 type: "Insurance",
+                 code: "GM04",
+                 description: "SALAMA GMED"
+             }
+
+         ];
+
+         /* ================================
+             CUSTOMER CATEGORY SEARCH
+          ================================ */
+
+         $("#treeSearch").on("keyup", function() {
+
+             let value = $(this).val().toLowerCase();
+
+             if (value === "") {
+                 $("#customerTree li").show();
+                 return;
+             }
+
+             $("#customerTree li").hide();
+
+             $("#customerTree .cc-row").each(function() {
+
+                 let text = $(this).text().toLowerCase();
+
+                 if (text.indexOf(value) > -1) {
+
+                     $(this).closest("li").show();
+
+                     $(this).parents("li").show();
+
+                     $(this).parents(".cc-child").show();
+
+                     $(this).parents(".cc-child").prev(".cc-folder")
+                         .find(".cc-arrow")
+                         .removeClass("fa-caret-right")
+                         .addClass("fa-caret-down");
+
+                 }
+
+             });
+
+         });
+
+         /* ==========================================================
+             BUILD CUSTOMER CATEGORY TREE
+          ========================================================== */
+
+         function buildCustomerTree(parent = null) {
+
+             let html = '<ul class="cc-tree">';
+
+             customerCategoryTree
+                 .filter(item => item.parent === parent)
+                 .forEach(item => {
+
+                     const hasChildren = customerCategoryTree.some(x => x.parent === item.id);
+
+                     html += `
+                <li>
+
+                    <div class="cc-row ${hasChildren ? 'cc-folder' : 'cc-company'}"
+                         data-id="${item.id}">
+
+                        <div class="cc-left">
+
+                            ${hasChildren
+                                ? '<i class="fa fa-caret-right cc-arrow me-2"></i>'
+                                : '<span class="cc-empty"></span>'
+                            }
+
+                            <i class="fa ${hasChildren ? 'fa-folder-open text-warning' : 'fa-file text-primary'} me-2"></i>
+
+                            <span class="form-label mb-0">${item.name}</span>
+
+                        </div>
+
+                    </div>
+
+                    ${hasChildren
+                        ? `<div class="cc-child" style="display:none">
+                                          ${buildCustomerTree(item.id)}
+                                     </div>`
+                        : ""
+                    }
+
+                </li>
+            `;
+
+                 });
+
+             html += "</ul>";
+
+             return html;
+         }
+
+
+         /* ==========================================================
+            INITIALIZE CUSTOMER CATEGORY
+         ========================================================== */
+
+         function initCustomerCategory() {
+
+             if (!$("#customerTree").length) {
+                 return;
+             }
+
+             $("#customerTree").html(buildCustomerTree());
+
+             $("#customerTree")
+                 .off("click", ".cc-folder")
+                 .on("click", ".cc-folder", function(e) {
+
+                     e.stopPropagation();
+
+                     $(this)
+                         .next(".cc-child")
+                         .stop(true, true)
+                         .slideToggle(200);
+
+                     $(this)
+                         .find(".cc-arrow")
+                         .toggleClass("fa-caret-right fa-caret-down");
+
+                 });
+
+
+             $("#customerTree")
+                 .off("click", ".cc-company")
+                 .on("click", ".cc-company", function() {
+
+                     $(".cc-row").removeClass("cc-selected");
+
+                     $(this).addClass("cc-selected");
+
+                     const id = $(this).data("id");
+
+                     const company = customerCategoryTree.find(x => x.id == id);
+
+                     if (company) {
+                         loadCustomerCategory(company);
+                     }
+
+                 });
+
+         }
+         /* ==========================================================
+            LOAD CUSTOMER CATEGORY DETAILS
+         ========================================================== */
+
+         function loadCustomerCategory(data) {
+
+             let parentName = "";
+
+             if (data.parent != null) {
+
+                 const parent = customerCategoryTree.find(x => x.id == data.parent);
+
+                 if (parent) {
+                     parentName = parent.name;
+                 }
+             }
+
+             $("#categoryId").val(data.id || "");
+             $("#parentCategory").val(parentName);
+
+             $("#code").val(data.code || "");
+             $("#description").val(data.description || "");
+             $("#arabicName").val(data.arabic || "");
+
+             $("#address1").val(data.address1 || "");
+             $("#address2").val(data.address2 || "");
+             $("#address3").val(data.address3 || "");
+             $("#address4").val(data.address4 || "");
+
+             $("#buildingNo").val(data.buildingNo || "");
+             $("#streetName").val(data.streetName || "");
+             $("#city").val(data.city || "");
+             $("#district").val(data.district || "");
+             $("#postalCode").val(data.postalCode || "");
+             $("#taxRegNo").val(data.taxRegNo || "");
+
+             $("#payerId").val(data.payerId || "");
+             $("#providerId").val(data.providerId || "");
+             $("#tpaId").val(data.tpaId || "");
+             $("#discount").val(data.discount || "");
+
+             $("input[name='categoryType']").prop("checked", false);
+
+             if (data.type) {
+                 $("input[name='categoryType'][value='" + data.type + "']")
+                     .prop("checked", true);
+             }
+         }
+
+
+         /* ==========================================================
+            NEW BUTTON
+         ========================================================== */
+
+         $(document).on("click", "#btnNew", function() {
+
+             const form = $("#customerCategoryForm")[0];
+
+             if (form) {
+                 form.reset();
+             }
+
+             $("#categoryId").val("");
+             $("#parentCategory").val("");
+
+             $(".cc-row").removeClass("cc-selected");
+
+         });
+
+
+         /* ==========================================================
+            EDIT ICON
+         ========================================================== */
+
+         $(document).on("click", "#customerTree .fa-edit", function(e) {
+
+             e.stopPropagation();
+
+             $(this).closest(".cc-company").trigger("click");
+
+         });
+
+
+         /* ==========================================================
+            DELETE ICON
+         ========================================================== */
+
+         $(document).on("click", "#customerTree .fa-trash", function(e) {
+
+             e.stopPropagation();
+
+             if (confirm("Delete this category?")) {
+
+                 $(this).closest("li").remove();
+
+             }
+
+         });
+
+
+         /* ==========================================================
+            INITIALIZE PAGE
+         ========================================================== */
+
+         $(function() {
+
+             initCustomerCategory();
+
+         });
+
+
+         /* ==========================================================
+            TREE SEARCH
+         ========================================================== */
+
+         $(document).on("keyup", "#treeSearch", function() {
+
+             let value = $(this).val().toLowerCase();
+
+             if (value === "") {
+
+                 $("#customerTree").html(buildCustomerTree());
+
+                 initCustomerCategory();
+
+                 return;
+             }
+
+             $("#customerTree .cc-row").each(function() {
+
+                 const text = $(this).text().toLowerCase();
+
+                 if (text.indexOf(value) > -1) {
+
+                     $(this).closest("li").show();
+
+                     $(this).parents("li").show();
+
+                     $(this).parents(".cc-child").show();
+
+                     $(this).parents(".cc-child")
+                         .prev(".cc-folder")
+                         .find(".cc-arrow")
+                         .removeClass("fa-caret-right")
+                         .addClass("fa-caret-down");
+
+                 } else {
+
+                     $(this).closest("li").hide();
+
+                 }
+
+             });
+
+         });
+     </script>
