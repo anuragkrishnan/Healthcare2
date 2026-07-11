@@ -153,7 +153,7 @@ body {
 /*---sub menu items ----*/
 .submenu {
     list-style: none;
-    padding-left: 42px;
+    padding-left: 25px;
 
 }
 
@@ -2087,4 +2087,185 @@ textarea {
 
 #consultation-tab {
     position: relative;
+}
+
+/* category */
+.cc-form .form-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 4px;
+}
+
+.cc-form .form-control-sm {
+    height: 34px;
+    font-size: 13px;
+}
+
+.cc-form hr {
+    margin: 18px 0;
+}
+
+/*  */
+
+#customerTree {
+    font-size: 14px;
+    padding: 6px 0;
+}
+
+.cc-tree {
+    list-style: none;
+    margin: 0;
+    padding-left: 18px;
+}
+
+.cc-tree ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 22px;
+    position: relative;
+}
+
+/* vertical line */
+.cc-tree ul::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    border-left: 1px solid #cfcfcf;
+}
+
+/* horizontal line */
+.cc-tree li {
+    position: relative;
+    margin: 2px 0;
+}
+
+.cc-tree li::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 18px;
+    width: 14px;
+    border-top: 1px solid #cfcfcf;
+}
+
+/* root items */
+.cc-tree>li::before {
+    display: none;
+}
+
+.cc-row {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 28px;
+
+    padding: 2px 4px 2px 2px;
+
+    cursor: pointer;
+
+    border-radius: 2px;
+
+    transition: .15s;
+
+}
+
+.cc-row:hover {
+
+    background: #eef6ff;
+
+}
+
+.cc-left {
+
+    display: flex;
+    align-items: center;
+
+    flex: 1;
+
+    overflow: hidden;
+
+}
+
+.cc-arrow {
+
+    width: 14px;
+
+    font-size: 12px;
+
+    color: #555;
+
+    margin-right: 4px;
+
+}
+/* .cc-actions{
+    display:flex;
+    flex-direction:column;
+    margin-left:10px;
+} */
+
+.cc-empty {
+
+    width: 14px;
+
+    display: inline-block;
+
+    margin-right: 4px;
+
+}
+
+.cc-name {
+
+    font-size: 14px;
+
+    color: #222;
+
+    white-space: nowrap;
+
+}
+
+/* folder/file icons */
+
+.cc-folder .fa-folder-open,
+.cc-folder .fa-folder {
+
+    color: #f2b300;
+
+}
+
+.cc-company .fa-file-alt,
+.cc-company .fa-file {
+
+    color: #4f81bd;
+
+}
+
+/* selected row */
+
+.cc-row.active {
+
+    background: #cdeeff;
+
+}
+
+/* right buttons */
+
+
+.cc-row:hover {
+
+    opacity: 1;
+
+}
+
+
+/* child indent */
+
+.cc-child {
+
+    margin-left: 18px;
+
 }

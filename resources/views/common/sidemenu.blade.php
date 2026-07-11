@@ -98,13 +98,41 @@
 
                     </a>
                 </li>
-                <li>
-                    <a href="#" class="load-page" data-url="{{ url('/customers') }}" data-title="Customer Master"
-                        data-icon="bi-people-fill" data-breadcrumb="Dashboard|Customers|List Customers">
-                        <i class="bi bi-people-fill"></i>
-                        Customers
+                <li class="menu-item">
 
+                    <a href="#customersMenu" class="d-flex align-items-center justify-content-between"
+                        data-bs-toggle="collapse" role="button" aria-expanded="false">
+
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-people-fill"></i>
+                            <span class="menu-text ms-2">Customers</span>
+                        </div>
+
+                        <i class="bi bi-chevron-down submenu-arrow"></i>
                     </a>
+
+                    <ul class="collapse submenu" id="customersMenu">
+                        <li>
+                            <a href="#" class="load-page" data-url="{{ url('/customers') }}"
+                                data-title="Customer Master" data-icon="bi-people-fill"
+                                data-breadcrumb="Dashboard|Customers|List Customers">
+                                <i class="bi bi-people-fill"></i>
+                                Customer
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="load-page" data-url="{{ url('/category') }}"
+                                data-title="Customer Categories" data-icon="bi-person-fill"
+                                data-breadcrumb="Dashboard|Customer Categories|List Categories">
+                                <i class="bi bi-person-fill"></i>
+                                Customer Category
+
+                            </a>
+                        </li>
+
+
+                    </ul>
                 </li>
 
 

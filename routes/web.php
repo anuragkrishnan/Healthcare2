@@ -41,6 +41,9 @@ Route::get('/speciality', function () {
 Route::get('/customers', function () {
     return view('customers.index');
 });
+Route::get('/category', function () {
+    return view('customers.category');
+});
 
 Route::get('/receptionists', function () {
     return view('receptionists.index');

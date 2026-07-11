@@ -309,96 +309,7 @@
                                     </div>
 
                                 </div>
-                                <div class="card-section">
 
-                                    <div class="form-container">
-
-                                        <div class="grid-5-col">
-
-
-
-                                            <div>
-
-                                                <div class="section-heading">
-                                                    <p>OPERATIONAL DETAILS</p>
-                                                </div>
-
-                                                <div class="section-body">
-                                                    <div class="row">
-                                                        <div class="col-md-4">
-                                                            <div class="form-check mb-2">
-                                                                <input class="form-check-input" type="checkbox">
-
-                                                                <label class="form-check-label">
-                                                                    Insurance Company
-                                                                </label>
-                                                            </div>
-
-                                                            <div class="form-check mb-2">
-                                                                <input class="form-check-input" type="checkbox">
-
-                                                                <label class="form-check-label">
-                                                                    Free Registration
-                                                                </label>
-                                                            </div>
-
-                                                            <div class="form-check mb-2">
-                                                                <input class="form-check-input" type="checkbox">
-
-                                                                <label class="form-check-label">
-                                                                    Block Billing
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-check mb-2">
-                                                                <input class="form-check-input" type="checkbox">
-
-                                                                <label class="form-check-label">
-                                                                    Validate Employee
-                                                                </label>
-                                                            </div>
-
-                                                            <div class="form-check mb-2">
-                                                                <input class="form-check-input" type="checkbox">
-
-                                                                <label class="form-check-label">
-                                                                    Working Company Mandatory
-                                                                </label>
-                                                            </div>
-                                                            <button type="button"
-                                                                class="btn btn-sm btn-outline-secondary ms-2">
-                                                                IDF Settings
-                                                            </button>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-check mb-2">
-                                                                <input class="form-check-input" type="checkbox">
-
-                                                                <label class="form-check-label">
-                                                                    Block Sending Label Result
-                                                                </label>
-                                                            </div>
-
-                                                            <div class="form-check mb-2">
-                                                                <input class="form-check-input" type="checkbox">
-
-                                                                <label class="form-check-label">
-                                                                    Enable IDF Insurance
-                                                                </label>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
 
 
                             </div>
@@ -526,9 +437,92 @@
                                         </div>
 
                                     </div>
+                                    <div>
+
+                                        <div class="section-heading">
+                                            <p>OPERATIONAL DETAILS</p>
+                                        </div>
+
+                                        <div class="section-body">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox">
+
+                                                        <label class="form-check-label">
+                                                            Insurance Company
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox">
+
+                                                        <label class="form-check-label">
+                                                            Free Registration
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox">
+
+                                                        <label class="form-check-label">
+                                                            Block Billing
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox">
+
+                                                        <label class="form-check-label">
+                                                            Validate Employee
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox">
+
+                                                        <label class="form-check-label">
+                                                            Working Company Mandatory
+                                                        </label>
+                                                    </div>
+                                                    <button type="button"
+                                                        class="btn btn-sm btn-outline-secondary ms-2">
+                                                        IDF Settings
+                                                    </button>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox">
+
+                                                        <label class="form-check-label">
+                                                            Block Sending Label Result
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check mb-2">
+                                                        <input class="form-check-input" type="checkbox">
+
+                                                        <label class="form-check-label">
+                                                            Enable IDF Insurance
+                                                        </label>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
 
                                 </div>
-
+                                <div class="d-flex align-items-center justify-content-center flex-wrap gap-3">
+                                    <div class="action-bar">
+                                        <button type="button" class="btn-default">Discard</button>
+                                        <button type="button" class="btn-primary-custom">
+                                            <i class="bi bi-check2-circle"></i> Save
+                                        </button>
+                                    </div>
+                                </div>
 
                             </div>
 
@@ -539,14 +533,7 @@
                     </div>
 
                 </div>
-                <div class="d-flex align-items-center justify-content-center flex-wrap gap-3">
-                    <div class="action-bar">
-                        <button type="button" class="btn-default">Discard</button>
-                        <button type="button" class="btn-primary-custom">
-                            <i class="bi bi-check2-circle"></i> Save
-                        </button>
-                    </div>
-                </div>
+
             </div>
 
 
