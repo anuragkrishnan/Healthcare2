@@ -23,8 +23,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 
+        //Patient Search Section DataTable
+    new DataTable('#patientSearchTable', {
+    // Position search top-left, paging top-right
+    layout: {
+      topStart: 'search',
+      topEnd: 'paging',
+      bottomStart: null,   // hide default "Showing x of y" info
+      bottomEnd: null      // hide bottom pagination
+    },
+    paging: true,
+    pagingType: 'simple',   // gives only "Previous" / "Next" (no page numbers)
+    searching: true,
+    info: false,
+    ordering: true,
+    language: {
+      emptyTable: 'No records found',
+      search: '',
+      searchPlaceholder: 'Search'
+    }
+  });
+
     //theme color change JS
-    const headerColor = document.getElementById('headerColor');
+       const headerColor = document.getElementById('headerColor');
     const sidebarColor = document.getElementById('sidebarColor');
     const footerColor = document.getElementById('footerColor');
 
@@ -84,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+
 });
 
 /* Load page content via AJAX */
@@ -104,7 +126,9 @@ $(document).on('click', '.load-page', function (e) {
             initRevenueChart();  //dashboard chart
             initPatientChart();   //for dashboard chart
             initPatientsTable();  //patient datatable
+            initCustomerCategory(); //customer category tree
 
+            initSpecialityValidation();
         },
         error: function (xhr) {
             console.log(xhr.responseText);
@@ -113,30 +137,30 @@ $(document).on('click', '.load-page', function (e) {
     });
 });
 // add success speciality
-$(document).on('click', '#btnSucs', function () {
+// $(document).on('click', '#btnSucs', function () {
 
-    Swal.fire({
-        icon: 'success',
-        title: 'Success',
-        text: 'Created successfully!',
-        confirmButtonText: 'OK'
-    }).then((result) => {
+//     Swal.fire({
+//         icon: 'success',
+//         title: 'Success',
+//         text: 'Created successfully!',
+//         confirmButtonText: 'OK'
+//     }).then((result) => {
 
-        if (result.isConfirmed) {
+//         if (result.isConfirmed) {
 
-            const modal = bootstrap.Modal.getInstance(
-                document.getElementById('specialityAddModal')
-            );
+//             const modal = bootstrap.Modal.getInstance(
+//                 document.getElementById('specialityAddModal')
+//             );
 
-            if (modal) {
-                modal.hide();
-            }
+//             if (modal) {
+//                 modal.hide();
+//             }
 
-        }
+//         }
 
-    });
+//     });
 
-});
+// });
 // edit speciality
 $(document).on('click', '#btnSuccess', function () {
 
@@ -169,7 +193,7 @@ $(document).on('click', '.delete-btn', function () {
     const row = $(this).closest('tr');
 
     Swal.fire({
-        title: 'Delete Speciality?',
+        title: 'Delete Item?',
         text: 'Are you sure you want to delete this?',
         icon: 'warning',
         showCancelButton: true,
@@ -211,6 +235,8 @@ $(document).ready(function () {
     });
 });
 
+
+
 //Due to ajax calling-need to initialize
 function initPatientsTable() {
 
@@ -222,6 +248,8 @@ function initPatientsTable() {
         pageLength: 10,
         responsive: true
     });
+
+
 }
 
 
@@ -481,13 +509,14 @@ function initChatWidget() {
 
 /*---Dynamic page title  ----*/
 
-function setPageTitleBadge(iconClass, text, breadcrumb) {
-    const badge = document.getElementById('pageTitleSection');
-    if (!badge) return;
-    badge.querySelector('.title-section-icon i').className = 'bi ' + iconClass;
-    document.getElementById('titleSectionText').textContent = text;
-    document.getElementById('page-breadcrumb').innerHTML = breadcrumb;
-}
+    function setPageTitleBadge(iconClass, text, breadcrumb) {
+
+        const badge = document.getElementById('pageTitleSection');
+        if (!badge) return;
+        badge.querySelector('.title-section-icon i').className = 'bi ' + iconClass;
+        document.getElementById('titleSectionText').textContent = text;
+        document.getElementById('page-breadcrumb').innerHTML = breadcrumb;
+    }
 
 if (!window.__pageTitleBadgeBound) {
     window.__pageTitleBadgeBound = true;
@@ -623,24 +652,487 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
     });
 });
 
-///datatable search functionality
+//datatable search functionality--need modification
+$(document).ready(function () {
 const searchInput = document.getElementById('tableSearch');
 
-searchInput.addEventListener('keyup', function () {
+if (searchInput) {
+
+    searchInput.addEventListener('keyup', function () {
+
+        const value = this.value.toLowerCase();
+    console.log(searchInput);
+    searchInput.addEventListener('keyup', function () {
 
     const value = this.value.toLowerCase();
-
     const rows = document.querySelectorAll('#patientTable tr');
 
-    rows.forEach(row => {
+        const rows = document.querySelectorAll('#patientTable tr');
 
-        const text = row.innerText.toLowerCase();
+        rows.forEach(row => {
 
-        row.style.display = text.includes(value)
-            ? ''
-            : 'none';
+            const text = row.innerText.toLowerCase();
+
+            row.style.display = text.includes(value)
+                ? ''
+                : 'none';
+
+        });
+
+    });
+
+}
+
+/* CUSTOMER CATEGORY DATA*/
+function initCustomerCategory() {
+
+    if (!$("#customerTree").length) {
+        return;
+    }
+
+    // Build Tree
+    $("#customerTree").html(buildCustomerTree());
+
+
+    // Expand / Collapse
+    $(document).on("click", ".cc-folder", function (e) {
+
+        e.stopPropagation();
+
+        $(this).next(".cc-child").slideToggle(200);
+
+        $(this).find(".cc-arrow")
+            .toggleClass("fa-caret-right fa-caret-down");
+
+    });
+
+
+    // Company click
+    $(document).off("click", ".cc-company");
+
+    $(document).on("click", ".cc-company", function () {
+
+        $(".cc-row").removeClass("cc-selected");
+
+        $(this).addClass("cc-selected");
+
+        const id = $(this).data("id");
+
+        const company = customerCategoryTree.find(x => x.id == id);
+
+        if (company) {
+
+            loadCustomerCategory(company);
+
+        }
+
+    });
+
+}
+
+function loadCustomerCategory(data) {
+    console.log("Selected Company:", data);
+    console.log("Parent ID:", data.parent);
+
+    let parent = customerCategoryTree.find(x => x.id == data.parent);
+
+    console.log("Parent Object:", parent);
+    // Get parent name
+    let parentName = "";
+
+    if (data.parent != null) {
+
+        let parent = customerCategoryTree.find(x => x.id == data.parent);
+
+        if (parent) {
+            parentName = parent.name;
+        }
+
+    }
+
+    $("#parentCategory").val(parentName);
+
+    $("#code").val(data.code || "");
+    $("#description").val(data.description || "");
+    $("#arabicName").val(data.arabic || "");
+
+    $("#address1").val(data.address1 || "");
+    $("#address2").val(data.address2 || "");
+    $("#address3").val(data.address3 || "");
+    $("#address4").val(data.address4 || "");
+
+    $("#buildingNo").val(data.buildingNo || "");
+    $("#streetName").val(data.streetName || "");
+    $("#city").val(data.city || "");
+    $("#district").val(data.district || "");
+    $("#postalCode").val(data.postalCode || "");
+    $("#taxRegNo").val(data.taxRegNo || "");
+
+    $("#payerId").val(data.payerId || "");
+    $("#providerId").val(data.providerId || "");
+    $("#tpaId").val(data.tpaId || "");
+    $("#discount").val(data.discount || "");
+
+    $("input[name='categoryType']").prop("checked", false);
+
+    $("input[name='categoryType'][value='" + data.type + "']")
+        .prop("checked", true);
+}
+const customerCategoryTree = [
+
+    {
+        id: 1,
+        parent: null,
+        name: "CASH",
+        type: "Cash",
+        folder: false
+    },
+
+    {
+        id: 2,
+        parent: null,
+        name: "CREDIT",
+        type: "Corporate",
+        folder: false
+    },
+
+    {
+        id: 3,
+        parent: null,
+        name: "INSURANCE CUSTOMER",
+        folder: true
+    },
+
+    {
+        id: 4,
+        parent: 3,
+        name: "NCCI",
+        type: "Insurance",
+        folder: false,
+
+        code: "INS01",
+        description: "NCCI",
+        arabic: "إن سي سي",
+
+        address1: "Jeddah",
+        address2: "",
+        address3: "",
+        address4: "",
+
+        buildingNo: "200",
+        streetName: "King Road",
+        city: "Jeddah",
+        district: "North",
+        postalCode: "21411",
+
+        taxRegNo: "111111",
+
+        payerId: "900",
+        providerId: "22000",
+        tpaId: "8",
+
+        discount: "0"
+    },
+
+    {
+        id: 5,
+        parent: 3,
+        name: "BUPA",
+        type: "Insurance",
+        folder: false,
+
+        code: "INS02",
+        description: "BUPA",
+        arabic: "بوبا",
+
+        address1: "3500 Ar Rawdah street",
+        address2: "Jeddah 23423",
+        address3: "Makkah Region",
+        address4: "Al Khalidiya",
+
+        buildingNo: "3772",
+        streetName: "Ar Rawdah",
+        city: "Jeddah",
+        district: "Al Khalidiya",
+        postalCode: "23423",
+
+        taxRegNo: "987654",
+
+        payerId: "960",
+        providerId: "22966",
+        tpaId: "9",
+
+        discount: "0"
+    },
+
+    {
+        id: 6,
+        parent: 3,
+        name: "GLOBMED",
+        folder: true
+    },
+
+    {
+        id: 7,
+        parent: 6,
+        name: "WALAA-GMED",
+        folder: false,
+
+        type: "Insurance",
+        code: "GM01",
+        description: "WALAA GMED"
+    },
+
+    {
+        id: 8,
+        parent: 6,
+        name: "SOLIDARITY-GMED",
+        folder: false,
+
+        type: "Insurance",
+        code: "GM02",
+        description: "SOLIDARITY GMED"
+    },
+
+    {
+        id: 9,
+        parent: 6,
+        name: "ARABIA-GMED",
+        folder: false,
+
+        type: "Insurance",
+        code: "GM03",
+        description: "ARABIA GMED"
+    },
+
+    {
+        id: 10,
+        parent: 6,
+        name: "SALAMA-GMED",
+        folder: false,
+
+        type: "Insurance",
+        code: "GM04",
+        description: "SALAMA GMED"
+    }
+
+];
+/*BUILD CUSTOMER CATEGORY TREE*/
+
+function buildCustomerTree(parent = null) {
+
+    let html = '<ul class="cc-tree">';
+
+    customerCategoryTree
+        .filter(item => item.parent === parent)
+        .forEach(item => {
+
+            const hasChildren = customerCategoryTree.some(x => x.parent === item.id);
+
+            html += `
+                <li>
+
+                    <div class="cc-row ${hasChildren ? 'cc-folder' : 'cc-company'}"
+     data-id="${item.id}">
+
+    <div class="form-group cc-left">
+
+        ${hasChildren
+                    ? '<i class="fa fa-caret-right cc-arrow me-2"></i>'
+                    : '<span class="cc-empty"></span>'
+                }
+
+        <i class="fa ${hasChildren ? 'fa-folder-open text-warning' : 'fa-file text-primary'} me-2"></i>
+
+        <span class="form-label">${item.name}</span>
+
+    </div>
+
+</div>
+
+                    ${hasChildren
+                    ? `<div class="cc-child" style="display:none">
+
+                                ${buildCustomerTree(item.id)}
+
+                           </div>`
+                    : ""
+                }
+
+                </li>
+            `;
+
+        });
+
+    html += "</ul>";
+
+    return html;
+
+}
+/*LOAD TREE*/
+
+$(document).ready(function () {
+
+    if ($("#customerTree").length) {
+
+        $("#customerTree").html(
+
+            buildCustomerTree()
+
+        );
+
+    }
+
+});
+$("#btnNew").off("click");
+
+$("#btnNew").on("click", function () {
+
+    $("#customerCategoryForm")[0].reset();
+
+    $(".cc-row").removeClass("cc-selected");
+
+});
+$(document).off("click", ".fa-edit");
+
+$(document).on("click", ".fa-edit", function (e) {
+
+    e.stopPropagation();
+
+    $(this).closest(".cc-company").trigger("click");
+
+});
+$(document).off("click", ".fa-trash");
+
+$(document).on("click", ".fa-trash", function (e) {
+
+    e.stopPropagation();
+
+    if (confirm("Delete this category?")) {
+
+        $(this).closest("li").remove();
+
+    }
+}
+});
+
+//Speciality CRUD VAlidation and form submit
+function initSpecialityValidation() {
+
+    $('#specialityForm').validate({
+
+        rules: {
+            speciality_short_code: {
+                required: true,
+                maxlength: 20
+            },
+
+            speciality_name: {
+                required: true,
+                maxlength: 100
+            }
+        },
+
+        messages: {
+            speciality_short_code: {
+                required: "Please enter Speciality Short Code",
+                maxlength: "Maximum 20 characters allowed"
+            },
+
+            speciality_name: {
+                required: "Please enter Speciality Name",
+                maxlength: "Maximum 100 characters allowed"
+            }
+        },
+
+        errorElement: "span",
+
+        errorClass: "text-danger",
+
+        errorPlacement: function (error, element) {
+            error.insertAfter(element);
+        },
+
+        highlight: function (element) {
+            $(element).addClass("is-invalid");
+        },
+
+        unhighlight: function (element) {
+            $(element).removeClass("is-invalid");
+        }
+
+    });
+
+}
+
+// =============================
+// Save Speciality
+// =============================
+$(document).on('click', '#btnSave', function (e) {
+
+    e.preventDefault();
+
+    if (!$('#specialityForm').valid()) {
+        return;
+    }
+
+    $.ajax({
+
+        url: storeSpecialityUrl,
+
+        type: "POST",
+
+        data: $('#specialityForm').serialize(),
+
+        success: function (response) {
+
+            Swal.fire({
+                icon: "success",
+                title: "Success",
+                text: response.message,
+                timer: 1500,
+                showConfirmButton: false
+            });
+
+            $('#specialityAddModal').modal('hide');
+
+            $('#specialityForm')[0].reset();
+
+            $('#specialityTable').ajax.reload(null, false);
+
+        },
+
+        error: function (xhr) {
+
+            if (xhr.status === 422) {
+
+                let errors = xhr.responseJSON.errors;
+                let message = '';
+
+                $.each(errors, function (key, value) {
+                    message += value[0] + '<br>';
+                });
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Validation Error",
+                    html: message
+                });
+
+            } else {
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "Something went wrong."
+                });
+
+                console.log(xhr.responseText);
+
+            }
+
+        }
 
     });
 
 });
-

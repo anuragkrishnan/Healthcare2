@@ -41,17 +41,24 @@
                             <div class="speciality-grid">
 
                                 <div class="speciality-form">
+                                    <form id="specialityForm">
 
-                                    <div class="form-group">
-                                        <label>Code</label>
-                                        <input type="text" class="form-control">
-                                    </div>
+                                        @csrf
 
-                                    <div class="form-group">
-                                        <label>Speciality<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control">
-                                    </div>
+                                        <div class="form-group">
+                                            <label>Speciality Short Code</label>
+                                            <input type="text" name="speciality_short_code" class="form-control"
+                                                id="speciality_short_code">
+                                            <span> </span>
+                                        </div>
 
+                                        <div class="form-group">
+                                            <label>Speciality Name<span class="text-danger">*</span></label>
+                                            <input type="text" id="speciality_name" name="speciality_name"
+                                                class="form-control">
+                                            <span> </span>
+                                        </div>
+                                    </form>
                                 </div>
 
                             </div>
@@ -76,7 +83,7 @@
 
                 </button>
 
-                <button id="btnSucs" type="submit" class="btn btn-success">
+                <button type="button" id="btnSave" class="btn btn-success">
 
                     Save
 
@@ -89,3 +96,6 @@
     </div>
 
 </div>
+<script>
+    const storeSpecialityUrl = "{{ route('master.specialities.store') }}";
+</script>

@@ -153,7 +153,7 @@ body {
 /*---sub menu items ----*/
 .submenu {
     list-style: none;
-    padding-left: 42px;
+    padding-left: 25px;
 
 }
 
@@ -256,19 +256,21 @@ a[aria-expanded="true"] .submenu-arrow {
     overflow: visible !important;
 }
 
+
 /* Content Area Fixes -2 copy*/
 #content-area {
-     box-sizing: border-box !important;
+    box-sizing: border-box !important;
     margin: 0 !important;
-    color:#000;
+    color: #000;
 
     font-size: 11px !important;
-    flex:1;
-    overflow-y:auto;
-    padding:4px;
+    flex: 1;
+    overflow-y: auto;
+    padding: 4px;
 
     background: #f4f6f9 !important;
 }
+
 
 /* Scrollbar */
 #content-area::-webkit-scrollbar {
@@ -287,6 +289,7 @@ a[aria-expanded="true"] .submenu-arrow {
 #content-area::-webkit-scrollbar-thumb:hover {
     background: rgba(13, 38, 93, 0.7);
 }
+
 
 /* Footer */
 .footer {
@@ -393,9 +396,10 @@ a[aria-expanded="true"] .submenu-arrow {
 
 /* Header Right */
 .header-right {
-    display: flex;
-    justify-content: flex-end;
-    gap: 15px;
+     display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:12px;
     align-items: center;
 }
 
@@ -416,6 +420,13 @@ a[aria-expanded="true"] .submenu-arrow {
     gap: 10px;
     padding: 6px 10px;
     cursor: pointer;
+
+}
+
+.user-info-toggle{
+    background:none;
+    border:none;
+    padding:0;
 }
 
 .user-img {
@@ -650,7 +661,7 @@ hr.drawer-divider {
 
 /* Active breadcrumb */
 .title-section .breadcrumb-item.active {
-    color: var(--primary);
+    color: #2195d1;
     font-weight: 600;
 }
 
@@ -1019,8 +1030,8 @@ input[type="time"] {
 
 /* ---- launcher button ---- */
 .chat-launcher {
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background: var(--primary);
     border: none;
@@ -1497,7 +1508,6 @@ input[type="time"] {
 .table-actions {
 
     margin-left: auto;
-
     display: flex;
     align-items: center;
     gap: 12px;
@@ -1516,7 +1526,7 @@ input[type="time"] {
 
     position: absolute;
 
-    left: 12px;
+    left: 130px;
 
     top: 50%;
 
@@ -1884,7 +1894,7 @@ textarea {
         overflow-y: auto;
         overflow-x: hidden;
     }
-    
+
 /* Table alignment for list Consultant */
 
  .consultant-page .table {
@@ -2021,8 +2031,372 @@ textarea {
     cursor:pointer;
 }
 /* speciality form end */
+/*---Patient Search Page Designs----*/
+.row-clickable {
+    cursor: pointer;
+}
+
+.row-clickable:hover {
+    background: #eef4f6 !important;
+}
+/* customer form starts */
+.customer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    background: #f8fafc;
+    padding: 20px;
+    border: 1px solid #cbd5e1;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+}
+
+.customer-form {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.customer-form .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.customer-form label {
+    width: 180px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.customer-form input {
+    flex: 1;
+}
+
+.customer-table-card {
+    margin-left: 10px;
+}
+
+/* customer form end */
+.customer-filter-th {
+    vertical-align: top;
+    padding: 8px 10px;
+}
+
+.customer-filter-input {
+    margin-bottom: 8px;
+}
+
+.customer-filter-input input {
+    width: 100%;
+}
+
+.customer-filter-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+/* ================= CUSTOMER ADD MODAL ================= */
+
+.customer-modal {
+    max-width: 95%;
+}
+
+.customer-modal-body {
+    padding: 12px;
+}
+
+/* Reduce spacing between sections */
+.customer-modal-body .card-section {
+    margin-bottom: 10px;
+}
+
+.customer-modal-body .form-container {
+    padding: 10px;
+}
+
+/* Compact 3-column layout */
+.customer-modal-body .grid-3-col {
+    gap: 12px;
+    padding: 8px;
+}
+
+/* Compact 2-column layout */
+.customer-modal-body .grid-2-col {
+    gap: 12px;
+}
+
+/* Reduce label width */
+.customer-modal-body .form-group {
+    grid-template-columns: 120px 1fr;
+    gap: 8px;
+    margin-bottom: 5px;
+}
+
+/* Smaller labels */
+.customer-modal-body .form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+/* Compact inputs */
+.customer-modal-body .form-group input,
+.customer-modal-body .form-group select {
+    height: 30px;
+    font-size: 12px;
+    padding: 2px 8px;
+}
+
+/* Compact textarea */
+.customer-modal-body .form-group textarea {
+    height: 55px;
+    font-size: 12px;
+    padding: 5px 8px;
+    resize: none;
+}
+
+/* Radio & Checkbox */
+.customer-modal-body .form-check {
+    margin-bottom: 4px;
+}
+
+.customer-modal-body .form-check-label {
+    font-size: 12px;
+}
+
+.customer-modal-body .form-check-input {
+    width: 14px;
+    height: 14px;
+}
+
+/* Tabs */
+.customer-modal-body .nav-tabs .nav-link {
+    padding: 6px 15px;
+    font-size: 13px;
+}
+
 /*patient add consultation tab btns*/
- /*---Patient Page Designs----*/
+/*---Patient Page Designs----*/
+
+.section-heading {
+    background: #d3d5da;
+    border-color: #abaeac;
+    height: 25px;
+    padding: 0.15rem 0.4rem;
+    text-align: left;
+    border-radius: 0.35rem;
+    font-size: 11px;
+}
+
+.section-body {
+    padding-top: 8px;
+    border: none;
+    background: #f8fafc;
+}
+
+.nav-tab-btn {
+    height: 28px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+
+}
+
+.nav-tab-btn button {
+    font-size: 11px;
+    border: 1px solid #abaeac;
+}
+
+#consultation-tab {
+    position: relative;
+}
+
+/* category */
+.cc-form .form-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 4px;
+}
+
+.cc-form .form-control-sm {
+    height: 34px;
+    font-size: 13px;
+}
+
+.cc-form hr {
+    margin: 18px 0;
+}
+
+/*  */
+
+#customerTree {
+    font-size: 14px;
+    padding: 6px 0;
+}
+
+.cc-tree {
+    list-style: none;
+    margin: 0;
+    padding-left: 18px;
+}
+
+.cc-tree ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 22px;
+    position: relative;
+}
+
+/* vertical line */
+.cc-tree ul::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    border-left: 1px solid #cfcfcf;
+}
+
+/* horizontal line */
+.cc-tree li {
+    position: relative;
+    margin: 2px 0;
+}
+
+.cc-tree li::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 18px;
+    width: 14px;
+    border-top: 1px solid #cfcfcf;
+}
+
+/* root items */
+.cc-tree>li::before {
+    display: none;
+}
+
+.cc-row {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 28px;
+
+    padding: 2px 4px 2px 2px;
+
+    cursor: pointer;
+
+    border-radius: 2px;
+
+    transition: .15s;
+
+}
+
+.cc-row:hover {
+
+    background: #eef6ff;
+
+}
+
+.cc-left {
+
+    display: flex;
+    align-items: center;
+
+    flex: 1;
+
+    overflow: hidden;
+
+}
+
+.cc-arrow {
+
+    width: 14px;
+
+    font-size: 12px;
+
+    color: #555;
+
+    margin-right: 4px;
+
+}
+/* .cc-actions{
+    display:flex;
+    flex-direction:column;
+    margin-left:10px;
+} */
+
+.cc-empty {
+
+    width: 14px;
+
+    display: inline-block;
+
+    margin-right: 4px;
+
+}
+
+.cc-name {
+
+    font-size: 14px;
+
+    color: #222;
+
+    white-space: nowrap;
+
+}
+
+/* folder/file icons */
+
+.cc-folder .fa-folder-open,
+.cc-folder .fa-folder {
+
+    color: #f2b300;
+
+}
+
+.cc-company .fa-file-alt,
+.cc-company .fa-file {
+
+    color: #4f81bd;
+
+}
+
+/* selected row */
+
+.cc-row.active {
+
+    background: #cdeeff;
+
+}
+
+/* right buttons */
+
+
+.cc-row:hover {
+
+    opacity: 1;
+
+}
+
+
+/* child indent */
+
+.cc-child {
+
+    margin-left: 18px;
+
+}
+/*---Patient Page Designs----*/
+/*patient add consultation tab btns*/
 
     .section-heading {
        background: #d3d5da;
