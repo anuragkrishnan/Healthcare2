@@ -187,7 +187,35 @@ $(document).on('click', '#btnSuccess', function () {
 });
 
 // delete
+$(document).on('click', '.delete-btn', function () {
 
+    const row = $(this).closest('tr');
+
+    Swal.fire({
+        title: 'Delete Speciality?',
+        text: 'Are you sure you want to delete this?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+
+            row.remove();
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Deleted successfully.',
+                confirmButtonText: 'OK'
+            });
+
+        }
+
+    });
+
+});
 
 //datatable example
 $(document).ready(function () {

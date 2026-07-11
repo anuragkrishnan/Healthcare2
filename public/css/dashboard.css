@@ -2123,3 +2123,106 @@ textarea {
 }
 
 /*  */
+/* ==========================
+   Customer Category Tree
+========================== */
+#customerTree {
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.cc-tree {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cc-tree li {
+    margin: 2px 0;
+}
+
+.cc-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 6px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.cc-row:hover {
+    background: #f5f5f5;
+}
+
+.cc-selected {
+    background: #0d6efd !important;
+    color: white;
+}
+
+.cc-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cc-arrow {
+    width: 14px;
+    text-align: center;
+    color: #666;
+}
+
+.cc-empty {
+    width: 14px;
+}
+
+
+/* CHILD LEVEL ALIGNMENT */
+.cc-child {
+    display: none;
+    margin-left: 28px;
+    padding-left: 14px;
+    border-left: 1px solid #ddd;
+}
+
+
+.cc-child .cc-row {
+    padding-left: 10px;
+}
+
+
+/* Search */
+#treeSearch {
+    margin-bottom: 10px;
+}
+
+#treeSearch:focus {
+    box-shadow: none;
+    border-color: #0d6efd;
+}
+
+/* Scrollbar */
+
+#customerTree::-webkit-scrollbar {
+    width: 6px;
+}
+
+#customerTree::-webkit-scrollbar-thumb {
+    background: #bdbdbd;
+    border-radius: 20px;
+}
+
+#customerTree::-webkit-scrollbar-track {
+    background: #f2f2f2;
+}
+
+/* Folder/File icons */
+
+.cc-row .fa-folder-open {
+    color: #f4b400;
+}
+
+.cc-row .fa-file {
+    color: #0d6efd;
+}
