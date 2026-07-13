@@ -1,13 +1,9 @@
 <div class="row g-4">
     <div class="card table-card col-8 speciality-table-card">
 
-        <div class="card-body">
+        <div class="">
 
-            <!-- Toolbar -->
-
-            <div class="table-toolbar">
-
-                <!-- Left -->
+            <!--div class="table-toolbar">
 
                 <div class="table-length">
 
@@ -24,42 +20,44 @@
 
                 </div>
 
-                <!-- Right -->
 
-                <div class="table-actions">
+
+                <div class="search-wrapper">
+
+                    <i class="bi bi-search"></i>
+
+                    <input type="text" class="form-control form-control-sm" id="tableSearch" placeholder="">
+
+                </div>
+
+
+            </div-->
+
+            <!-- Table -->
+
+            <div class="table-wrapper mt-1" style="relative">
+                <div class="table-actions" style="position:absolute; right:30%; top:4%;">
 
                     <button class="btn btn-sm btn-outline-secondary px-3"><i class="bi bi-printer me-1"></i>
                         Print</button>
-                    <button type="button" class="btn btn-sm btn-outline-success px-3" data-bs-toggle="modal"
-                        data-bs-target="#specialityAddModal"><i class="bi bi-plus-circle me-1"></i> New</button>
+                    <button type="button" class="btn btn-sm btn-outline-success px-3 small-label"
+                        data-bs-toggle="modal" data-bs-target="#specialityAddModal"><i
+                            class="bi bi-plus-circle me-1"></i> New</button>
 
                     @include('speciality.modals.add')
                     @include('speciality.modals.edit')
 
-                    <div class="search-wrapper">
-
-                        <i class="bi bi-search"></i>
-
-                        <input type="text" class="form-control form-control-sm" id="tableSearch" placeholder="">
-
-                    </div>
 
 
 
                 </div>
-
-            </div>
-
-            <!-- Table -->
-
-            <div class="table-wrapper mt-1">
 
                 <table class="table table-dark table-hover align-middle mb-0" id="specialityTable">
 
                     <thead>
 
                         <tr>
-                            <th>Sl No</th>
+                            <th width="30px;">Sl. No.</th>
                             <th>Speciality Code</th>
                             <th>Speciality Name</th>
                             <th>Status</th>
@@ -72,7 +70,7 @@
                     <tbody>
                         @foreach ($specialities as $key => $speciality)
                             <tr>
-                                <td class="text-secondary">{{ $key + 1 }}</td>
+                                <td class="text-secondary text-center">{{ $key + 1 }}</td>
                                 <td class="text-secondary"> {{ $speciality->speciality_short_code }}</td>
                                 <td> {{ $speciality->speciality_name }}</td>
                                 <td>
@@ -84,11 +82,11 @@
                                 </td>
                                 <td class="text-center">
 
-                                    <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"
-                                        data-bs-target="#specialityEditModal">
+                                    <button type="button" class="btn btn-sm text-primary edit-speciality"
+                                        data-id="{{ $speciality->id }}">
                                         <i class="bi bi-pencil"></i>
                                     </button>
-                                    <button class="btn btn-sm text-danger delete-btn">
+                                    <button class="btn btn-sm text-danger delete-btn" data-id="{{ $speciality->id }}">
                                         <i class="bi bi-trash"></i>
                                     </button>
 
@@ -104,7 +102,7 @@
             </div>
 
 
-            <div class="table-footer">
+            <!--div class="table-footer">
 
                 <div id="tableInfo">
                     Showing 1 to 10 of 35 entries
@@ -140,7 +138,7 @@
 
 
 
-            </div>
+            </div-->
 
         </div>
 

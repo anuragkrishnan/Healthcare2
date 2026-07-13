@@ -128,6 +128,7 @@ $(document).on('click', '.load-page', function (e) {
             initPatientsTable();  //patient datatable
 
             initSpecialityValidation();
+            initSpecialityTable();
         },
         error: function (xhr) {
             console.log(xhr.responseText);
@@ -669,8 +670,202 @@ $(document).ready(function () {
                 ? ''
                 : 'none';
 
-        });
+    });
 
     });
+
 });
-//
+
+
+//Speciality CRUD VAlidation and form submit
+//Speciality datatable
+$(document).ready(function () {
+
+    $('#specialityTable').DataTable({
+        pageLength: 10,
+        lengthMenu: [5, 10, 25, 50],
+        order: [],
+        scrollY: false,     // fixed height for the scrolling body — adjust to taste
+        scrollX: false,        // horizontal scroll if columns overflow
+        paging: true,
+        language: {
+            search: '',
+            searchPlaceholder: 'Search...'
+        }
+    });
+});
+
+
+
+//Due to ajax calling-need to initialize
+function initSpecialityTable() {
+
+    if ($.fn.DataTable.isDataTable('#specialityTable')) {
+        $('#specialityTable').DataTable().destroy();
+    }
+
+    $('#specialityTable').DataTable({
+        pageLength: 10,
+        responsive: true
+    });
+
+
+}
+function initSpecialityValidation() {
+
+    $('#specialityForm').validate({
+
+        rules: {
+            speciality_short_code: {
+                required: true,
+                maxlength: 20
+            },
+
+            speciality_name: {
+                required: true,
+                maxlength: 100
+            }
+        },
+
+        messages: {
+            speciality_short_code: {
+                required: "Please enter Speciality Short Code",
+                maxlength: "Maximum 20 characters allowed"
+            },
+
+            speciality_name: {
+                required: "Please enter Speciality Name",
+                maxlength: "Maximum 100 characters allowed"
+            }
+        },
+
+        errorElement: "span",
+
+        errorClass: "text-danger",
+
+        errorPlacement: function (error, element) {
+            error.insertAfter(element);
+        },
+
+        highlight: function (element) {
+            $(element).addClass("is-invalid");
+        },
+
+        unhighlight: function (element) {
+            $(element).removeClass("is-invalid");
+        }
+
+    });
+
+}
+
+// =============================
+// Save Speciality
+// =============================
+$(document).on('click', '#btnSave', function (e) {
+
+    e.preventDefault();
+
+    if (!$('#specialityForm').valid()) {
+        return;
+    }
+
+    $.ajax({
+
+        url: storeSpecialityUrl,
+
+        type: "POST",
+
+        data: $('#specialityForm').serialize(),
+
+        success: function (response) {
+
+            Swal.fire({
+                icon: "success",
+                title: "Success",
+                text: response.message,
+                timer: 1500,
+                showConfirmButton: false
+            });
+
+            $('#specialityAddModal').modal('hide');
+
+            $('#specialityForm')[0].reset();
+
+            $('#specialityTable').DataTable().ajax.reload(null, false);
+
+        },
+
+        error: function (xhr) {
+
+            if (xhr.status === 422) {
+
+                let errors = xhr.responseJSON.errors;
+                let message = '';
+
+                $.each(errors, function (key, value) {
+                    message += value[0] + '<br>';
+                });
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Validation Error",
+                    html: message
+                });
+
+            } else {
+
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "Something went wrong."
+                });
+
+                console.log(xhr.responseText);
+
+            }
+
+        }
+
+    });
+
+});
+//Edit Speciality
+$(document).on('click', '.edit-speciality', function(){
+
+    let id = $(this).data('id');
+    $.ajax({
+
+        url: specialityUrl + '/' + id + '/edit',
+
+        type: 'GET',
+
+        success:function(data){
+
+
+            // fill modal fields
+
+            $('#edit_id').val(data.id);
+
+            $('#edit_name').val(data.speciality_name);
+
+            $('#edit_code').val(data.speciality_short_code);
+
+
+            // open modal
+
+            $('#specialityEditModal').modal('show');
+
+
+        },
+
+        error:function(xhr){
+
+            console.log(xhr.responseText);
+
+        }
+
+    });
+
+
+});

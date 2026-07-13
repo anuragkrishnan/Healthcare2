@@ -61,6 +61,10 @@ Route::prefix('master')->group(function () {
 
     Route::post('/specialities', [SpecialityController::class, 'store'])
         ->name('master.specialities.store');
+    Route::get(
+        '/speciality/{id}/edit',
+        [SpecialityController::class, 'edit']
+    );
 });
 // Route::get('/speciality', function () {
 //     return view('speciality.index');

@@ -33,10 +33,10 @@
                             <div class="speciality-grid">
 
                                 <div class="speciality-form">
-
+                                    <input type="hidden" id="edit_id" value="">
                                     <div class="form-group">
                                         <label>Code</label>
-                                        <input type="text" class="form-control" value="1100">
+                                        <input type="text" id="edit_code" class="form-control" value="">
                                     </div>
 
                                     <div class="form-group">
@@ -45,7 +45,7 @@
                                             <span class="text-danger">*</span>
                                         </label>
 
-                                        <input type="text" class="form-control" value="ANESTHESIA">
+                                        <input type="text" id="edit_name" class="form-control" value="">
                                     </div>
 
                                 </div>
@@ -75,3 +75,6 @@
     </div>
 
 </div>
+<script>
+    const specialityUrl = "{{ url('master/speciality') }}";
+</script>
