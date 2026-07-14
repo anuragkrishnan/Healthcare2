@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Login\AuthController;
 use App\Http\Controllers\Master\SpecialityController;
 
 Route::get('/', function () {
@@ -20,7 +20,7 @@ Route::get('/logout', [AuthController::class, 'logout'])
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
-});
+})->name('dashboard');
 
 Route::get('/dashboard/home', function () {
     return view('dashboard.home');

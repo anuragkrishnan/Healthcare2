@@ -14,13 +14,19 @@ class SpecialityController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            $specialities = Speciality::where('status',  Speciality::ACTIVE)
-                ->orderBy('speciality_name')
-                ->get();
-            return view('speciality.index', compact('specialities'));
+        try {
+            if ($request->ajax()) {
+                $specialities = Speciality::where('status',  Speciality::ACTIVE)
+                    ->orderBy('speciality_name')
+                    ->get();
+            }
+        } catch (\Throwable $e) {
+
+            $specialities = collect();
         }
+        return view('speciality.index', compact('specialities'));
     }
+
 
 
     /**
