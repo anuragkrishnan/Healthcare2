@@ -68,7 +68,7 @@
                     </thead>
 
                     <tbody>
-                        @foreach ($specialities as $key => $speciality)
+                        @forelse ($specialities as $key => $speciality)
                             <tr>
                                 <td class="text-secondary text-center">{{ $key + 1 }}</td>
                                 <td class="text-secondary">
@@ -96,7 +96,14 @@
                                 </td>
 
                             </tr>
-                        @endforeach
+                        @empty
+
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    No records found
+                                </td>
+                            </tr>
+                        @endforelse
 
                     </tbody>
 
