@@ -59,12 +59,18 @@ Route::prefix('master')->group(function () {
     Route::get('/speciality', [SpecialityController::class, 'index'])
         ->name('master.specialities.index');
 
-    Route::post('/specialities', [SpecialityController::class, 'store'])
-        ->name('master.specialities.store');
+    Route::post('/speciality/store', [SpecialityController::class, 'store']);
     Route::get(
         '/speciality/{id}/edit',
         [SpecialityController::class, 'edit']
     );
+    Route::put('/speciality/{id}', [SpecialityController::class, 'update'])
+        ->name('master.specialities.update');
+
+    Route::delete(
+        '/speciality/{id}',
+        [SpecialityController::class, 'destroy']
+    )->name('master.specialities.destroy');
 });
 // Route::get('/speciality', function () {
 //     return view('speciality.index');

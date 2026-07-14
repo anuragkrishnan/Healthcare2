@@ -31,25 +31,31 @@
                             </div>
 
                             <div class="speciality-grid">
+                                <form id="specialityFormUpdate">
 
-                                <div class="speciality-form">
-                                    <input type="hidden" id="edit_id" value="">
-                                    <div class="form-group">
-                                        <label>Code</label>
-                                        <input type="text" id="edit_code" class="form-control" value="">
+                                    @csrf
+                                    <div class="speciality-form">
+                                        <input type="hidden" id="edit_id" value="" name="id_edit">
+                                        <div class="form-group">
+                                            <label>Code</label>
+                                            <input type="text" id="edit_code" name="speciality_short_code_edit"
+                                                class="form-control" value="">
+                                            <span> </span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>
+                                                Speciality
+                                                <span class="text-danger">*</span>
+                                            </label>
+
+                                            <input type="text" id="edit_name" name="speciality_name_edit"
+                                                class="form-control" value="">
+                                            <span> </span>
+                                        </div>
+
                                     </div>
-
-                                    <div class="form-group">
-                                        <label>
-                                            Speciality
-                                            <span class="text-danger">*</span>
-                                        </label>
-
-                                        <input type="text" id="edit_name" class="form-control" value="">
-                                    </div>
-
-                                </div>
-
+                                </form>
                             </div>
 
                         </div>
@@ -65,7 +71,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     Cancel
                 </button>
-                <button id="btnSuccess" class="btn btn-success">Update</button>
+                <button id="specialityUpdate" class="btn btn-success">Update</button>
 
 
             </div>
@@ -75,6 +81,3 @@
     </div>
 
 </div>
-<script>
-    const specialityUrl = "{{ url('master/speciality') }}";
-</script>

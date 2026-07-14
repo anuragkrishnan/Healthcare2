@@ -83,7 +83,7 @@
 
                 </button>
 
-                <button type="button" id="btnSave" class="btn btn-success">
+                <button type="button" id="specialitySave" class="btn btn-success">
 
                     Save
 
@@ -96,6 +96,3 @@
     </div>
 
 </div>
-<script>
-    const storeSpecialityUrl = "{{ route('master.specialities.store') }}";
-</script>

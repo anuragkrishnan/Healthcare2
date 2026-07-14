@@ -1,5 +1,5 @@
 <div class="row g-4">
-    <div class="card table-card col-8 speciality-table-card">
+    <div class="card table-card col-8 speciality-table-card h-100">
 
         <div class="">
 
@@ -35,7 +35,7 @@
 
             <!-- Table -->
 
-            <div class="table-wrapper mt-1" style="relative">
+            <div class="table-wrapper mt-1 d-flex flex-column" style="relative">
                 <div class="table-actions" style="position:absolute; right:30%; top:4%;">
 
                     <button class="btn btn-sm btn-outline-secondary px-3"><i class="bi bi-printer me-1"></i>
@@ -57,7 +57,7 @@
                     <thead>
 
                         <tr>
-                            <th width="30px;">Sl. No.</th>
+                            <th>Sl. No.</th>
                             <th>Speciality Code</th>
                             <th>Speciality Name</th>
                             <th>Status</th>
@@ -71,7 +71,9 @@
                         @foreach ($specialities as $key => $speciality)
                             <tr>
                                 <td class="text-secondary text-center">{{ $key + 1 }}</td>
-                                <td class="text-secondary"> {{ $speciality->speciality_short_code }}</td>
+                                <td class="text-secondary">
+                                    {{ $speciality->speciality_short_code ? $speciality->speciality_short_code : '--' }}
+                                </td>
                                 <td> {{ $speciality->speciality_name }}</td>
                                 <td>
                                     @if ($speciality->status == 1)
@@ -86,7 +88,8 @@
                                         data-id="{{ $speciality->id }}">
                                         <i class="bi bi-pencil"></i>
                                     </button>
-                                    <button class="btn btn-sm text-danger delete-btn" data-id="{{ $speciality->id }}">
+                                    <button class="btn btn-sm text-danger delete-speciality"
+                                        data-id="{{ $speciality->id }}">
                                         <i class="bi bi-trash"></i>
                                     </button>
 
@@ -100,45 +103,6 @@
                 </table>
 
             </div>
-
-
-            <!--div class="table-footer">
-
-                <div id="tableInfo">
-                    Showing 1 to 10 of 35 entries
-                </div>
-
-                <nav aria-label="Table Pagination">
-
-                    <ul class="pagination pagination-sm mb-0">
-
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#">Previous</a>
-                        </li>
-
-                        <li class="page-item active">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-
-                    </ul>
-
-                </nav>
-
-
-
-            </div-->
 
         </div>
 
