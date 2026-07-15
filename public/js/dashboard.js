@@ -127,7 +127,9 @@ $(document).on('click', '.load-page', function (e) {
             initPatientChart();   //for dashboard chart
             initPatientsTable();  //patient datatable
 
-            initSpecialityValidation();
+           if (typeof initSpecialityValidation === 'function') {
+    initSpecialityValidation();
+}
         },
         error: function (xhr) {
             console.log(xhr.responseText);
@@ -135,6 +137,49 @@ $(document).on('click', '.load-page', function (e) {
         }
     });
 });
+
+
+
+
+
+
+// Reloads the Consultant Master list from the server
+function reloadConsultants() {
+    $.get('/master/consultants', function (html) {
+        $('#content-area').html(html);
+    });
+}
+
+// ADD consultant
+$(document).on('submit', '.consultant-add-form', function (e) {
+    e.preventDefault();
+
+    const form = $(this);
+
+    $.ajax({
+        url: form.attr('action'),
+        type: 'POST',
+        data: form.serialize(),
+        success: function () {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('consultantAddModal'));
+            if (modal) modal.hide();
+
+            Swal.fire('Success', 'Consultant added successfully.', 'success')
+                .then(() => reloadConsultants());
+        },
+        error: function (xhr) {
+            const msg = xhr.responseJSON && xhr.responseJSON.message
+                ? xhr.responseJSON.message
+                : 'Something went wrong. Please check the form.';
+            Swal.fire('Error', msg, 'error');
+        }
+    });
+});
+
+
+
+
+
 // add success speciality
 // $(document).on('click', '#btnSucs', function () {
 
@@ -655,22 +700,23 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
 $(document).ready(function () {
     const searchInput = document.getElementById('tableSearch');
 
-    searchInput.addEventListener('keyup', function () {
+    if (searchInput) {
+        searchInput.addEventListener('keyup', function () {
 
-        const value = this.value.toLowerCase();
+            const value = this.value.toLowerCase();
 
-        const rows = document.querySelectorAll('#patientTable tr');
+            const rows = document.querySelectorAll('#patientTable tr');
 
-        rows.forEach(row => {
+            rows.forEach(row => {
 
-            const text = row.innerText.toLowerCase();
+                const text = row.innerText.toLowerCase();
 
-            row.style.display = text.includes(value)
-                ? ''
-                : 'none';
+                row.style.display = text.includes(value)
+                    ? ''
+                    : 'none';
+
+            });
 
         });
-
-    });
+    }
 });
-//

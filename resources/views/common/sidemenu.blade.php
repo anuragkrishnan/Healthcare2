@@ -91,13 +91,19 @@
 
             <ul class="collapse submenu" id="doctorMenu">
                 <li>
-                    <a href="#" class="load-page" data-url="{{ url('/consultants') }}"
-                        data-title="List Consultants" data-icon="bi-person-plus"
-                        data-breadcrumb="Dashboard|Consultants|List">
-                        <i class="bi bi-person-plus"></i>
-                        Consultants
+                    
+                
 
-                    </a>
+                
+                <a href="#"
+                    class="load-page"
+                    data-url="{{ route('master.consultants.index') }}"
+                    data-title="List Consultants"
+                    data-icon="bi-person-plus"
+                    data-breadcrumb="Dashboard|Consultants|List">
+                    <i class="bi bi-person-plus"></i>
+                    Consultants
+                </a>
                 </li>
 
 
