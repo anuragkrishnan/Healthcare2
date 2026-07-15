@@ -676,7 +676,7 @@ function initSidebarSearch() {
             el.textContent = original;
             return;
         }
-//
+
         const before = original.slice(0, idx);
         const match = original.slice(idx, idx + query.length);
         const after = original.slice(idx + query.length);
