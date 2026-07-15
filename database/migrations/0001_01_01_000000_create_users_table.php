@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('username')->unique();
+            $table->userId();
+            $table->string('userName')->unique();
             $table->string('password');
-            $table->string('role')->default('receptionist');
+            $table->string('role');
+            $table->string('status')->default(1);
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
