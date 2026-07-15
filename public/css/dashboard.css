@@ -2235,10 +2235,22 @@ textarea {
 
 /* Folder/File icons */
 
-.cc-row .fa-folder-open {
+#consultantAddModal .cc-row .fa-folder-open {
     color: #f4b400;
 }
 
-.cc-row .fa-file {
+#consultantAddModal .cc-row .fa-file {
     color: #0d6efd;
+}
+/* Add this to your stylesheet */
+#consultantAddModal .modal-body {
+    max-height: calc(100vh - 210px); /* leaves room for header+footer */
+    overflow-y: auto;
+}
+
+#consultantAddModal .modal-footer {
+    position: sticky;
+    bottom: 0;
+    background: #fff;
+    z-index: 5;
 }

@@ -1,13 +1,30 @@
 
-<div class="add-consultant-page">
+<!-- <div class="add-consultant-page">
     <div class="modal fade"
      id="consultantEditModal"
      tabindex="-1"
-     aria-hidden="true">
+     aria-hidden="true"> -->
+
+
+     <!-- <button
+class="btn btn-sm text-primary edit-btn"
+data-id="{{ $consultant->doctorId }}"
+data-bs-toggle="modal"
+data-bs-target="#consultantEditModal{{ $consultant->doctorId }}"> -->
 
     <div class="modal-dialog modal-xl modal-dialog-scrollable">
 
         <div class="modal-content">
+
+
+
+         <form action="{{ route('master.consultants.update', $consultant->doctorId) }}"
+          method="POST"
+          class="consultant-edit-form">
+
+        @csrf
+        @method('PUT')
+
 
             <div class="modal-header">
 
@@ -63,52 +80,56 @@
 
                             <div class="form-group">
                                 <label>Doctor ID</label>
-                                <input type="text" placeholder="🔍" value="1100">
+                                <input type="text" placeholder="🔍" name="doctorId" value="{{ $consultant->doctorId }}">
                             </div>
+                           
                             <div class="form-group">
                                 <label>Doctor Name</label>
-                                <input type="text" value="SHIS">
+                                <input type="text" name="name" value="{{ $consultant->name }}">
                             </div>
                             <div class="form-group">
                                 <label>Cost centre</label>
-                                <input type="text" value="C01">
+                                <input type="text" name="costCentre" value="{{ $consultant->costCentre }}">
                             </div>
                             <div class="form-group" style="align-items: start;">
                                 <label>Address</label>
-                                <textarea>123 Street</textarea>
+                                <textarea name="address">{{ $consultant->address }}</textarea>
                             </div>
 
                                 <div class="form-group">
                                     <label>Qualification</label>
-                                    <input type="text" value="MBBS">
+                                    <input type="text" name="qualification" value="{{ $consultant->qualification }}">
                                 </div>
                                 <div class="form-group">
                                 <label class="required">Date of birth</label>
-                                <input type="text" value="03/02/2012">
+                                <input type="text" name="dob" value="{{ $consultant->dob }}">
                                 </div>
                                 <div class="form-group">
                                 <label class="required">Gender</label>
-                                <select><option>Male</option><option>Female</option></select>
+                                <select name="gender">
+                                    <option value="Male" {{ $consultant->gender == 'Male' ? 'selected' : '' }}>Male</option>
+                                    <option value="Female" {{ $consultant->gender == 'Female' ? 'selected' : '' }}>Female</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label class="required">Contact No</label>
-                                <input type="text" value="SAUDI ARABIA (+966) 0542395255">
+                                <input type="text" name="contactNo" value="{{ $consultant->contactNo }}">
                             </div>
                             <div class="form-group">
                                 <label>Email id</label>
-                                <input type="text" value="john@gmail.com">
+                                <input type="text" name="email" value="{{ $consultant->email }}">
                             </div>
                             <div class="form-group" style="align-items: start;">
                                 <label>Remarks</label>
-                                <textarea>Remarks</textarea>
+                                <textarea name="remarks">{{ $consultant->remarks }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label>Free  Consultation Days for cash Registration</label>
-                                <input type="text" value="500">
+                                <input type="text" name="freeDaysCash" value="{{ $consultant->freeDaysCash }}">
                             </div>
                             <div class="form-group">
                                 <label>Free  Consultation Days for credit Registration</label>
-                                <input type="text" value="600">
+                                <input type="text" name="freeDaysCredit" value="{{ $consultant->freeDaysCredit }}">
                             </div>
 
 
@@ -121,7 +142,8 @@
         <div class="form-check">
             <input class="form-check-input"
                    type="checkbox"
-                   id="appointment" checked>
+                   name="showInAppointment"
+                   id="appointment" {{ $consultant->showInAppointment ? 'checked' : '' }}>
 
             <label class="form-check-label" for="appointment">
                 Show in Appointment Diary
@@ -131,7 +153,8 @@
         <div class="form-check mt-2">
             <input class="form-check-input"
                    type="checkbox"
-                   id="registration">
+                   name="showInRegistration"
+                   id="registration" {{ $consultant->showInRegistration ? 'checked' : '' }}>
 
             <label class="form-check-label" for="registration">
                 Show in Registration Entry
@@ -150,39 +173,39 @@
                 <div class="col-lg-6 ps-4">
                             <div class="form-group">
                                 <label style="font-size:10px;">User ID</label>
-                                <input type="text" value="639564" style="background:#e2e8f0;" readonly>
+                                <input type="text" name="userCode" value="{{ $consultant->userCode }}" style="background:#e2e8f0;" readonly>
                             </div>
 
 
 
                             <div class="form-group">
                                 <label>License No.</label>
-                                <input type="text" value="1276587">
+                                <input type="text" name="licenseNo" value="{{ $consultant->licenseNo }}">
                             </div>
                             <div class="form-group">
                                 <label>Reg No</label>
-                                <input type="text" value="128999">
+                                <input type="text" name="regNo" value="{{ $consultant->regNo }}">
                             </div>
                             <div class="form-group">
                                 <label>Id Card No</label>
-                                <input type="text" value="IC-001">
+                                <input type="text" name="idCardNo" value="{{ $consultant->idCardNo }}">
                             </div>
                             <div class="form-group">
                                 <label>Id Type</label>
-                                <input type="text" value="Aadhaar">
+                                <input type="text" name="idType" value="{{ $consultant->idType }}">
                             </div>
                             <div class="form-group">
                                 <label>Nationality</label>
-                                <input type="text" value="Indian">
+                                <input type="text" name="nationality" value="{{ $consultant->nationality }}">
                             </div>
                             <div class="form-group">
                                 <label>Sort Order</label>
-                                <input type="text" value="1">
+                                <input type="text" name="sortOrder" value="{{ $consultant->sortOrder }}">
                             </div>
 
                             <div class="form-group">
                                 <label>Schedule Interval</label>
-                                <input type="text" value="30 Minutes">
+                                <input type="text" name="scheduleInterval" value="{{ $consultant->scheduleInterval }}">
                             </div>
 
 
@@ -196,7 +219,7 @@
 
                             <div class="form-group">
                                 <label>Room No</label>
-                                <input type="text" class="form-control" value="101">
+                                <input type="text" name="roomNo" class="form-control" value="{{ $consultant->roomNo }}">
                             </div>
 
                         </div>
@@ -205,7 +228,7 @@
 
                         <div class="form-group">
                             <label>No. of Free Visit</label>
-                            <input type="text" class="form-control" value="5">
+                            <input type="text" name="freeVisits" class="form-control" value="{{ $consultant->freeVisits }}">
                         </div>
 
                  </div>
@@ -219,7 +242,7 @@
         <!-- Default Rate -->
 <div class="form-group">
     <label>Default Rate</label>
-    <input type="text" class="form-control" value="1000">
+    <input type="text" name="defaultRate" class="form-control" value="{{ $consultant->defaultRate }}">
 </div>
 
 <!-- Min Discount -->
@@ -227,14 +250,14 @@
     <div class="col-6">
         <div class="form-group">
             <label>Min Desc %</label>
-            <input type="text" class="form-control" value="10">
+            <input type="text" name="minDescPercent" class="form-control" value="{{ $consultant->minDescPercent }}">
         </div>
     </div>
 
     <div class="col-6">
         <div class="form-group">
             <label>Min Desc Amt</label>
-            <input type="text" class="form-control" value="300">
+            <input type="text" name="minDescAmt" class="form-control" value="{{ $consultant->minDescAmt }}">
         </div>
     </div>
 </div>
@@ -244,14 +267,14 @@
     <div class="col-6">
         <div class="form-group">
             <label>Max Desc %</label>
-            <input type="text" class="form-control" value="20">
+            <input type="text" name="maxDescPercent" class="form-control" value="{{ $consultant->maxDescPercent }}">
         </div>
     </div>
 
     <div class="col-6">
         <div class="form-group">
             <label>Max Desc Amt</label>
-            <input type="text" class="form-control" value="100">
+            <input type="text" name="maxDescAmt" class="form-control" value="{{ $consultant->maxDescAmt }}">
         </div>
     </div>
 </div>
@@ -261,14 +284,14 @@
     <div class="col-6">
         <div class="form-group">
             <label>Speciality</label>
-            <input type="text" class="form-control" value="Physician">
+            <input type="text" name="speciality" class="form-control" value="{{ $consultant->speciality }}">
         </div>
     </div>
 
     <div class="col-6">
         <div class="form-group">
             <label>Consultant Type</label>
-            <input type="text" class="form-control" value="General">
+            <input type="text" name="consultantType" class="form-control" value="{{ $consultant->consultantType }}">
         </div>
     </div>
 </div>
@@ -290,13 +313,13 @@
                     Close
                 </button>
 
-                <button
+                <button type="submit"
                     class="btn btn-primary">
                     Save
                 </button>
 
             </div>
-
+        </form>
         </div>
 
     </div>

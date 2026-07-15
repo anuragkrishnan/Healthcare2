@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Login\AuthController;
 use App\Http\Controllers\Master\SpecialityController;
+use App\Http\Controllers\Master\ConsultantController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,9 +41,9 @@ Route::get('/patients/search', function () {
 
 
 
-Route::get('/consultants', function () {
-    return view('consultants.index');
-});
+// Route::get('/consultants', function () {
+//     return view('consultants.index');
+// });
 Route::get('/consultants/schedule', function () {
     return view('consultants.schedule');
 });
@@ -91,3 +92,25 @@ Route::get('/common/alerts', function () {
 Route::get('/common/theme', function () {
     return view('common.theme');
 })->name('common.theme');
+
+
+
+
+
+
+
+// Consultant Section
+Route::prefix('master')->group(function () {
+
+    Route::get('/consultants', [ConsultantController::class, 'index'])
+        ->name('master.consultants.index');
+
+    Route::post('/consultants', [ConsultantController::class, 'store'])
+        ->name('master.consultants.store');
+
+    
+});
+
+   
+
+
