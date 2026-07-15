@@ -139,9 +139,6 @@ function loadPage(url) {
             initPatientChart();
             initPatientsTable();
 
-           if (typeof initSpecialityValidation === 'function') {
-    initSpecialityValidation();
-}
             initSpecialityValidation();
             initMasterTable('#specialityTable');
         },
@@ -151,7 +148,7 @@ function loadPage(url) {
             alert('Page load failed');
         }
     });
-});
+}
 
 
 
@@ -216,7 +213,7 @@ $(document).on('submit', '.consultant-add-form', function (e) {
 //             }
 
 //         }
-}
+//}
 
 //Speciality CRUD - save
 
@@ -710,26 +707,26 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
 });
 
 
-    if (searchInput) {
-        searchInput.addEventListener('keyup', function () {
+//     if (searchInput) {
+//         searchInput.addEventListener('keyup', function () {
 
-            const value = this.value.toLowerCase();
+//             const value = this.value.toLowerCase();
 
-            const rows = document.querySelectorAll('#patientTable tr');
+//             const rows = document.querySelectorAll('#patientTable tr');
 
-            rows.forEach(row => {
+//             rows.forEach(row => {
 
-                const text = row.innerText.toLowerCase();
+//                 const text = row.innerText.toLowerCase();
 
-                row.style.display = text.includes(value)
-                    ? ''
-                    : 'none';
+//                 row.style.display = text.includes(value)
+//                     ? ''
+//                     : 'none';
 
-            });
+//             });
 
-        });
-    }
-});
+//         });
+//     }
+// });
 //Speciality datatable
 
 //Due to ajax calling-need to common initialize
