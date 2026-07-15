@@ -153,7 +153,7 @@ body {
 /*---sub menu items ----*/
 .submenu {
     list-style: none;
-    padding-left: 42px;
+    padding-left: 25px;
 
 }
 
@@ -1616,8 +1616,9 @@ input[type="time"] {
 
 .table-wrapper {
     flex: 1;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Footer structure alignment colors */
@@ -1957,6 +1958,21 @@ textarea {
 
 .speciality-table-card {
     margin-left: 50px;
+}
+.speciality-table-card .dt-length select{
+    color: #495057 !important;
+}
+
+.speciality-table-card{
+    height: calc(100vh - 170px); /* Adjust this after testing */
+    display: flex;
+    flex-direction: column;
+}
+
+.speciality-table-card > div{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .add-consultant-page .form-group-vertical {
