@@ -7,7 +7,6 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable
 {
@@ -15,6 +14,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $table = 'user';
+    protected $primaryKey = 'userId';
 
     /**
      * The attributes that are mass assignable.
@@ -22,10 +22,10 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
-        'username',
+        'userName',
         'password',
         'role',
+        'status'
     ];
 
     /**
@@ -35,7 +35,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
@@ -47,22 +46,22 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+
         ];
     }
 
     public static function findByUsername($data)
     {
 
-        $user = self::where('username', $data->username)->first();
-        print_r($user);
-        die();
+        $user = self::where('userName', $data->username)->first();
+        // print_r($user);
+        // die();
 
         if (!$user) {
             return null;
         }
 
-        if (!Hash::check($data->password, $user->password)) {
+        if ($data->password != $user->password) {
             return false;
         }
 

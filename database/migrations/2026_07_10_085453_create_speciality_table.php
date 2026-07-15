@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('speciality', function (Blueprint $table) {
 
-            $table->id();
+            $table->specialityId();
 
-            $table->string('speciality_short_code', 20)->unique();
+            $table->string('specialityShortCode', 20);
 
-            $table->string('speciality_name', 100)->unique();
+            $table->string('specialityName', 100)->unique();
 
             $table->boolean('status')->default(1);
 
