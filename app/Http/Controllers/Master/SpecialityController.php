@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Master;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Speciality;
-use Illuminate\Validation\Rule;
 
 
 class SpecialityController extends Controller
@@ -15,20 +14,20 @@ class SpecialityController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            $specialities = Speciality::all();
+        try {
+            if ($request->ajax()) {
+                $specialities = Speciality::where('status',  Speciality::ACTIVE)
+                    ->orderBy('speciality_name')
+                    ->get();
+            }
+        } catch (\Throwable $e) {
 
-            return view('speciality.index', compact('specialities'));
+            $specialities = collect();
         }
+        return view('speciality.index', compact('specialities'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -36,14 +35,14 @@ class SpecialityController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'speciality_short_code' => 'required|max:20|unique:speciality,speciality_short_code',
+            'speciality_short_code' => 'nullable|max:20',
             'speciality_name' => 'required|max:100|unique:speciality,speciality_name',
         ]);
 
         Speciality::create([
             'speciality_short_code' => $validated['speciality_short_code'],
             'speciality_name'       => $validated['speciality_name'],
-            'status'                => 1
+            'status'                => Speciality::ACTIVE
         ]);
 
         return response()->json([
@@ -65,7 +64,9 @@ class SpecialityController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $speciality = Speciality::findOrFail($id);
+
+        return response()->json($speciality);
     }
 
     /**
@@ -73,14 +74,41 @@ class SpecialityController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'speciality_short_code_edit' =>
+            'nullable|max:20,' . $id,
+            'speciality_name_edit' =>
+            'required|max:100|unique:speciality,speciality_name,' . $id,
+        ]);
+
+        $speciality = Speciality::findOrFail($id);
+
+        $speciality->update([
+            'speciality_short_code' => $request->speciality_short_code_edit,
+            'speciality_name' => $request->speciality_name_edit
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Speciality updated successfully.'
+        ]);
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $speciality = Speciality::findOrFail($id);
+
+        $speciality->update([
+            'status' => Speciality::INACTIVE
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Speciality deleted successfully.'
+        ]);
     }
 }

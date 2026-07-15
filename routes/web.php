@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Login\AuthController;
 use App\Http\Controllers\Master\SpecialityController;
 use App\Http\Controllers\Master\ConsultantController;
 
@@ -21,7 +21,7 @@ Route::get('/logout', [AuthController::class, 'logout'])
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
-});
+})->name('dashboard');
 
 Route::get('/dashboard/home', function () {
     return view('dashboard.home');
@@ -60,8 +60,18 @@ Route::prefix('master')->group(function () {
     Route::get('/speciality', [SpecialityController::class, 'index'])
         ->name('master.specialities.index');
 
-    Route::post('/specialities', [SpecialityController::class, 'store'])
-        ->name('master.specialities.store');
+    Route::post('/speciality/store', [SpecialityController::class, 'store']);
+    Route::get(
+        '/speciality/{id}/edit',
+        [SpecialityController::class, 'edit']
+    );
+    Route::put('/speciality/{id}', [SpecialityController::class, 'update'])
+        ->name('master.specialities.update');
+
+    Route::delete(
+        '/speciality/{id}',
+        [SpecialityController::class, 'destroy']
+    )->name('master.specialities.destroy');
 });
 // Route::get('/speciality', function () {
 //     return view('speciality.index');
