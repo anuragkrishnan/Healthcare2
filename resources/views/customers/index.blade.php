@@ -65,6 +65,57 @@
                         </tr>
                     </thead>
                     <tbody id="customerTable">
+                        @forelse($customers as $customer)
+                            <tr>
+                                <td>{{ $customer->accountCode }}</td>
+
+                                <td>{{ $customer->name }}</td>
+
+                                <td>{{ $customer->category ?? '-' }}</td>
+
+                                <td>{{ $customer->contractPolicyNo ?? '-' }}</td>
+
+                                <td>
+                                    {{ $customer->expiryDate ? date('d-m-Y', strtotime($customer->expiryDate)) : '-' }}
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-sm text-primary edit-btn"
+                                        data-id="{{ $customer->customerId }}" data-bs-toggle="modal"
+                                        data-bs-target="#customerEditModal">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+                                </td>
+
+                                <!-- Price Mapping -->
+                                <td class="text-center">
+                                    <button class="btn btn-sm text-success">
+                                        <i class="bi bi-geo-alt"></i>
+                                    </button>
+                                </td>
+
+                                <!-- Pre Authorization -->
+                                <td class="text-center">
+                                    <button class="btn btn-sm text-info">
+                                        <i class="bi bi-shield-check"></i>
+                                    </button>
+                                </td>
+
+                                <td class="text-center">
+                                    <button class="btn btn-sm text-danger customer-delete-btn"
+                                        data-id="{{ $customer->customerId }}">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="9" class="text-center text-muted">
+                                    No customer records found.
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                    {{-- <tbody id="customerTable">
 
                         <tr>
                             <td>C16298</td>
@@ -319,9 +370,12 @@
                                         class="bi bi-trash"></i></button></td>
                         </tr>
 
-                    </tbody>
+                    </tbody> --}}
                 </table>
             </div>
         </div>
     </div>
 </div>
+<script>
+    var customerDeleteUrl = "{{ url('master/customer') }}";
+</script>

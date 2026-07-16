@@ -139,6 +139,7 @@ function loadPage(url) {
             initPatientChart();
             initPatientsTable();
 
+            initCustomerValidation();
             initSpecialityValidation();
             initMasterTable('#specialityTable');
         },
@@ -187,10 +188,357 @@ $(document).on('submit', '.consultant-add-form', function (e) {
         }
     });
 });
+//customer validation
+function initCustomerValidation() {
 
+    console.log("Customer Validation Initialized");
 
+    if ($("#customerForm").data("validator")) {
+        $("#customerForm").removeData("validator");
+        $("#customerForm").off(".validate");
+    }
 
+    $("#customerForm").validate({
 
+        ignore: [],
+
+        rules: {
+
+            name: {
+                required: true,
+                maxlength: 100
+            },
+
+            arabicName: {
+                maxlength: 100
+            },
+
+            category: {
+                required: true
+            },
+
+            executive: {
+                required: true
+            },
+
+            icdGroup: {
+                required: true
+            },
+
+            parent: {
+                maxlength: 100
+            },
+
+            phone: {
+                digits: true,
+                maxlength: 20
+            },
+
+            fax: {
+                maxlength: 20
+            },
+
+            email: {
+                email: true,
+                maxlength: 100
+            },
+
+            contactName: {
+                maxlength: 100
+            },
+
+            mobileNo: {
+                digits: true,
+                maxlength: 20
+            },
+
+            telephone: {
+                digits: true,
+                maxlength: 20
+            },
+
+            contactEmail: {
+                email: true,
+                maxlength: 100
+            },
+
+            registrationNo: {
+                maxlength: 50
+            },
+
+            tax: {
+                maxlength: 50
+            },
+
+            crNo: {
+                maxlength: 50
+            },
+
+            pan: {
+                maxlength: 50
+            },
+
+            discount: {
+                number: true,
+                min: 0,
+                max: 100
+            },
+
+            classCode: {
+                maxlength: 50
+            },
+
+            classDescription: {
+                maxlength: 100
+            },
+
+            testPrice: {
+                number: true
+            },
+
+            deductibleAmount: {
+                number: true
+            },
+
+            coInsurancePercentage: {
+                number: true
+            },
+
+            coInsuranceMaximumCollectibleAmount: {
+                number: true
+            },
+
+            contractPolicyNo: {
+                number: true
+            }
+
+        },
+
+        messages: {
+
+            name: {
+                required: "Please enter Customer Name",
+                maxlength: "Maximum 100 characters allowed"
+            },
+
+            arabicName: {
+                maxlength: "Maximum 100 characters allowed"
+            },
+
+            category: {
+                required: "Please select Category"
+            },
+
+            executive: {
+                required: "Please select Executive"
+            },
+
+            icdGroup: {
+                required: "Please select ICD Group"
+            },
+
+            parent: {
+                maxlength: "Maximum 100 characters allowed"
+            },
+
+            phone: {
+                digits: "Only numbers are allowed",
+                maxlength: "Maximum 20 digits allowed"
+            },
+
+            fax: {
+                maxlength: "Maximum 20 characters allowed"
+            },
+
+            email: {
+                email: "Please enter a valid Email",
+                maxlength: "Maximum 100 characters allowed"
+            },
+
+            contactName: {
+                maxlength: "Maximum 100 characters allowed"
+            },
+
+            mobileNo: {
+                digits: "Only numbers are allowed",
+                maxlength: "Maximum 20 digits allowed"
+            },
+
+            telephone: {
+                digits: "Only numbers are allowed",
+                maxlength: "Maximum 20 digits allowed"
+            },
+
+            contactEmail: {
+                email: "Please enter a valid Email",
+                maxlength: "Maximum 100 characters allowed"
+            },
+
+            registrationNo: {
+                maxlength: "Maximum 50 characters allowed"
+            },
+
+            tax: {
+                maxlength: "Maximum 50 characters allowed"
+            },
+
+            crNo: {
+                maxlength: "Maximum 50 characters allowed"
+            },
+
+            pan: {
+                maxlength: "Maximum 50 characters allowed"
+            },
+
+            discount: {
+                number: "Enter a valid number",
+                min: "Minimum value is 0",
+                max: "Maximum value is 100"
+            },
+
+            classCode: {
+                maxlength: "Maximum 50 characters allowed"
+            },
+
+            classDescription: {
+                maxlength: "Maximum 100 characters allowed"
+            },
+
+            testPrice: {
+                number: "Enter a valid amount"
+            },
+
+            deductibleAmount: {
+                number: "Enter a valid amount"
+            },
+
+            coInsurancePercentage: {
+                number: "Enter a valid percentage"
+            },
+
+            coInsuranceMaximumCollectibleAmount: {
+                number: "Enter a valid amount"
+            },
+
+            contractPolicyNo: {
+                number: "Enter a valid number"
+            }
+
+        },
+
+        errorElement: "span",
+
+        errorClass: "text-danger",
+
+        errorPlacement: function (error, element) {
+            error.insertAfter(element);
+        },
+
+        highlight: function (element) {
+            $(element).addClass("is-invalid");
+        },
+
+        unhighlight: function (element) {
+            $(element).removeClass("is-invalid");
+        },
+
+        submitHandler: function (form) {
+
+            $.ajax({
+
+                url: $(form).attr("action"),
+                type: "POST",
+                data: $(form).serialize(),
+
+                beforeSend: function () {
+                    $("button[type='submit']").prop("disabled", true);
+                },
+
+                success: function (response) {
+
+                    showSuccess(response.message);
+
+                    form.reset();
+
+                    $("button[type='submit']").prop("disabled", false);
+
+                    // If you want to reload customer list after save:
+                    // reloadCustomers();
+
+                },
+
+                error: function (xhr) {
+
+                    $("button[type='submit']").prop("disabled", false);
+
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: xhr.responseJSON?.message || "Something went wrong."
+                    });
+
+                }
+
+            });
+
+            return false;
+
+        }
+
+    });
+
+}
+
+//customer delete
+$(document).on("click", ".customer-delete-btn", function () {
+
+    let id = $(this).data("id");
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "This customer will be marked as inactive.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, Delete",
+        cancelButtonText: "Cancel"
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+
+            $.ajax({
+
+                url: customerDeleteUrl + "/" + id,
+
+                type: "DELETE",
+
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr("content")
+                },
+
+                success: function (response) {
+
+                    showSuccess(response.message);
+
+                    
+                },
+
+                error: function (xhr) {
+
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: xhr.responseJSON?.message || "Delete failed."
+                    });
+
+                }
+
+            });
+
+        }
+
+    });
+
+});
 
 // add success speciality
 // $(document).on('click', '#btnSucs', function () {
