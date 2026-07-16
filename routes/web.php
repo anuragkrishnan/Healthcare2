@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Login\AuthController;
 use App\Http\Controllers\Master\SpecialityController;
+use App\Http\Controllers\Master\ConsultantController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,7 +21,7 @@ Route::get('/logout', [AuthController::class, 'logout'])
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
-});
+})->name('dashboard');
 
 Route::get('/dashboard/home', function () {
     return view('dashboard.home');
@@ -40,9 +41,9 @@ Route::get('/patients/search', function () {
 
 
 
-Route::get('/consultants', function () {
-    return view('consultants.index');
-});
+// Route::get('/consultants', function () {
+//     return view('consultants.index');
+// });
 Route::get('/consultants/schedule', function () {
     return view('consultants.schedule');
 });
@@ -59,8 +60,18 @@ Route::prefix('master')->group(function () {
     Route::get('/speciality', [SpecialityController::class, 'index'])
         ->name('master.specialities.index');
 
-    Route::post('/specialities', [SpecialityController::class, 'store'])
-        ->name('master.specialities.store');
+    Route::post('/speciality/store', [SpecialityController::class, 'store']);
+    Route::get(
+        '/speciality/{id}/edit',
+        [SpecialityController::class, 'edit']
+    );
+    Route::put('/speciality/{id}', [SpecialityController::class, 'update'])
+        ->name('master.specialities.update');
+
+    Route::delete(
+        '/speciality/{id}',
+        [SpecialityController::class, 'destroy']
+    )->name('master.specialities.destroy');
 });
 // Route::get('/speciality', function () {
 //     return view('speciality.index');
@@ -81,3 +92,25 @@ Route::get('/common/alerts', function () {
 Route::get('/common/theme', function () {
     return view('common.theme');
 })->name('common.theme');
+
+
+
+
+
+
+
+// Consultant Section
+Route::prefix('master')->group(function () {
+
+    Route::get('/consultants', [ConsultantController::class, 'index'])
+        ->name('master.consultants.index');
+
+    Route::post('/consultants', [ConsultantController::class, 'store'])
+        ->name('master.consultants.store');
+
+    
+});
+
+   
+
+

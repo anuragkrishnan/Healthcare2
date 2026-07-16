@@ -36,9 +36,12 @@
    
 
      <div class="d-flex gap-1">
-            <button class="btn btn-sm btn-outline-success px-3" data-bs-toggle="modal"
-                        data-bs-target="#consultantAddModal">
-                        <i class="bi bi-plus-circle me-1"></i> New</button>
+           <button type="button"
+        class="btn btn-sm btn-outline-success px-3"
+        data-bs-toggle="modal"
+        data-bs-target="#consultantAddModal">
+    <i class="bi bi-plus-circle me-1"></i> New
+</button>
            
             <button class="btn btn-sm btn-outline-secondary px-3"><i class="bi bi-printer me-1"></i> Print</button>
         </div>
@@ -85,446 +88,52 @@
                         </tr>
                     </thead>
 
-                    <tbody id="consultantTable">
 
-                        <tr>
-                            <td class="text-secondary">1</td>
-                            <td class="text-secondary">1100</td>
-                            <td>John Doe</td>
-                            <td>Physician</td>
-                            <td class="text-secondary">001</td>
-                            <td class="text-secondary">9097865456 </td>
-                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
-                                <i class="bi bi-calendar-event"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                 <button class="btn btn-sm text-secondary" title="Document">
-                                 <i class="bi bi-file-earmark-text"></i>
-                                 </button>
-                            </td>                            
+<tbody id="consultantTable">
+    @forelse($consultants as $key => $consultant)
+    <tr>
+        <td class="text-secondary">{{ $key + 1 }}</td>
+        <td class="text-secondary">{{ $consultant->doctorId }}</td>
+        <td>{{ $consultant->name }}</td>
+        <td>{{ $consultant->speciality }}</td>
+        <td class="text-secondary">{{ $consultant->userCode }}</td>
+        <td class="text-secondary">{{ $consultant->contactNo }}</td>
+        <td class="text-center">
+            <button class="btn btn-sm text-success" title="Schedule">
+                <i class="bi bi-calendar-event"></i>
+            </button>
+        </td>
+        <td class="text-secondary">
+            <button class="btn btn-sm text-secondary" title="Document">
+                <i class="bi bi-file-earmark-text"></i>
+            </button>
+        </td>
+        <td>
+            
+                <button type="button"
+            class="btn btn-sm text-primary"
+            data-bs-toggle="modal">
+            <i class="bi bi-pencil"></i>
+        </button> 
+       
+        </td>
+        <td>
+            <button class="btn btn-sm text-danger delete-consultant"
+                >
+                <i class="bi bi-trash"></i>
+            </button>
+        </td>
+    </tr>
+    @empty
+    <tr>
+        <td colspan="10" class="text-center text-muted py-3">
+            No consultants found. Click "New" to add one.
+        </td>
+    </tr>
+    @endforelse
+</tbody>
 
-                            <td class="text-secondary">
-
-                               <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal"
-                                    data-bs-target="#consultantEditModal">
-                                    <i class="bi bi-pencil"></i>
-                                    </a>
-                                </button>
-                                @include('consultants.edit')
-
-
-                                
-                            </td>
-                            <td class="text-secondary">
-                                <button class="btn btn-sm text-danger delete-btn">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td class="text-secondary">2</td>
-                            <td class="text-secondary">PT-0001</td>
-                            <td>Aarav Sharma</td>
-                            <td>Pediatrician</td>
-                            <td class="text-secondary">002</td>
-                            <td class="text-secondary">9087556765</td>
-                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
-                                <i class="bi bi-calendar-event"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                 <button class="btn btn-sm text-secondary" title="Document">
-                                 <i class="bi bi-file-earmark-text"></i>
-                                 </button>
-                            </td>                            
-
-                            <td class="text-secondary">
-
-                                <button class="btn btn-sm text-primary">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                <button class="btn btn-sm text-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-secondary">3</td>
-                            <td class="text-secondary">PT-0002</td>
-                            <td>Diya Verma</td>
-                            <td>Gynecologist</td>
-                            <td class="text-secondary">003</td>
-                            <td class="text-secondary">8787565434</td>
-                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
-                                <i class="bi bi-calendar-event"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                 <button class="btn btn-sm text-secondary" title="Document">
-                                 <i class="bi bi-file-earmark-text"></i>
-                                 </button>
-                            </td>                            
-
-                            <td class="text-secondary">
-
-                                <button class="btn btn-sm text-primary">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                <button class="btn btn-sm text-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-secondary">4</td>
-                            <td class="text-secondary">PT-0003</td>
-                            <td>Kabir Nair</td>
-                            <td>Gynecologist</td>
-                            <td class="text-secondary">004</td>
-                            <td class="text-secondary">7890878767</td>
-                          <td text-center><button class="btn btn-sm text-success" title="Schedule">
-                                <i class="bi bi-calendar-event"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                 <button class="btn btn-sm text-secondary" title="Document">
-                                 <i class="bi bi-file-earmark-text"></i>
-                                 </button>
-                            </td>                            
-
-                            <td class="text-secondary">
-
-                                <button class="btn btn-sm text-primary">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                <button class="btn btn-sm text-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-secondary">6</td>
-                            <td class="text-secondary">PT-0004</td>
-                            <td>Meera Iyer</td>
-                            <td>Cardiologist</td>
-                            <td class="text-secondary">005</td>
-                            <td class="text-secondary">9034567867</td>
-                           <td text-center><button class="btn btn-sm text-success" title="Schedule">
-                                <i class="bi bi-calendar-event"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                 <button class="btn btn-sm text-secondary" title="Document">
-                                 <i class="bi bi-file-earmark-text"></i>
-                                 </button>
-                            </td>                            
-
-                            <td class="text-secondary">
-
-                                <button class="btn btn-sm text-primary">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                <button class="btn btn-sm text-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-secondary">7</td>
-                            <td class="text-secondary">PT-0005</td>
-                            <td>Rohan Gupta</td>
-                            <td>Neurologist</td>
-                            <td class="text-secondary">006</td>
-                            <td class="text-secondary">6785678989</td>
-                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
-                                <i class="bi bi-calendar-event"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                 <button class="btn btn-sm text-secondary" title="Document">
-                                 <i class="bi bi-file-earmark-text"></i>
-                                 </button>
-                            </td>                            
-
-                            <td class="text-secondary">
-
-                                <button class="btn btn-sm text-primary">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                <button class="btn btn-sm text-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-secondary">8</td>
-                            <td class="text-secondary">PT-0006</td>
-                            <td>Ishaan Reddy</td>
-                            <td>Pediatrician</td>
-                            <td class="text-secondary">007</td>
-                            <td class="text-secondary">9087564567</td>
-                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
-                                <i class="bi bi-calendar-event"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                 <button class="btn btn-sm text-secondary" title="Document">
-                                 <i class="bi bi-file-earmark-text"></i>
-                                 </button>
-                            </td>                            
-
-                            <td class="text-secondary">
-
-                                <button class="btn btn-sm text-primary">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                <button class="btn btn-sm text-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-secondary">9</td>
-                            <td class="text-secondary">PT-0007</td>
-                            <td>Ananya Menon</td>
-                            <td>Obstetrician</td>
-                            <td class="text-secondary">008</td>
-                            <td class="text-secondary">8978967876</td>
-                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
-                                <i class="bi bi-calendar-event"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                 <button class="btn btn-sm text-secondary" title="Document">
-                                 <i class="bi bi-file-earmark-text"></i>
-                                 </button>
-                            </td>                            
-
-                            <td class="text-secondary">
-
-                                <button class="btn btn-sm text-primary">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                <button class="btn btn-sm text-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-secondary">10</td>
-                            <td class="text-secondary">PT-0008</td>
-                            <td>Vivaan Pillai</td>
-                            <td>Psychiatrist</td>
-                            <td class="text-secondary">009</td>
-                            <td class="text-secondary">9087867875 </td>
-                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
-                                <i class="bi bi-calendar-event"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                 <button class="btn btn-sm text-secondary" title="Document">
-                                 <i class="bi bi-file-earmark-text"></i>
-                                 </button>
-                            </td>                            
-
-                            <td class="text-secondary">
-
-                                <button class="btn btn-sm text-primary">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                <button class="btn btn-sm text-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-secondary">11</td>
-                            <td class="text-secondary">PT-0009</td>
-                            <td>Sara Joshi</td>
-                            <td>Psychologist</td>
-                            <td class="text-secondary">010</td>
-                            <td class="text-secondary">8978909898</td>
-                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
-                                <i class="bi bi-calendar-event"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                 <button class="btn btn-sm text-secondary" title="Document">
-                                 <i class="bi bi-file-earmark-text"></i>
-                                 </button>
-                            </td>                            
-
-                            <td class="text-secondary">
-
-                                <button class="btn btn-sm text-primary">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                <button class="btn btn-sm text-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-secondary">12</td>
-                            <td class="text-secondary">PT-0010</td>
-                            <td>Aditi Kapoor</td>
-                            <td>Pulmonologist</td>
-                            <td class="text-secondary">011</td>
-                            <td class="text-secondary">7867567890</td>
-                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
-                                <i class="bi bi-calendar-event"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                 <button class="btn btn-sm text-secondary" title="Document">
-                                 <i class="bi bi-file-earmark-text"></i>
-                                 </button>
-                            </td>                            
-
-                            <td class="text-secondary">
-
-                                <button class="btn btn-sm text-primary">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                <button class="btn btn-sm text-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-secondary">13</td>
-                            <td class="text-secondary">PT-0011D</td>
-                            <td>Karan Sharma</td>
-                            <td>Pulmonologist</td>
-                            <td class="text-secondary">012</td>
-                            <td class="text-secondary">8967567890</td>
-                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
-                                <i class="bi bi-calendar-event"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                 <button class="btn btn-sm text-secondary" title="Document">
-                                 <i class="bi bi-file-earmark-text"></i>
-                                 </button>
-                            </td>                            
-
-                            <td class="text-secondary">
-
-                                <button class="btn btn-sm text-primary">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                <button class="btn btn-sm text-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-secondary">14</td>
-                            <td class="text-secondary">PT-0012</td>
-                            <td>Neha Verma</td>
-                            <td>ENT Specialist</td>
-                            <td class="text-secondary">013</td>
-                            <td class="text-secondary">786789873</td>
-                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
-                                <i class="bi bi-calendar-event"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                 <button class="btn btn-sm text-secondary" title="Document">
-                                 <i class="bi bi-file-earmark-text"></i>
-                                 </button>
-                            </td>                            
-
-                            <td class="text-secondary">
-
-                                <button class="btn btn-sm text-primary">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                <button class="btn btn-sm text-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-                        </tr>
-                       
-                     
                         
-                       
-                     
-                        
-                       
-                        <tr>
-                            <td class="text-secondary">15</td>
-                            <td class="text-secondary">PT-0029</td>
-                            <td>Manish Joshi</td>
-                            <td>ENT Specialist</td>
-                            <td class="text-secondary">029</td>
-                            <td class="text-secondary">787878789</td>
-                            <td text-center><button class="btn btn-sm text-success" title="Schedule">
-                                <i class="bi bi-calendar-event"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                 <button class="btn btn-sm text-secondary" title="Document">
-                                 <i class="bi bi-file-earmark-text"></i>
-                                 </button>
-                            </td>                            
-
-                            <td class="text-secondary">
-
-                                <button class="btn btn-sm text-primary">
-                                    <i class="bi bi-pencil"></i>
-                                </button>
-                            </td>
-                            <td class="text-secondary">
-                                <button class="btn btn-sm text-danger">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-
-                            </td>
-                        </tr>
-                       
-
-                    </tbody>
-
                 </table>
 
             </div></div></div>
@@ -577,3 +186,8 @@
 
 {{-- INCLUDE MODAL HERE --}}
 @include('consultants.add')
+ 
+
+ 
+
+

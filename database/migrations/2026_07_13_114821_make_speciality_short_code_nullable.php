@@ -11,17 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('speciality', function (Blueprint $table) {
-
-            $table->specialityId();
-
-            $table->string('specialityShortCode', 20);
-
-            $table->string('specialityName', 100)->unique();
-
-            $table->boolean('status')->default(1);
-
-            $table->timestamps();
+        Schema::table('speciality', function (Blueprint $table) {
+            $table->string('speciality_short_code', 20)
+                ->nullable()
+                ->change();
         });
     }
 
@@ -30,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('speciality');
+        //
     }
 };
